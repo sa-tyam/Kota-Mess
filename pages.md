@@ -14,7 +14,7 @@
 
 6. History Page
 
-7. Mess/Dish Page
+7. Mess/Meal Page
 
 8. Mess Detail Page
 
