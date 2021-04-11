@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#4E73B8</color>
+    <color name="purple_700">#4E73B8</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    # landing page #
+
+    <color name="activity_landing_page_background">#79A3F2</color>
+    <color name="activity_landing_page_card_background">#FBD22D</color>
+    <color name="activity_landing_page_your_first">#382D15</color>
+    <color name="activity_landing_page_meal">#4E73B8</color>
+    <color name="activity_landing_page_your_second">#4E73B8</color>
+    <color name="activity_landing_page_deal">#1B1919</color>
+    <color name="activity_landing_page_login_button_background">#4E73B8</color>
+    <color name="activity_landing_page_login_button_text">#FFF9F9</color>
+
+    # login phone number page #
+
+    <color name="activity_login_phone_number_background">#FFFBEC</color>
+    <color name="activity_login_phone_number_header">#333333</color>
+    <color name="activity_login_phone_number_sub_header">#807575</color>
+    <color name="activity_login_phone_number_input_hint">#746666</color>
+    <color name="activity_login_phone_number_input_background">#F2EAEA</color>
+    <color name="activity_login_phone_number_input">#000000</color>
+    <color name="activity_login_phone_number_send_otp_button_background">#4E73B8</color>
+    <color name="activity_login_phone_number_send_otp_button_text">#FFF9F9</color>
+
+    # login otp verification #
+
+    <color name="activity_login_verify_otp_background">#FFFBEC</color>
+    <color name="activity_login_verify_otp_header">#333333</color>
+    <color name="activity_login_verify_otp_sub_header">#807575</color>
+    <color name="activity_login_verify_otp_resend_otp_label">#665A5A</color>
+    <color name="activity_login_verify_otp_resend_otp">#000000</color>
+    <color name="activity_login_verify_otp_input">#000000</color>
+    <color name="activity_login_verify_otp_input_hint">#746666</color>
+    <color name="activity_login_verify_otp_input_background">#F2EAEA</color>
+    <color name="activity_login_verify_otp_verify_button_background">#4E73B8</color>
+    <color name="activity_login_verify_otp_verify_button_text">#FFF9F9</color>
+
+    # customer profile edit #
+
+    <color name="activity_customer_profile_edit_header">#333333</color>
+    <color name="activity_customer_profile_edit_background">#FFFBEC</color>
+    <color name="activity_customer_profile_edit_input_background">#F2EAEA</color>
+    <color name="activity_customer_profile_edit_input_text">#000000</color>
+    <color name="activity_customer_profile_edit_input_hint">#746666</color>
+    <color name="activity_customer_profile_edit_save_button_text">#FFF9F9</color>
+    <color name="activity_customer_profile_edit_save_button_background">#4E73B8</color>
+
+    # customer select plan #
+    <color name="activity_customer_plan_select_background">#FFFBEC</color>
+    <color name="activity_customer_plan_select_header">#333333</color>
+    <color name="activity_customer_plan_select_plan_title">#333333</color>
+    <color name="activity_customer_plan_select_plan_description">#675C5C</color>
+    <color name="activity_customer_plan_select_plan_button_background">#4E73B8</color>
+    <color name="activity_customer_plan_select_plan_button_text">#FFFAFA</color>
+    <color name="activity_customer_plan_select_plan_price">#333333</color>
+    <color name="activity_customer_plan_select_horizontal_line">#F2EAEA</color>
+    <color name="activity_customer_plan_select_skip_button_text">#786D6D</color>
+    <color name="activity_customer_plan_select_skip_button_border">#B0A1A1</color>
+    <color name="activity_customer_plan_select_regular_plan_input_background">#FFF6F6</color>
+    <color name="activity_customer_plan_select_regular_plan_input">#333333</color>
+    
+    # mess basic profile edit #
+    
+    <color name="activity_mess_basic_profile_edit_background">#FFFBEC</color>
+    <color name="activity_mess_basic_profile_edit_header">#333333</color>
+    <color name="activity_mess_basic_profile_edit_input_text">#333333</color>
+    <color name="activity_mess_basic_profile_edit_input_hint">#746666</color>
+    <color name="activity_mess_basic_profile_edit_input_background">#F2EAEA</color>
+    <color name="activity_mess_basic_profile_edit_next_button_text">#FFF9F9</color>
+    <color name="activity_mess_basic_profile_edit_next_button_background">#4E73B8</color>
+
+    # mess owner profile edit #
+
+    <color name="activity_mess_owner_profile_edit_background">#FFFBEC</color>
+    <color name="activity_mess_owner_profile_edit_header">#333333</color>
+    <color name="activity_mess_owner_profile_edit_input_text">#333333</color>
+    <color name="activity_mess_owner_profile_edit_input_hint">#746666</color>
+    <color name="activity_mess_owner_profile_edit_input_background">#F2EAEA</color>
+    <color name="activity_mess_owner_profile_edit_next_button_text">#FFF9F9</color>
+    <color name="activity_mess_owner_profile_edit_next_button_background">#4E73B8</color>
+
+    # mess payment profile edit #
+
+    <color name="activity_mess_payment_options_edit_background">#FFFBEC</color>
+    <color name="activity_mess_payment_options_edit_header">#333333</color>
+    <color name="activity_mess_payment_options_edit_input_text">#333333</color>
+    <color name="activity_mess_payment_options_edit_input_hint">#746666</color>
+    <color name="activity_mess_payment_options_edit_input_background">#F2EAEA</color>
+    <color name="activity_mess_payment_options_edit_next_button_text">#FFF9F9</color>
+    <color name="activity_mess_payment_options_edit_next_button_background">#4E73B8</color>
+    <color name="activity_mess_payment_options_edit_skip_button_text">#786D6D</color>
+    <color name="activity_mess_payment_options_edit_skip_button_border">#B0A1A1</color>
+
+</resources>

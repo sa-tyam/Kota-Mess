@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1015439218299",
+    "project_id": "pkan-c20f8",
+    "storage_bucket": "pkan-c20f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015439218299:android:ebebf24e2fb2778c6434de",
+        "android_client_info": {
+          "package_name": "com.pkan.official"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015439218299-0k7kfctajb6alamsh94do9qbtr33ue5p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pkan.official",
+            "certificate_hash": "0470b67bba08b4aa89ae3de96eb0e398855107dd"
+          }
+        },
+        {
+          "client_id": "1015439218299-nuaai4eulkjcrpdjbbtodml0vvb3njkh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXLB5T2T6Nf0GhAo5F_1ZXhhCGkD2ntbk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015439218299-nuaai4eulkjcrpdjbbtodml0vvb3njkh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

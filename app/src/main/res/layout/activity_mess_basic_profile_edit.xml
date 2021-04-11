@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_mess_basic_profile_edit_background"
+    android:backgroundTint="@null"
+    tools:context=".mess.profile.MessBasicProfileEditActivity">
+
+    <ImageView
+        android:id="@+id/messBasicProfileEditBackImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/activity_mess_basic_profile_edit_header"
+        android:textColor="@color/activity_mess_basic_profile_edit_header"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/messBasicProfileEditNameEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    android:ems="10"
+                    android:hint="@string/activity_mess_basic_profile_edit_input_name_hint"
+                    android:inputType="textPersonName"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/activity_mess_basic_profile_edit_input_text"
+                    android:textColorHint="@color/activity_mess_basic_profile_edit_input_hint"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/messBasicProfileEditDescriptionEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    android:ems="10"
+                    android:hint="@string/activity_mess_basic_profile_edit_input_description_hint"
+                    android:inputType="textPersonName"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/activity_mess_basic_profile_edit_input_text"
+                    android:textColorHint="@color/activity_mess_basic_profile_edit_input_hint"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditNameEditText" />
+
+                <Spinner
+                    android:id="@+id/messBasicProfileEditCitySpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditDescriptionEditText" />
+
+                <Spinner
+                    android:id="@+id/messBasicProfileEditAreaSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditCitySpinner" />
+
+                <EditText
+                    android:id="@+id/messBasicProfileEditAddressEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    android:ems="10"
+                    android:hint="@string/activity_mess_basic_profile_edit_input_address_hint"
+                    android:inputType="textPersonName"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/activity_mess_basic_profile_edit_input_text"
+                    android:textColorHint="@color/activity_mess_basic_profile_edit_input_hint"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditAreaSpinner" />
+
+                <EditText
+                    android:id="@+id/messBasicProfileEditTimingsEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    android:ems="10"
+                    android:hint="@string/activity_mess_basic_profile_edit_input_timings_hint"
+                    android:inputType="textPersonName"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/activity_mess_basic_profile_edit_input_text"
+                    android:textColorHint="@color/activity_mess_basic_profile_edit_input_hint"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditAddressEditText" />
+
+                <EditText
+                    android:id="@+id/messBasicProfileEditMonthlyChargeEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    android:ems="10"
+                    android:hint="@string/activity_mess_basic_profile_edit_input_monthly_charges_hint"
+                    android:inputType="number"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/activity_mess_basic_profile_edit_input_text"
+                    android:textColorHint="@color/activity_mess_basic_profile_edit_input_hint"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditTimingsEditText" />
+
+                <TextView
+                    android:id="@+id/messBasicProfileEditUploadPicLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditMonthlyChargeEditText"
+                    android:text="@string/activity_mess_basic_profile_edit_upload_pic_hint"
+                    android:textColor="@color/activity_mess_basic_profile_edit_input_hint"
+                    android:textSize="18sp"/>
+
+                <ImageView
+                    android:id="@+id/messBasicProfileEditSelectPictureImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditUploadPicLabelTextView"
+                    android:src="@drawable/ic_baseline_add_photo_alternate_24"/>
+
+                <TextView
+                    android:id="@+id/messBasicProfileEditUploadPicStatusTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditSelectPictureImageView"
+                    android:text="@string/activity_mess_basic_profile_edit_upload_pic_default_status"
+                    android:textColor="@color/activity_mess_basic_profile_edit_input_hint"
+                    android:textSize="10sp"/>
+
+                <Button
+                    android:id="@+id/messBasicProfileEditNextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:background="@drawable/mess_basic_profile_edit_next_button_background"
+                    app:backgroundTint = "@null"
+                    android:text="@string/activity_mess_basic_profile_edit_next_button_text"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditUploadPicStatusTextView" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

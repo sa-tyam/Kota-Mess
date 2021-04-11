@@ -1,0 +1,97 @@
+<resources>
+    <string name="app_name">PKAN</string>
+
+    # rupees sign #
+    <string name="rupees_sign">\u20B9</string>
+
+    # Landing Page #
+
+    <string name="activity_landing_page_your">Your</string>
+    <string name="activity_landing_page_meal">Meal</string>
+    <string name="activity_landing_page_deal">Deal</string>
+    <string name="activity_landing_page_login_button_text">Log In</string>
+
+    # login phone number page #
+
+    <string name="activity_login_phone_number_header">Phone Verification</string>
+    <string name="activity_login_phone_number_sub_header">We will send you an OTP on 
+        this mobile number</string>
+    <string name="activity_login_phone_number_country_code">+91</string>
+    <string name="activity_login_phone_number_input_hint">Phone number</string>
+    <string name="activity_login_phone_number_send_otp_button_text">Get OTP</string>
+    <string name="activity_login_phone_number_radio_customer">Customer</string>
+    <string name="activity_login_phone_number_radio_mess">Mess</string>
+
+    # login otp verification #
+
+    <string name="activity_login_verify_otp_header">Verify Otp</string>
+    <string name="activity_login_verify_otp_sub_header">Enter The OTP sent to your phone</string>
+    <string name="activity_login_verify_otp_resend_otp_label">Did not receive OTP </string>
+    <string name="activity_login_verify_otp_input_hint">Enter otp here</string>
+    <string name="activity_login_verify_otp_resend_otp">resend OTP</string>
+    <string name="activity_login_verify_otp_verify_button_text">Verify and Proceed</string>
+
+    # customer profile edit #
+
+    <string name="activity_customer_profile_edit_header">Set Your Profile</string>
+    <string name="activity_customer_profile_edit_name_hint">Enter your full name</string>
+    <string name="activity_customer_profile_edit_gender_hint">Select Gender</string>
+    <string name="activity_customer_profile_edit_city_hint">Select City</string>
+    <string name="activity_customer_profile_edit_area_hint">Select Area</string>
+    <string name="activity_customer_profile_edit_house_number_hint">Enter your house number</string>
+    <string name="activity_customer_profile_edit_room_number_hint">Enter your room number</string>
+    <string name="activity_customer_profile_edit_landmark_hint">Enter nearby landmark</string>
+    <string name="activity_customer_profile_edit_save_button_text">Save</string>
+
+    # customer select plan #
+
+    <string name="activity_customer_plan_select_header">Select Plan</string>
+    <string name="activity_customer_plan_select_regular_plan_title">Regular Plan</string>
+    <string name="activity_customer_plan_select_regular_plan_button_text">Add</string>
+    <string name="activity_customer_plan_select_regular_plan_amount_hint">Amount</string>
+    <string name="activity_customer_plan_select_other_plan_button_text">Select</string>
+    <string name="activity_customer_plan_select_skip_button_text">Skip</string>
+
+    # mess basic profile edit #
+
+    <string name="activity_mess_basic_profile_edit_header">Set Mess Profile</string>
+    <string name="activity_mess_basic_profile_edit_input_name_hint">Name of Mess</string>
+    <string name="activity_mess_basic_profile_edit_input_description_hint">Description</string>
+    <string name="activity_mess_basic_profile_edit_input_address_hint">Address</string>
+    <string name="activity_mess_basic_profile_edit_input_timings_hint">Mess Timings</string>
+    <string name="activity_mess_basic_profile_edit_input_monthly_charges_hint">Monthly Charges</string>
+    <string name="activity_mess_basic_profile_edit_upload_pic_hint">Upload Picture</string>
+    <string name="activity_mess_basic_profile_edit_next_button_text">Next</string>
+    <string name="activity_mess_basic_profile_edit_upload_pic_default_status">not uploaded</string>
+
+    # mess owner profile edit #
+
+    <string name="activity_mess_owner_profile_edit_header">Save Owner details</string>
+    <string name="activity_mess_owner_profile_edit_input_name_hint">Name</string>
+    <string name="activity_mess_owner_profile_edit_input_address_hint">Address</string>
+    <string name="activity_mess_owner_profile_edit_input_phone_number_hint">Phone Number</string>
+    <string name="activity_mess_owner_profile_edit_upload_id_pic_label">Upload picture of any id
+        e.g, Aadhar card, driving license, etc</string>
+    <string name="activity_mess_owner_profile_edit_upload_id_pic_hint">Upload Picture</string>
+    <string name="activity_mess_owner_profile_edit_next_button_text">Next</string>
+    <string name="activity_mess_owner_profile_edit_upload_pic_default_status">not uploaded</string>
+
+    # mess payment profile edit #
+
+    <string name="activity_mess_payment_options_edit_header">Save Payment Details</string>
+    <string name="activity_mess_payment_options_edit_upi_sub_header">Set UPI details</string>
+    <string name="activity_mess_payment_options_edit_input_upi_hint">Enter UPI id</string>
+    <string name="activity_mess_payment_options_edit_or_text">Or</string>
+    <string name="activity_mess_payment_options_edit_bank_sub_header">Enter Bank account
+        details</string>
+    <string name="activity_mess_payment_options_edit_input_account_number_hint">Account no.</string>
+    <string name="activity_mess_payment_options_edit_input_ifsc_hint">IFSC code</string>
+    <string name="activity_mess_payment_options_edit_input_bank_name_hint">Bank Name</string>
+    <string name="activity_mess_payment_options_edit_input_account_holder_hint">Account holder
+        name</string>
+    <string name="activity_mess_payment_options_edit_save_button_text">Save</string>
+    <string name="activity_mess_payment_options_edit_skip_button_text">Skip</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
