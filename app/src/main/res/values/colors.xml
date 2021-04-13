@@ -66,6 +66,37 @@
     <color name="activity_customer_plan_select_skip_button_border">#B0A1A1</color>
     <color name="activity_customer_plan_select_regular_plan_input_background">#FFF6F6</color>
     <color name="activity_customer_plan_select_regular_plan_input">#333333</color>
+
+    # customer main activity #
+    <color name="activity_customer_main_background">#FFFBEC</color>
+    <color name="activity_customer_main_bottom_bar_background">#FFF8DE</color>
+    <color name="activity_customer_main_bottom_bar_icon_unselected">#A1A0A0</color>
+    <color name="activity_customer_main_bottom_bar_icon_selected">#524D4D</color>
+
+    # customer history #
+
+    <color name="fragment_customer_history_background">#FFFBEC</color>
+    <color name="fragment_customer_history_header">#333333</color>
+
+    # customer history item #
+
+    <color name="customer_history_item_header_background">#FAF5F5</color>
+    <color name="customer_history_item_background">#FFFBEC</color>
+    <color name="customer_history_item_mess_name_text">#333333</color>
+    <color name="customer_history_item_header_text">#938888</color>
+    <color name="customer_history_item_item_names_text">#A1A0A0</color>
+    <color name="customer_history_item_price_text">#EFC41A</color>
+    <color name="customer_history_item_delivered_at_text">#333333</color>
+    <color name="customer_history_item_horizontal_line">#EBE0E0</color>
+    
+    # customer profile fragment #
+    
+    <color name="fragment_customer_profile_background">#FFFBEC</color>
+    <color name="fragment_customer_profile_header_text">#333333</color>
+    <color name="fragment_customer_profile_label_text">#938888</color>
+    <color name="fragment_customer_profile_info_text">#766E6E</color>
+    <color name="fragment_customer_profile_label_background">#FAF5F5</color>
+    <color name="fragment_customer_profile_horizontal_line">#EFE6E6</color>
     
     # mess basic profile edit #
     
@@ -98,5 +129,19 @@
     <color name="activity_mess_payment_options_edit_next_button_background">#4E73B8</color>
     <color name="activity_mess_payment_options_edit_skip_button_text">#786D6D</color>
     <color name="activity_mess_payment_options_edit_skip_button_border">#B0A1A1</color>
+
+    # delivery main activity #
+
+    <color name="activity_delivery_main_background">#FFFBEC</color>
+    <color name="activity_delivery_main_header_text">#333333</color>
+    <color name="activity_delivery_main_sub_header">#333333</color>
+    <color name="activity_delivery_main_area_name_text">#675C5C</color>
+    <color name="activity_delivery_main_address_text">#675C5C</color>
+    <color name="activity_delivery_main_customer_name_text">#675C5C</color>
+    <color name="activity_delivery_main_customer_phone_number_text">#1C1C1C</color>
+    <color name="activity_delivery_main_deliver_button_text">#FFFAFA</color>
+    <color name="activity_delivery_main_deliver_button_background">#4E73B8</color>
+    <color name="activity_delivery_main_Scroll_view_item_horizontal_line">#F2EAEA</color>
+    <color name="activity_delivery_main_Scroll_view_item_background">#FFFBEC</color>
 
 </resources>

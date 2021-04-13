@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
-<solid android:color="@color/activity_customer_plan_select_plan_button_background"/>
-    <corners   android:radius="10dp"></corners>
+    <solid android:color="@color/fragment_customer_profile_label_background"></solid>
+    <corners android:radius="12dp"></corners>
 </shape>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -114,7 +115,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messOwnerProfileEditAddressEditText" />
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messOwnerProfileEditAddressEditText" />
 
                 <TextView
                     android:id="@+id/messOwnerProfileEditUploadPicLabelTextView"
@@ -129,7 +131,8 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfilePhoneNumbersEditText" />
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messBasicProfilePhoneNumbersEditText" />
 
                 <ImageView
                     android:id="@+id/messOwnerProfileEditSelectPictureImageView"
@@ -139,7 +142,8 @@
                     android:src="@drawable/ic_baseline_add_photo_alternate_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messOwnerProfileEditUploadPicLabelTextView" />
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messOwnerProfileEditUploadPicLabelTextView" />
 
                 <TextView
                     android:id="@+id/messOwnerProfileEditUploadPicStatusTextView"
@@ -151,7 +155,8 @@
                     android:textSize="10sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messOwnerProfileEditSelectPictureImageView" />
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messOwnerProfileEditSelectPictureImageView" />
 
                 <Button
                     android:id="@+id/messOwnerProfileNextButton"
@@ -166,7 +171,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messOwnerProfileEditUploadPicStatusTextView" />
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messOwnerProfileEditUploadPicStatusTextView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

@@ -1,15 +1,23 @@
 package com.pkan.official.customer.order;
 
-public class OrderItem {
-    String mess_id, dish_id, customer_id, mess_name, customer_name, order_time, address, status,
-        customer_phone_number, mess_or_delivery, delivery_phone_number, lunch_or_dinner, order_date,
-        delivered_time, security_code, review_id;
+import java.util.ArrayList;
 
-    public OrderItem(String mess_id, String dish_id, String customer_id,
+public class OrderItem {
+    String order_id, mess_id, dish_id, customer_id, mess_name, customer_name, order_time,
+            address, status, customer_phone_number, mess_or_delivery, delivery_phone_number,
+            lunch_or_dinner, order_date, delivered_time, security_code, review_id, meal_image_link;
+
+    int order_price;
+
+    ArrayList<MealItem> itemArrayList;
+
+    public OrderItem(String order_id,String mess_id, String dish_id, String customer_id,
                      String mess_name, String customer_name, String order_time,
                      String address, String status, String customer_phone_number,
-                     String mess_or_delivery, String lunch_or_dinner, String order_date) {
+                     String mess_or_delivery, String lunch_or_dinner, String order_date,
+                     int order_price, ArrayList<MealItem> itemArrayList, String meal_image_link) {
 
+        this.order_id = order_id;
         this.mess_id = mess_id;
         this.dish_id = dish_id;
         this.customer_id = customer_id;
@@ -22,7 +30,18 @@ public class OrderItem {
         this.mess_or_delivery = mess_or_delivery;
         this.lunch_or_dinner = lunch_or_dinner;
         this.order_date = order_date;
+        this.order_price = order_price;
+        this.itemArrayList = itemArrayList;
+        this.meal_image_link = meal_image_link;
 
+    }
+
+    public String getOrder_id() {
+        return order_id;
+    }
+
+    public void setOrder_id(String order_id) {
+        this.order_id = order_id;
     }
 
     public String getMess_id() {
@@ -151,5 +170,29 @@ public class OrderItem {
 
     public void setReview_id(String review_id) {
         this.review_id = review_id;
+    }
+
+    public int getOrder_price() {
+        return order_price;
+    }
+
+    public void setOrder_price(int order_price) {
+        this.order_price = order_price;
+    }
+
+    public ArrayList<MealItem> getItemArrayList() {
+        return itemArrayList;
+    }
+
+    public void setItemArrayList(ArrayList<MealItem> itemArrayList) {
+        this.itemArrayList = itemArrayList;
+    }
+
+    public String getMeal_image_link() {
+        return meal_image_link;
+    }
+
+    public void setMeal_image_link(String meal_image_link) {
+        this.meal_image_link = meal_image_link;
     }
 }

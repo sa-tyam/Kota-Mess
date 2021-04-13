@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/activity_delivery_main_Scroll_view_item_background">
+
+    <TextView
+        android:id="@+id/deliveryMainScrollViewItemCustomerNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="Test customer"
+        android:textColor="@color/activity_delivery_main_customer_name_text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/deliveryMainScrollViewItemDeliverButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/deliveryMainScrollViewItemHouseNumberTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:text="c-47"
+        android:textColor="@color/activity_delivery_main_address_text"
+        app:layout_constraintEnd_toStartOf="@+id/deliveryMainScrollViewItemDeliverButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deliveryMainScrollViewItemCustomerNameTextView" />
+
+    <TextView
+        android:id="@+id/deliveryMainScrollViewItemRoomNumberTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:text="103"
+        android:textColor="@color/activity_delivery_main_address_text"
+        app:layout_constraintEnd_toStartOf="@+id/deliveryMainScrollViewItemDeliverButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deliveryMainScrollViewItemHouseNumberTextView" />
+
+    <TextView
+        android:id="@+id/deliveryMainScrollViewItemLandmarkTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:text=" landmark landmark landmark landmark landmark landmark
+        landmark landmark andmark landmark landmark andmark"
+        android:textColor="@color/activity_delivery_main_address_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deliveryMainScrollViewItemRoomNumberTextView" />
+
+    <TextView
+        android:id="@+id/deliverMainScrollVAiewItemPhoneNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="+91 9090909090"
+        android:textColor="@color/activity_delivery_main_customer_phone_number_text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deliveryMainScrollViewItemLandmarkTextView" />
+
+    <Button
+        android:id="@+id/deliveryMainScrollViewItemDeliverButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/deliver_main_scroll_view_item_button_background"
+        android:text="@string/activity_delivery_main_deliver_button_text"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view13"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/activity_delivery_main_Scroll_view_item_horizontal_line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deliverMainScrollVAiewItemPhoneNumberTextView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

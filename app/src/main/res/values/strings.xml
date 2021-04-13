@@ -52,6 +52,30 @@
     <string name="activity_customer_plan_select_other_plan_button_text">Select</string>
     <string name="activity_customer_plan_select_skip_button_text">Skip</string>
 
+    # customer profile fragment #
+
+    <string name="fragment_customer_profile_profile_header">Profile</string>
+    <string name="fragment_customer_profile_plan_header">Plan</string>
+    <string name="fragment_customer_profile_label_name">Name</string>
+    <string name="fragment_customer_profile_label_gender">Gender</string>
+    <string name="fragment_customer_profile_label_city">City</string>
+    <string name="fragment_customer_profile_label_area">Area</string>
+    <string name="fragment_customer_profile_label_referral_code">Referral Code</string>
+    <string name="fragment_customer_profile_referral_code_detail">Share this code with new users
+        and get Rs. 50 in your PKAN account after their first order</string>
+    <string name="fragment_customer_profile_label_house_number">House Number</string>
+    <string name="fragment_customer_profile_label_room_number">Room Number</string>
+    <string name="fragment_customer_profile_label_landmark">Landmark</string>
+    <string name="fragment_customer_profile_label_available_balance">Balance</string>
+    <string name="fragment_customer_profile_label_plan">Current Plan</string>
+
+    # customer history #
+
+    <string name="fragment_customer_history_header">Previous Orders</string>
+
+    # customer history item #
+
+
     # mess basic profile edit #
 
     <string name="activity_mess_basic_profile_edit_header">Set Mess Profile</string>
@@ -63,6 +87,8 @@
     <string name="activity_mess_basic_profile_edit_upload_pic_hint">Upload Picture</string>
     <string name="activity_mess_basic_profile_edit_next_button_text">Next</string>
     <string name="activity_mess_basic_profile_edit_upload_pic_default_status">not uploaded</string>
+    <string name="activity_mess_basic_profile_edit_radio_button_home_delivery">Home Delivery</string>
+    <string name="activity_mess_basic_profile_edit_radio_button_in_mess">In Mess</string>
 
     # mess owner profile edit #
 
@@ -93,5 +119,9 @@
     <string name="activity_mess_payment_options_edit_skip_button_text">Skip</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    # delivery main activity #
+
+    <string name="activity_delivery_main_deliver_button_text">Deliver</string>
 
 </resources>

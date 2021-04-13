@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -48,6 +50,9 @@ public class CustomerPlanSelectActivity extends AppCompatActivity {
 
     // array list to set other plans
     ArrayList<OtherPlans> mPlansList;
+
+    // check if user is new or existing
+    String new_user = "";
 
 
     @Override
@@ -112,12 +117,68 @@ public class CustomerPlanSelectActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                // go to home activity
-                Intent intent = new Intent(getApplicationContext(), CustomerMainActivity.class);
-                startActivity(intent);
+                // disable screen and start progress dialog
+                startProgressDialog();
 
-                // finish this activity
-                finish();
+                // check if user is new or existing one
+                databaseReference.child("Customers").child(user.getUid())
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.hasChild("Plan")) {
+
+                                    // existing user
+                                    new_user = "";
+                                } else {
+
+                                    // new user
+                                    new_user = "newUser";
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                // for debugging in case of errors
+                                Log.e("new user check", error.getDetails());
+                            }
+                        });
+
+                if (new_user.length() > 0) {
+                    databaseReference.child("Customers").child(user.getUid())
+                            .child("Plan").child("Plan Name").setValue("Regular Plan").addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            // stop progress dialog
+                            stopProgressDialog();
+
+                            // go to home activity
+                            Intent intent = new Intent(getApplicationContext(), CustomerMainActivity.class);
+                            startActivity(intent);
+
+                            // finish this activity
+                            finish();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                            // stop progress dialog
+                            stopProgressDialog();
+
+                           Toast.makeText(getApplicationContext(), "Please Try Again",
+                                   Toast.LENGTH_LONG).show();
+                        }
+                    });
+                } else {
+
+                    // stop progress dialog
+                    stopProgressDialog();
+
+                    // user already exists, simply finish the activity
+                    finish();
+                }
+
             }
         });
 

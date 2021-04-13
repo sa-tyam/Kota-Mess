@@ -78,6 +78,9 @@ public class CustomerProfileEditActivity extends AppCompatActivity {
         // disable functions and show progress dialog till cities are loaded from database
         startProgressDialog();
 
+        // check if new Customer or existing
+        checkIfNew();
+
         // set the spinner items
         setSpinners();
 
@@ -115,6 +118,25 @@ public class CustomerProfileEditActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(CustomerProfileEditActivity.this);
         progressDialog.setMessage("Please Wait ...");
         progressDialog.setCancelable(false);
+    }
+
+    private void checkIfNew () {
+        databaseReference.child("Customers").child(user.getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.hasChild("Balance")) {
+                    new_user = "";
+                } else {
+                    new_user = "newUser";
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void setSpinners () {
@@ -326,10 +348,6 @@ public class CustomerProfileEditActivity extends AppCompatActivity {
         profile_ref.child("Gender").setValue(gender);
         profile_ref.child("Phone Number").setValue(user.getPhoneNumber());
 
-        // create a referral code
-        String referral_code = getReferralCode();
-        profile_ref.child("Referral Code").setValue(referral_code);
-
         // set the address part of data to database
         DatabaseReference address_ref = databaseReference.child("Customers").child(user.getUid()).child("Address");
         address_ref.child("City").setValue(city);
@@ -338,31 +356,33 @@ public class CustomerProfileEditActivity extends AppCompatActivity {
         address_ref.child("Area Id").setValue(area_id);
         address_ref.child("House Number").setValue(house_number);
         address_ref.child("Room Number").setValue(room_number);
-        address_ref.child("Landmark").setValue(landmark);
 
-        // set the initial balance of the user to 0
-        // add on complete listener to move to next part once data is saved
-        databaseReference.child("Customers").child(user.getUid()).child("Balance")
-                .setValue(0).addOnCompleteListener(new OnCompleteListener<Void>() {
+        if (new_user.length() > 0) {
+            // create a referral code
+            String referral_code = getReferralCode();
+            profile_ref.child("Referral Code").setValue(referral_code);
+
+            // set the initial balance of the user to 0
+            databaseReference.child("Customers").child(user.getUid()).child("Balance")
+                    .setValue(0);
+        }
+
+        address_ref.child("Landmark").setValue(landmark).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-
-                // variable to check if user is new or existing
-                new_user = getIntent().getStringExtra("newUser");
 
                 // enable the screen once data is saved
                 stopProgressDialog();
 
                 Intent intent;
                 if (new_user.length() > 0) {
-
                     // the user is new, so send it to select plan activity
                     intent = new Intent(getApplicationContext(), CustomerPlanSelectActivity.class);
                     intent.putExtra("newUser", "new_user");
                 } else {
 
                     // it is existing customer, so send it to home page
-                   intent = new Intent(getApplicationContext(), CustomerMainActivity.class);
+                    intent = new Intent(getApplicationContext(), CustomerMainActivity.class);
                 }
 
                 // start new activity and finish the current
@@ -370,6 +390,7 @@ public class CustomerProfileEditActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
     private String getReferralCode () {

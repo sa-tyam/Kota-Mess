@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.pkan.official.customer.CustomerMainActivity;
 import com.pkan.official.login.LoginActivityPhoneNumber;
 
 public class LandingPageActivity extends AppCompatActivity {
@@ -20,6 +22,13 @@ public class LandingPageActivity extends AppCompatActivity {
 
         button = findViewById(R.id.landingPageLoginButton);
 
+        // for development purpose, to be removed
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), CustomerMainActivity.class));
+            finish();
+        }
+
+        // move to login page when button is clicked
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

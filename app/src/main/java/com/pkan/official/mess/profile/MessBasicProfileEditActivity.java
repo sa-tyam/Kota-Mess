@@ -13,8 +13,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -34,7 +34,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.pkan.official.R;
-import com.pkan.official.login.LoginActivityVerifyOtp;
 
 import java.util.ArrayList;
 
@@ -54,6 +53,8 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
 
     Button messBasicProfileEditNextButton;
 
+    CheckBox messBasicProfileEditHomeDeliveryCheckBox, messBasicProfileEditInMessCheckBox;
+
     // firebase variables to be used in functions
     FirebaseUser user;
     DatabaseReference databaseReference;
@@ -69,6 +70,8 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
     String name ="", description = "", city = "", city_id = "", area = "", area_id = "",
             address = "", mess_timings = "",
             monthly_charge = "";
+
+    int home_delivery = 1, in_mess = 1;
 
     // variable to check if new user or existing user
     String new_user = "";
@@ -108,6 +111,10 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
         messBasicProfileEditUploadPicStatusTextView = findViewById(R.id
                 .messBasicProfileEditUploadPicStatusTextView);
         messBasicProfileEditNextButton = findViewById(R.id.messBasicProfileEditNextButton);
+        messBasicProfileEditHomeDeliveryCheckBox = findViewById(R.id
+                .messBasicProfileEditHomeDeliveryCheckBox);
+        messBasicProfileEditInMessCheckBox = findViewById(R.id
+                .messBasicProfileEditInMessCheckBox);
 
         // initialize firebase variables
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -274,6 +281,21 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
                 checkForSave();
             }
         });
+
+        // toggle radio buttons on clicked
+        messBasicProfileEditHomeDeliveryCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                messBasicProfileEditHomeDeliveryCheckBox.toggle();
+            }
+        });
+
+        messBasicProfileEditInMessCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                messBasicProfileEditInMessCheckBox.toggle();
+            }
+        });
     }
 
     private void selectPicture () {
@@ -367,6 +389,20 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
         mess_timings = messBasicProfileEditTimingsEditText.getText().toString();
         monthly_charge = messBasicProfileEditMonthlyChargeEditText.getText().toString();
 
+        // check if home delivery is selected or not
+        if (messBasicProfileEditHomeDeliveryCheckBox.isChecked()) {
+            home_delivery = 1;
+        } else {
+            home_delivery = 0;
+        }
+
+        // check if in mess is selected or not
+        if (messBasicProfileEditInMessCheckBox.isChecked()) {
+            in_mess = 1;
+        } else {
+            in_mess = 0;
+        }
+
         if (name.length() == 0 || description.length() == 0 || city.length() == 0
                 || area.length()==0 || address.length() == 0 || mess_timings.length() == 0
                 || monthly_charge.length() == 0) {
@@ -386,7 +422,8 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
     private void saveData () {
 
         // save the profile data
-        DatabaseReference profile_ref = databaseReference.child("Mess").child(user.getUid()).child("Profile");
+        DatabaseReference profile_ref = databaseReference.child("Mess")
+                .child(user.getUid()).child("Profile");
         profile_ref.child("Name").setValue(name);
         profile_ref.child("Description").setValue(description);
         profile_ref.child("Address").setValue(address);
@@ -396,6 +433,8 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
         profile_ref.child("Area Id").setValue(area_id);
         profile_ref.child("Phone Number").setValue(user.getPhoneNumber());
         profile_ref.child("Mess Timings").setValue(mess_timings);
+        profile_ref.child("Home Delivery").setValue(home_delivery);
+        profile_ref.child("In Mess").setValue(in_mess);
         profile_ref.child("Monthly Price").setValue(monthly_charge).addOnSuccessListener(
                 new OnSuccessListener<Void>() {
             @Override

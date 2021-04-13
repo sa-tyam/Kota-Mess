@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -55,15 +56,18 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="30dp"
-                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    android:background=
+                        "@color/activity_mess_basic_profile_edit_input_background"
                     android:ems="10"
                     android:hint="@string/activity_mess_basic_profile_edit_input_name_hint"
                     android:inputType="textPersonName"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:textAlignment="center"
-                    android:textColor="@color/activity_mess_basic_profile_edit_input_text"
-                    android:textColorHint="@color/activity_mess_basic_profile_edit_input_hint"
+                    android:textColor=
+                        "@color/activity_mess_basic_profile_edit_input_text"
+                    android:textColorHint=
+                        "@color/activity_mess_basic_profile_edit_input_hint"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -77,20 +81,24 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="30dp"
-                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    android:background=
+                        "@color/activity_mess_basic_profile_edit_input_background"
                     android:ems="10"
                     android:hint="@string/activity_mess_basic_profile_edit_input_description_hint"
                     android:inputType="textPersonName"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:textAlignment="center"
-                    android:textColor="@color/activity_mess_basic_profile_edit_input_text"
-                    android:textColorHint="@color/activity_mess_basic_profile_edit_input_hint"
+                    android:textColor=
+                        "@color/activity_mess_basic_profile_edit_input_text"
+                    android:textColorHint=
+                        "@color/activity_mess_basic_profile_edit_input_hint"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditNameEditText" />
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messBasicProfileEditNameEditText" />
 
                 <Spinner
                     android:id="@+id/messBasicProfileEditCitySpinner"
@@ -99,10 +107,12 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="30dp"
-                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    android:background=
+                        "@color/activity_mess_basic_profile_edit_input_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditDescriptionEditText" />
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messBasicProfileEditDescriptionEditText" />
 
                 <Spinner
                     android:id="@+id/messBasicProfileEditAreaSpinner"
@@ -111,10 +121,12 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="30dp"
-                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    android:background=
+                        "@color/activity_mess_basic_profile_edit_input_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditCitySpinner" />
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messBasicProfileEditCitySpinner" />
 
                 <EditText
                     android:id="@+id/messBasicProfileEditAddressEditText"
@@ -123,20 +135,24 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="30dp"
-                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    android:background=
+                        "@color/activity_mess_basic_profile_edit_input_background"
                     android:ems="10"
                     android:hint="@string/activity_mess_basic_profile_edit_input_address_hint"
                     android:inputType="textPersonName"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:textAlignment="center"
-                    android:textColor="@color/activity_mess_basic_profile_edit_input_text"
-                    android:textColorHint="@color/activity_mess_basic_profile_edit_input_hint"
+                    android:textColor=
+                        "@color/activity_mess_basic_profile_edit_input_text"
+                    android:textColorHint=
+                        "@color/activity_mess_basic_profile_edit_input_hint"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditAreaSpinner" />
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messBasicProfileEditAreaSpinner" />
 
                 <EditText
                     android:id="@+id/messBasicProfileEditTimingsEditText"
@@ -145,20 +161,24 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="30dp"
-                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    android:background=
+                        "@color/activity_mess_basic_profile_edit_input_background"
                     android:ems="10"
                     android:hint="@string/activity_mess_basic_profile_edit_input_timings_hint"
                     android:inputType="textPersonName"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:textAlignment="center"
-                    android:textColor="@color/activity_mess_basic_profile_edit_input_text"
-                    android:textColorHint="@color/activity_mess_basic_profile_edit_input_hint"
+                    android:textColor=
+                        "@color/activity_mess_basic_profile_edit_input_text"
+                    android:textColorHint=
+                        "@color/activity_mess_basic_profile_edit_input_hint"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditAddressEditText" />
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messBasicProfileEditAddressEditText" />
 
                 <EditText
                     android:id="@+id/messBasicProfileEditMonthlyChargeEditText"
@@ -167,20 +187,52 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="30dp"
-                    android:background="@color/activity_mess_basic_profile_edit_input_background"
+                    android:background=
+                        "@color/activity_mess_basic_profile_edit_input_background"
                     android:ems="10"
                     android:hint="@string/activity_mess_basic_profile_edit_input_monthly_charges_hint"
                     android:inputType="number"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:textAlignment="center"
-                    android:textColor="@color/activity_mess_basic_profile_edit_input_text"
-                    android:textColorHint="@color/activity_mess_basic_profile_edit_input_hint"
+                    android:textColor=
+                        "@color/activity_mess_basic_profile_edit_input_text"
+                    android:textColorHint=
+                        "@color/activity_mess_basic_profile_edit_input_hint"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditTimingsEditText" />
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messBasicProfileEditTimingsEditText" />
+
+                <CheckBox
+                    android:id="@+id/messBasicProfileEditHomeDeliveryCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="10dp"
+                    android:checked="true"
+                    android:text="@string/activity_mess_basic_profile_edit_radio_button_home_delivery"
+                    android:textColor="@color/activity_mess_basic_profile_edit_input_hint"
+                    app:layout_constraintEnd_toStartOf="@+id/loginPhoneNumberMessRadioButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditMonthlyChargeEditText" />
+
+                <CheckBox
+                    android:id="@+id/messBasicProfileEditInMessCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="40dp"
+                    android:checked="true"
+                    android:text="@string/activity_mess_basic_profile_edit_radio_button_in_mess"
+                    android:textColor="@color/activity_mess_basic_profile_edit_input_hint"
+                    app:layout_constraintBottom_toBottomOf="@+id/messBasicProfileEditHomeDeliveryCheckBox"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/messBasicProfileEditHomeDeliveryCheckBox"
+                    app:layout_constraintTop_toTopOf="@+id/messBasicProfileEditHomeDeliveryCheckBox" />
 
                 <TextView
                     android:id="@+id/messBasicProfileEditUploadPicLabelTextView"
@@ -189,9 +241,11 @@
                     android:layout_marginTop="20dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditMonthlyChargeEditText"
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messBasicProfileEditHomeDeliveryCheckBox"
                     android:text="@string/activity_mess_basic_profile_edit_upload_pic_hint"
-                    android:textColor="@color/activity_mess_basic_profile_edit_input_hint"
+                    android:textColor=
+                        "@color/activity_mess_basic_profile_edit_input_hint"
                     android:textSize="18sp"/>
 
                 <ImageView
@@ -201,7 +255,8 @@
                     android:layout_marginTop="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditUploadPicLabelTextView"
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messBasicProfileEditUploadPicLabelTextView"
                     android:src="@drawable/ic_baseline_add_photo_alternate_24"/>
 
                 <TextView
@@ -211,7 +266,8 @@
                     android:layout_marginTop="5dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditSelectPictureImageView"
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messBasicProfileEditSelectPictureImageView"
                     android:text="@string/activity_mess_basic_profile_edit_upload_pic_default_status"
                     android:textColor="@color/activity_mess_basic_profile_edit_input_hint"
                     android:textSize="10sp"/>
@@ -222,14 +278,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"
                     android:layout_marginBottom="50dp"
-                    android:background="@drawable/mess_basic_profile_edit_next_button_background"
+                    android:background=
+                        "@drawable/mess_basic_profile_edit_next_button_background"
                     app:backgroundTint = "@null"
                     android:text="@string/activity_mess_basic_profile_edit_next_button_text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/messBasicProfileEditUploadPicStatusTextView" />
+                    app:layout_constraintTop_toBottomOf=
+                        "@+id/messBasicProfileEditUploadPicStatusTextView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
