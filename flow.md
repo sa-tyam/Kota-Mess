@@ -12,7 +12,10 @@
 
             --> History Page
             --> Account Page
-            --> Mess/Meals Page
+            ---> Mess/Meal Detail Page
+            ---> Confirm Order Page
+            > ----> Change Address Page
+            > ----> Change Payment Method Page
 
 --> History Page
 
@@ -28,10 +31,3 @@
         
         ---> Plan Page
                 ----> Select Other Plan Page
-
---> Mess/Meals Page
-
-        ---> Mess/Meal Detail Page
-        ---> Confirm Order Page
-        > ----> Change Address Page
-        > ----> Change Payment Method Page

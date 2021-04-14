@@ -14,18 +14,16 @@
 
 6. History Page
 
-7. Mess/Meal Page
+7. Mess Detail Page
 
-8. Mess Detail Page
+8. Dish Detail Page
 
-9. Dish Detail Page
+9. Place Order Page
 
-10. Place Order Page
+10. Change Address Page
 
-11. Change Address Page
+11. Payment Page
 
-12. Payment Page
-
-13. Plans Page
+12. Plans Page
     b. Confirm Plans page
     c. Change Plans page
