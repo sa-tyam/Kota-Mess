@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/customerHomeCurrentMealConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/customerHomeMealItemHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fragment_customer_home_current_meal_header_background"
+            android:paddingStart="15dp"
+            android:paddingTop="8sp"
+            android:paddingEnd="15sp"
+            android:paddingBottom="8sp"
+            android:text="Lunch for 26/01"
+            android:textColor="@color/fragment_customer_home_current_order_header_text"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/customerHomeCurrentItemImageCardView"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerCrop"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/customerHomeMealItemHeader">
+
+            <ImageView
+                android:id="@+id/customerHomeMealItemImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/foodimage" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/customerHomeMealItemMessNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="Mess Name"
+            android:textColor="@color/fragment_customer_home_current_order_mess_name"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/customerHomeCurrentItemImageCardView"
+            app:layout_constraintTop_toTopOf="@+id/customerHomeCurrentItemImageCardView" />
+
+        <TextView
+            android:id="@+id/customerHomeMealItemItemNamesTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="Chhole + Bhature + Pulao + Salad + Gulab Jamun"
+            android:textColor="@color/fragment_customer_home_current_order_items"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/customerHomeMealItemMessNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/customerHomeMealItemMessNameTextView" />
+
+        <TextView
+            android:id="@+id/customerHomeMealItemPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Rs. 60"
+            android:textColor="@color/fragment_customer_home_current_order_price"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/customerHomeMealItemItemNamesTextView"
+            app:layout_constraintTop_toBottomOf="@+id/customerHomeMealItemItemNamesTextView" />
+
+        <ImageView
+            android:id="@+id/customerHomeMealItemCallImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_baseline_phone_enabled_30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/customerHomeMealItemPriceTextView" />
+
+        <TextView
+            android:id="@+id/customerHomeMealItemOrderStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Pending"
+            android:textColor="@color/fragment_customer_home_current_order_status"
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/customerHomeMealItemPriceTextView"
+            app:layout_constraintTop_toBottomOf="@+id/customerHomeMealItemPriceTextView" />
+
+        <View
+            android:id="@+id/view16"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/fragment_customer_home_current_order_horizontal_line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/customerHomeMealItemOrderStatus" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,4 +58,8 @@ dependencies {
     // volley dependency
     implementation 'com.android.volley:volley:1.1.1'
 
+    // https://mvnrepository.com/artifact/com.razorpay/checkout
+    implementation group: 'com.razorpay', name: 'checkout', version: '1.6.7'
+
+
 }

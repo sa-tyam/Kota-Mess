@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customer.order.CustomerOrderDetailsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/activity_customer_order_detail_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/activity_customer_order_detail_dark_background">
+
+                <ImageView
+                    android:id="@+id/customerOrderDetailBackImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="30dp"
+                    app:cardCornerRadius="100dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/customerOrderDetailMealImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/foodimage" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="130dp"
+                    android:background="@drawable/customer_order_detail_light_background"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/customerOrderDetailHeaderTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="110dp"
+                        android:background="@drawable/customer_order_detail_header_background"
+                        android:paddingStart="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="8dp"
+                        android:text="Dinner for 26/01"
+                        android:textColor="@color/activity_customer_order_detail_header_text"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/customerOrderDetailSpecialImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintEnd_toStartOf="@+id/customerOrderDetailSpecialTextView"
+                        app:layout_constraintStart_toStartOf="@+id/customerOrderDetailHeaderTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/customerOrderDetailHeaderTextView"
+                        app:srcCompat="@drawable/ic_baseline_star_18" />
+
+                    <TextView
+                        android:id="@+id/customerOrderDetailSpecialTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="30dp"
+                        android:text="@string/activity_customer_order_detail_special_text"
+                        android:textColor="@color/activity_customer_order_detail_special_text"
+                        app:layout_constraintEnd_toEndOf="@+id/customerOrderDetailHeaderTextView"
+                        app:layout_constraintStart_toEndOf="@+id/customerOrderDetailSpecialImageView"
+                        app:layout_constraintTop_toBottomOf="@+id/customerOrderDetailHeaderTextView" />
+
+                    <TextView
+                        android:id="@+id/customerOrderDetailPriceTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Rs 60"
+                        android:textColor="@color/activity_customer_order_detail_price_text"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="@+id/customerOrderDetailHeaderTextView"
+                        app:layout_constraintStart_toStartOf="@+id/customerOrderDetailHeaderTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/customerOrderDetailSpecialTextView" />
+
+                    <TextView
+                        android:id="@+id/customerOrderDetailItemHeaderTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/activity_customer_order_detail_item_header"
+                        android:textColor="@color/activity_customer_order_detail_items_header"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerOrderDetailPriceTextView" />
+
+                    <LinearLayout
+                        android:id="@+id/customerOrderDetailItemsLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerOrderDetailItemHeaderTextView"></LinearLayout>
+
+                    <Button
+                        android:id="@+id/customerOrderDetailPlaceOrderButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/activity_customer_order_detail_place_order_button_text"
+                        android:textColor="@color/activity_customer_order_detail__place_order_button_text"
+                        android:background="@drawable/customer_order_detail_place_order_button"
+                        app:backgroundTint="@null"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerOrderDetailItemsLinearLayout" />
+
+                    <TextView
+                        android:id="@+id/customerOrderDetailMessAddressHeaderDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/activity_customer_order_detail_mess_address_header"
+                        android:textColor="@color/activity_customer_order_detail_mess_header"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerOrderDetailPlaceOrderButton" />
+
+                    <ImageView
+                        android:id="@+id/customerOrderDetailMessImageView"
+                        android:layout_width="120dp"
+                        android:layout_height="100dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerOrderDetailMessAddressHeaderDetail"
+                        app:srcCompat="@drawable/foodimage" />
+
+                    <TextView
+                        android:id="@+id/customerOrderDetailMessNameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Mess Name, mess name"
+                        android:textColor="@color/activity_customer_order_detail_mess_name_text"
+                        app:layout_constraintStart_toEndOf="@+id/customerOrderDetailMessImageView"
+                        app:layout_constraintTop_toTopOf="@+id/customerOrderDetailMessImageView" />
+
+                    <TextView
+                        android:id="@+id/customerOrderDetailMessAddressTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="Mess address, mess address, mess addeess"
+                        android:textColor="@color/activity_customer_order_detail__mess_address_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/customerOrderDetailMessImageView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/customerOrderDetailMessImageView"
+                        app:layout_constraintTop_toBottomOf="@+id/customerOrderDetailMessNameTextView" />
+
+                    <TextView
+                        android:id="@+id/customerOrderDetailReviewHeaderTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/activity_customer_order_detail_customer_reviews_header"
+                        android:textColor="@color/activity_customer_order_detail_reviews_header"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerOrderDetailMessImageView" />
+
+                    <LinearLayout
+                        android:id="@+id/customerOrderDetailReviewLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerOrderDetailReviewHeaderTextView"></LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

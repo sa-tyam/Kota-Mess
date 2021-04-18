@@ -9,8 +9,8 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.pkan.official.R;
-import com.pkan.official.customer.history.CustomerHistoryFragment;
 import com.pkan.official.customer.home.CustomerHomeFragment;
+import com.pkan.official.customer.meals.SelectMealFragment;
 import com.pkan.official.customer.profile.CustomerProfileFragment;
 
 public class CustomerMainActivity extends AppCompatActivity {
@@ -53,8 +53,8 @@ public class CustomerMainActivity extends AppCompatActivity {
 
                 // initialize the selected fragment on the basis of item selected
                 switch (item.getItemId()) {
-                    case R.id.bottom_navigation_bar_history:
-                        selectedFragment = new CustomerHistoryFragment();
+                    case R.id.bottom_navigation_bar_order:
+                        selectedFragment = new SelectMealFragment();
                         break;
 
                     case R.id.bottom_navigation_bar_home:

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
+    <stroke
+        android:width="2dp"
+        android:color="@color/activity_customer_confirm_order__place_order_button_border" />
+    <corners android:radius="10dp"></corners>
+</shape>

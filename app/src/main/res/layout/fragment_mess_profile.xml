@@ -6,22 +6,919 @@
     android:layout_height="match_parent"
     tools:context=".mess.profile.MessProfileFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="mess profile"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/fragment_mess_profile_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:visibility="visible"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/messProfileImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/foodimage" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/messProfileNameLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/fragment_mess_profile_label_background"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="50dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/fragment_mess_profile_name_label"
+                    android:textColor="@color/fragment_mess_profile_label_text"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+                <ImageView
+                    android:id="@+id/messProfileEditProfileImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_baseline_edit_35"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="@+id/messProfileNameLabelTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/messProfileNameLabelTextView" />
+
+                <TextView
+                    android:id="@+id/messProfileNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Test Mess"
+                    android:textColor="@color/fragment_mess_profile_value_text"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="@+id/messProfileNameLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfileNameLabelTextView" />
+
+                <View
+                    android:id="@+id/view15"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/fragment_mess_profile_horizontal_line"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfileNameTextView" />
+
+                <TextView
+                    android:id="@+id/messProfileCityLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/fragment_mess_profile_label_background"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="50dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/fragment_mess_profile_city_label"
+                    android:textColor="@color/fragment_mess_profile_label_text"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view15" />
+
+                <TextView
+                    android:id="@+id/messProfileCityTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Kota"
+                    android:textColor="@color/fragment_mess_profile_value_text"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="@+id/messProfileCityLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfileCityLabelTextView" />
+
+                <View
+                    android:id="@+id/view16"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/fragment_mess_profile_horizontal_line"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfileCityTextView" />
+
+                <TextView
+                    android:id="@+id/messProfileAreaLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/fragment_mess_profile_label_background"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="50dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/fragment_mess_profile_area_label"
+                    android:textColor="@color/fragment_mess_profile_label_text"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view16" />
+
+                <TextView
+                    android:id="@+id/messProfileAreaTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Mahaveer Nagar 2nd"
+                    android:textColor="@color/fragment_mess_profile_value_text"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="@+id/messProfileAreaLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfileAreaLabelTextView" />
+
+                <View
+                    android:id="@+id/view17"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/fragment_mess_profile_horizontal_line"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfileAreaTextView" />
+
+                <TextView
+                    android:id="@+id/messProfilePhoneNumberLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/fragment_mess_profile_label_background"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="50dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/fragment_mess_profile_phone_number_label"
+                    android:textColor="@color/fragment_mess_profile_label_text"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view17" />
+
+                <TextView
+                    android:id="@+id/messProfilePhoneNumberTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="9999999999"
+                    android:textColor="@color/fragment_mess_profile_value_text"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="@+id/messProfilePhoneNumberLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfilePhoneNumberLabelTextView" />
+
+                <View
+                    android:id="@+id/view18"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/fragment_mess_profile_horizontal_line"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfilePhoneNumberTextView" />
+
+                <TextView
+                    android:id="@+id/messProfileAddressLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/fragment_mess_profile_label_background"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="50dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/fragment_mess_profile_address_label"
+                    android:textColor="@color/fragment_mess_profile_label_text"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view18" />
+
+                <TextView
+                    android:id="@+id/messProfileAddressTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Test Address, Test area, etc"
+                    android:textColor="@color/fragment_mess_profile_value_text"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="@+id/messProfileAddressLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfileAddressLabelTextView" />
+
+                <View
+                    android:id="@+id/view19"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/fragment_mess_profile_horizontal_line"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfileAddressTextView" />
+
+                <TextView
+                    android:id="@+id/messProfileMessTimingLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/fragment_mess_profile_label_background"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="50dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/fragment_mess_profile_mess_timing_label"
+                    android:textColor="@color/fragment_mess_profile_label_text"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view19" />
+
+                <TextView
+                    android:id="@+id/messProfileMessTimingTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="12:00 pm to 2:00 pm and 07:30 pm to 10 pm"
+                    android:textColor="@color/fragment_mess_profile_value_text"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="@+id/messProfileMessTimingLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfileMessTimingLabelTextView" />
+
+                <View
+                    android:id="@+id/view20"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/fragment_mess_profile_horizontal_line"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfileMessTimingTextView" />
+
+                <TextView
+                    android:id="@+id/messProfileMonthlyChargeLabelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/fragment_mess_profile_label_background"
+                    android:paddingStart="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="50dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/fragment_mess_profile_monthly_charge_label"
+                    android:textColor="@color/fragment_mess_profile_label_text"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view20" />
+
+                <TextView
+                    android:id="@+id/messProfileMonthlyChargeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Rs. 2600"
+                    android:textColor="@color/fragment_mess_profile_value_text"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toStartOf="@+id/messProfileMonthlyChargeLabelTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfileMonthlyChargeLabelTextView" />
+
+                <View
+                    android:id="@+id/view21"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/fragment_mess_profile_horizontal_line"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messProfileMonthlyChargeTextView" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view21">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/messProfileViewPaymentDetailCardView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:backgroundTint="@color/fragment_mess_profile_view_payment_detail_background"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView26"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="@string/fragment_mess_profile_view_payment_details_label"
+                                android:textColor="@color/fragment_mess_profile_view_payment_detail_text"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/messProfileViewPaymentDetailToggleImageView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/messProfileViewPaymentUpiHeaderTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/fragment_mess_profile_view_payment_upi_header"
+                        android:textColor="@color/fragment_mess_profile_view_payment_detail_text"
+                        android:textSize="16sp"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewPaymentDetailCardView" />
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_baseline_edit_35"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="@+id/messProfileViewPaymentUpiHeaderTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/messProfileViewPaymentUpiHeaderTextView" />
+
+                    <TextView
+                        android:id="@+id/messProfileMessViewPaymentUpiIdLabelTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/fragment_mess_profile_label_background"
+                        android:paddingStart="10dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="50dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/fragment_mess_profile_view_payment_upi_label"
+                        android:textColor="@color/fragment_mess_profile_label_text"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewPaymentUpiHeaderTextView" />
+
+                    <TextView
+                        android:id="@+id/messProfileViewPaymentUpiIdTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="abc12345678@avc"
+                        android:textColor="@color/fragment_mess_profile_value_text"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="@+id/messProfileMessViewPaymentUpiIdLabelTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileMessViewPaymentUpiIdLabelTextView" />
+
+                    <View
+                        android:id="@+id/messProfileViewPaymentUpiIdHorizontalView"
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/fragment_mess_profile_horizontal_line"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewPaymentUpiIdTextView" />
+
+                    <TextView
+                        android:id="@+id/messProfileViewPaymentBankHeaderTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/fragment_mess_profile_view_payment_bank_header"
+                        android:textColor="@color/fragment_mess_profile_view_payment_detail_text"
+                        android:textSize="16sp"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewPaymentUpiIdHorizontalView" />
+
+                    <TextView
+                        android:id="@+id/messProfileMessViewPaymentAccountNumberLabelTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/fragment_mess_profile_label_background"
+                        android:paddingStart="10dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="50dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/fragment_mess_profile_view_payment_account_number_label"
+                        android:textColor="@color/fragment_mess_profile_label_text"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewPaymentBankHeaderTextView" />
+
+                    <TextView
+                        android:id="@+id/messProfileViewPaymentAccountNumberTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="121212121212"
+                        android:textColor="@color/fragment_mess_profile_value_text"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="@+id/messProfileMessViewPaymentAccountNumberLabelTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileMessViewPaymentAccountNumberLabelTextView" />
+
+                    <View
+                        android:id="@+id/messProfileViewPaymentAccountNumberHorizontalView"
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/fragment_mess_profile_horizontal_line"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewPaymentAccountNumberTextView" />
+
+                    <TextView
+                        android:id="@+id/messProfileMessViewPaymentIfscCodeLabelTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/fragment_mess_profile_label_background"
+                        android:paddingStart="10dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="50dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/fragment_mess_profile_view_payment_ifsc_code_label"
+                        android:textColor="@color/fragment_mess_profile_label_text"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewPaymentAccountNumberHorizontalView" />
+
+                    <TextView
+                        android:id="@+id/messProfileViewPaymentIfscCodeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="SBIN0000123"
+                        android:textColor="@color/fragment_mess_profile_value_text"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="@+id/messProfileMessViewPaymentIfscCodeLabelTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileMessViewPaymentIfscCodeLabelTextView" />
+
+                    <View
+                        android:id="@+id/messProfileViewPaymentIfscCodedHorizontalView"
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/fragment_mess_profile_horizontal_line"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewPaymentIfscCodeTextView" />
+
+                    <TextView
+                        android:id="@+id/messProfileMessViewPaymentBankNameLabelTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/fragment_mess_profile_label_background"
+                        android:paddingStart="10dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="50dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/fragment_mess_profile_view_payment_bank_name_label"
+                        android:textColor="@color/fragment_mess_profile_label_text"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewPaymentIfscCodedHorizontalView" />
+
+                    <TextView
+                        android:id="@+id/messProfileViewPaymentBankNameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="State Bank of India"
+                        android:textColor="@color/fragment_mess_profile_value_text"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="@+id/messProfileMessViewPaymentBankNameLabelTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileMessViewPaymentBankNameLabelTextView" />
+
+                    <View
+                        android:id="@+id/messProfileViewPaymentBankNameHorizontalView"
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/fragment_mess_profile_horizontal_line"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewPaymentBankNameTextView" />
+
+                    <TextView
+                        android:id="@+id/messProfileMessViewPaymentAccountHolderNameLabelTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/fragment_mess_profile_label_background"
+                        android:paddingStart="10dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="50dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/fragment_mess_profile_view_payment_account_holder_name_label"
+                        android:textColor="@color/fragment_mess_profile_label_text"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewPaymentBankNameHorizontalView" />
+
+                    <TextView
+                        android:id="@+id/messProfileViewPaymentAccountHolderNameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Test Customer"
+                        android:textColor="@color/fragment_mess_profile_value_text"
+                        android:visibility="visible"
+                        app:layout_constraintStart_toStartOf="@+id/messProfileMessViewPaymentAccountHolderNameLabelTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileMessViewPaymentAccountHolderNameLabelTextView" />
+
+                    <View
+                        android:id="@+id/messProfileViewPaymentAccountHolderNameHorizontalView"
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/fragment_mess_profile_horizontal_line"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewPaymentAccountHolderNameTextView" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/messProfileViewOwnerDetailCardView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:backgroundTint="@color/fragment_mess_profile__view_owner_details_background"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView27"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="@string/fragment_mess_profile_view_owner_details_label"
+                                android:textColor="@color/fragment_mess_profile__view_owner_details_text"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/messProfileViewOwnerDetailToggleImageView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/messProfileMessViewOwnerDetailsNameLabelTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/fragment_mess_profile_label_background"
+                        android:paddingStart="10dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="50dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/fragment_mess_profile_view_owner_name_label"
+                        android:textColor="@color/fragment_mess_profile_label_text"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewOwnerDetailCardView" />
+
+                    <ImageView
+                        android:id="@+id/messProfileEditOwnerProfileImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/ic_baseline_edit_35"
+                        app:layout_constraintBottom_toBottomOf="@+id/messProfileMessViewOwnerDetailsNameLabelTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/messProfileMessViewOwnerDetailsNameLabelTextView" />
+
+                    <TextView
+                        android:id="@+id/messProfileViewOwnerDetailNameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Test Customer"
+                        android:textColor="@color/fragment_mess_profile_value_text"
+                        app:layout_constraintStart_toStartOf="@+id/messProfileMessViewOwnerDetailsNameLabelTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileMessViewOwnerDetailsNameLabelTextView" />
+
+                    <View
+                        android:id="@+id/messProfileViewOwnerDetailNameHorizontalView"
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/fragment_mess_profile_horizontal_line"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewOwnerDetailNameTextView" />
+
+                    <TextView
+                        android:id="@+id/messProfileMessViewOwnerDetailAddressLabelTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/fragment_mess_profile_label_background"
+                        android:paddingStart="10dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="50dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/fragment_mess_profile_view_owner_address_label"
+                        android:textColor="@color/fragment_mess_profile_label_text"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewOwnerDetailNameHorizontalView" />
+
+                    <TextView
+                        android:id="@+id/messProfileViewOwnerDetailAddressTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Test Customer"
+                        android:textColor="@color/fragment_mess_profile_value_text"
+                        app:layout_constraintStart_toStartOf="@+id/messProfileMessViewOwnerDetailAddressLabelTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileMessViewOwnerDetailAddressLabelTextView" />
+
+                    <View
+                        android:id="@+id/messProfileViewOwnerDetailAddressHorizontalView"
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/fragment_mess_profile_horizontal_line"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewOwnerDetailAddressTextView" />
+
+                    <TextView
+                        android:id="@+id/messProfileMessViewOwnerDetailPhoneNUmberLabelTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/fragment_mess_profile_label_background"
+                        android:paddingStart="10dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="50dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/fragment_mess_profile_view_owner_phone_number_label"
+                        android:textColor="@color/fragment_mess_profile_label_text"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewOwnerDetailAddressHorizontalView" />
+
+                    <TextView
+                        android:id="@+id/messProfileViewOwnerDetailPhoneNumberTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Test Customer"
+                        android:textColor="@color/fragment_mess_profile_value_text"
+                        app:layout_constraintStart_toStartOf="@+id/messProfileMessViewOwnerDetailPhoneNUmberLabelTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileMessViewOwnerDetailPhoneNUmberLabelTextView" />
+
+                    <View
+                        android:id="@+id/messProfileViewOwnerDetailPhoneNuberHorizontalView"
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/fragment_mess_profile_horizontal_line"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewOwnerDetailPhoneNumberTextView" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/messProfileViewDeliveryNumbersCardView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:backgroundTint="@color/fragment_mess_profile_view_delivery_numbers_background"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:id="@+id/textView28"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="@string/fragment_mess_profile_view_delivery_numbers"
+                                android:textColor="@color/fragment_mess_profile_view_delivery_text"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/messProfileViewDeliveryNumbersToggleImageView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginBottom="10dp"
+                                android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:id="@+id/messProfileViewdeliveryNumbersLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/messProfileViewDeliveryNumbersCardView"></LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </FrameLayout>

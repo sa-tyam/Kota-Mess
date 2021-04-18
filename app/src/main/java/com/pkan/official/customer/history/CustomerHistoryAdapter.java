@@ -55,7 +55,7 @@ public class CustomerHistoryAdapter extends RecyclerView.Adapter<CustomerHistory
         holder.customerHistoryItemItemNamesTextView.setText(items);
 
         holder.customerHistoryItemPriceTextView.setText("\u20B9" + " " +
-                orderItem.getOrder_price());
+               String.valueOf( orderItem.getOrder_price()));
         holder.customerHistoryItemDeliveredAtTextView.setText("delivered at " +
                 orderItem.getDelivered_time());
 
@@ -67,7 +67,8 @@ public class CustomerHistoryAdapter extends RecyclerView.Adapter<CustomerHistory
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, CustomerHistoryDetailActivity.class);
-                intent.putExtra("orderId", orderItem.getOrder_id());
+                intent.putExtra("orderId", String.valueOf(orderItem.getOrder_id()));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(intent);
             }
         });

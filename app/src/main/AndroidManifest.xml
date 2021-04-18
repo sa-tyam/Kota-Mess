@@ -13,8 +13,11 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PKAN">
-        <activity android:name=".mess.delivery.DeliveryMainActivity"></activity>
+        android:theme="@style/AppTheme">
+        <activity android:name=".customer.history.CustomerHistoryActivity"></activity>
+        <activity android:name=".customer.order.CustomerOrderDetailsActivity" />
+        <activity android:name=".mess.delivery.DeliveryHistoryActivity" />
+        <activity android:name=".mess.delivery.DeliveryMainActivity" />
         <activity android:name=".customer.order.CustomerConfirmOrderActivity" />
         <activity android:name=".customer.home.CustomerMealDetailActivity" />
         <activity android:name=".customer.history.CustomerHistoryDetailActivity" />
@@ -36,6 +39,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_wO1ldByMjpVeG2"
+            />
     </application>
+
 
 </manifest>

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,7 +22,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.pkan.official.LandingPageActivity;
 import com.pkan.official.R;
+import com.pkan.official.customer.history.CustomerHistoryActivity;
 import com.pkan.official.customer.plans.CustomerPlanSelectActivity;
 
 /**
@@ -88,6 +91,8 @@ public class CustomerProfileFragment extends Fragment {
             customerProfileFragmentAreaTextView, customerProfileFragmentReferralCodeTextView,
             customerProfileFragmentReferralCodeDetailTextView;
 
+    Button historyButton, logOutButton;
+
     // firebase variables
     FirebaseUser user;
     DatabaseReference databaseReference;
@@ -144,6 +149,10 @@ public class CustomerProfileFragment extends Fragment {
         customerProfileFragmentReferralCodeDetailTextView = view.findViewById(R.id
                 .customerProfileFragmentReferralCodeDetailTextView);
 
+        // for temporary production
+        historyButton = view.findViewById(R.id.historyButton);
+        logOutButton = view.findViewById(R.id.logOutButton);
+
         // initialize firebase variables
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -171,6 +180,27 @@ public class CustomerProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), CustomerPlanSelectActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        // temporary
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), CustomerHistoryActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        // temporary
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getContext(), LandingPageActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }

@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/messMainFrameLayout"
-        app:menu="@menu/bottom_navigation_bar_menu">
+        app:menu="@menu/mess_bottom_navigation_bar_menu">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

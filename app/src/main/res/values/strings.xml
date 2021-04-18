@@ -71,10 +71,55 @@
 
     # customer history #
 
-    <string name="fragment_customer_history_header">Previous Orders</string>
+    <string name="activity_customer_history_header">Previous Orders</string>
 
     # customer history item #
 
+    # customer history detail #
+
+    <string name="activity_customer_history_detail_special_text">Special</string>
+    <string name="activity_customer_history_detail_item_header">Items</string>
+    <string name="activity_customer_history_detail_mess_address_header">Mess Address</string>
+    <string name="activity_customer_history_detail_customer_reviews_header">Your Review</string>
+    <string name="activity_customer_history_detail_customer_reviews_hint">Write your review here</string>
+    <string name="activity_customer_history_detail_customer_reviews_save_button_text">Save Review</string>
+
+    # customer home fragment #
+
+    <string name="fragment_customer_home_upcoming_order">Upcoming Order</string>
+
+    # customer meal select #
+    <string name="fragment_meal_select_search_hint">Search for mess</string>
+
+    # customer home select order #
+
+    <string name="customer_home_select_meal_item_special_text">Special</string>
+    <string name="customer_home_select_meal_item_select_button_text">SELECT</string>
+
+    # customer order detail #
+
+    <string name="activity_customer_order_detail_special_text">Special</string>
+    <string name="activity_customer_order_detail_item_header">Items</string>
+    <string name="activity_customer_order_detail_place_order_button_text">Place Order</string>
+    <string name="activity_customer_order_detail_mess_address_header">Mess Address</string>
+    <string name="activity_customer_order_detail_customer_reviews_header">Customer Reviews</string>
+
+    # customer confirm order #
+
+    <string name="activity_customer_confirm_order_special_text">Special</string>
+    <string name="activity_customer_confirm_order_item_header">Items</string>
+    <string name="activity_customer_confirm_order_place_order_button_text">Confirm Order</string>
+    <string name="activity_customer_confirm_order_customer_address_header">Address</string>
+    <string name="activity_customer_confirm_order_order_type_header">Order Type</string>
+    <string name="activity_customer_confirm_order_order_type_in_mess">In Mess</string>
+    <string name="activity_customer_confirm_order_order_type_home_delivery">Home delivery</string>
+    <string name="activity_customer_confirm_order_address_name_hint">Name</string>
+    <string name="activity_customer_confirm_order_address_house_number_hint">House No.</string>
+    <string name="activity_customer_confirm_order_address_room_number_hint">Room No.</string>
+    <string name="activity_customer_confirm_order_address_landmark_hint">Landmark</string>
+    <string name="activity_customer_confirm_order_address_area_hint">Area</string>
+    <string name="activity_customer_confirm_order_include_wallet_balance">Use wallet balance</string>
+    <string name="activity_customer_confirm_order_payment_header">Payment</string>
 
     # mess basic profile edit #
 
@@ -119,6 +164,61 @@
     <string name="activity_mess_payment_options_edit_skip_button_text">Skip</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    # mess profile fragment #
+
+    <string name="fragment_mess_profile_name_label">Name</string>
+    <string name="fragment_mess_profile_city_label">City</string>
+    <string name="fragment_mess_profile_area_label">Area</string>
+    <string name="fragment_mess_profile_phone_number_label">Phone Number</string>
+    <string name="fragment_mess_profile_address_label">Address</string>
+    <string name="fragment_mess_profile_mess_timing_label">Mess Timings</string>
+    <string name="fragment_mess_profile_monthly_charge_label">Monthly Charge</string>
+    <string name="fragment_mess_profile_view_payment_details_label">View Payment Details</string>
+    <string name="fragment_mess_profile_view_owner_details_label">View Owner Details</string>
+    <string name="fragment_mess_profile_view_delivery_numbers">View Delivery Numbers</string>
+    <string name="fragment_mess_profile_view_payment_upi_header">UPI Details</string>
+    <string name="fragment_mess_profile_view_payment_upi_label">UPI Id</string>
+    <string name="fragment_mess_profile_view_payment_bank_header">Bank Details</string>
+    <string name="fragment_mess_profile_view_payment_account_number_label">Account Number</string>
+    <string name="fragment_mess_profile_view_payment_ifsc_code_label">IFSC Code</string>
+    <string name="fragment_mess_profile_view_payment_bank_name_label">Bank Name</string>
+    <string name="fragment_mess_profile_view_payment_account_holder_name_label">Account Holder</string>
+    <string name="fragment_mess_profile_view_owner_name_label">Name</string>
+    <string name="fragment_mess_profile_view_owner_address_label">Address</string>
+    <string name="fragment_mess_profile_view_owner_phone_number_label">Phone Number</string>
+    
+    # mess home fragment #
+    
+    <string name="fragment_mess_home_special_text">special</string>
+    <string name="fragment_mess_home_items_header">Items</string>
+    <string name="fragment_mess_home_stats_for_header">Stats for</string>
+    <string name="fragment_mess_home__stats_total_in_mess">Total in mess</string>
+    <string name="fragment_mess_home_stats_total_attended">Total attended</string>
+    <string name="fragment_mess_home_stats_total_home_delivery">Total home delivery</string>
+    <string name="fragment_mess_home_total_delivered">Total delivered</string>
+    <string name="fragment_mess_home_input_verification_code_hint">Input Verification Code</string>
+    <string name="fragment_mess_home_attend_button_text">Attend</string>
+    <string name="fragment_mess_home_not_set_text">not set</string>
+    <string name="fragment_mess_home_add_delivery_person_button_text">Add delivery Person</string>
+    <string name="fragment_mess_home_add_new_meal_text">Add New Meal</string>
+    
+    # mess add new meal activity #
+    
+    <string name="activity_mess_add_new_meal_sub_header_text">Add New Meal</string>
+    <string name="activity_mess_add_new_meal_add_new_item_text">Add New Item</string>
+    <string name="activity_mess_add_new_meal_add_new_item_name_hint">Item Name</string>
+    <string name="activity_mess_add_new_meal_add_new_item_quantity_hint">Quantity</string>
+    <string name="activity_mess_add_new_meal_enter_price_hint">Enter Price</string>
+    <string name="activity_mess_add_new_meal_special_or_regular_special">Special</string>
+    <string name="activity_mess_add_new_meal_special_or_regular_regular">Regular</string>
+    <string name="activity_mess_add_new_meal_add_button_text">Add</string>
+    
+    # mess meal detail activity #
+    
+    <string name="activity_meal_detail_save_button_text">Save</string>
+    <string name="activity_meal_detail_add_new_meal_text">Add New Meal</string>
+    <string name="activity_meal_detail_special_text">special</string>
 
     # delivery main activity #
 

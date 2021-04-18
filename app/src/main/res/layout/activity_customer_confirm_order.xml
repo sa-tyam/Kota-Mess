@@ -1,10 +1,373 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".customer.order.CustomerConfirmOrderActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/activity_customer_order_detail_dark_background">
+
+                <ImageView
+                    android:id="@+id/customerConfirmOrderBackImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="30dp"
+                    app:cardCornerRadius="100dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/customerConfirmOrderMealImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/foodimage" />
+                </androidx.cardview.widget.CardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="130dp"
+                    android:background="@drawable/customer_confirm_order_light_background"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderHeaderTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="110dp"
+                        android:background="@drawable/customer_confirm_order_header_background"
+                        android:paddingStart="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="8dp"
+                        android:text="Dinner for 26/01"
+                        android:textColor="@color/activity_customer_confirm_order_header_text"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/customerConfirmOrderSpecialImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="5dp"
+                        app:layout_constraintEnd_toStartOf="@+id/customerConfirmOrderSpecialTextView"
+                        app:layout_constraintStart_toStartOf="@+id/customerConfirmOrderHeaderTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderHeaderTextView"
+                        app:srcCompat="@drawable/ic_baseline_star_18" />
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderSpecialTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="30dp"
+                        android:text="@string/activity_customer_confirm_order_special_text"
+                        android:textColor="@color/activity_customer_confirm_order_special_text"
+                        app:layout_constraintEnd_toEndOf="@+id/customerConfirmOrderHeaderTextView"
+                        app:layout_constraintStart_toEndOf="@+id/customerConfirmOrderSpecialImageView"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderHeaderTextView" />
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderPriceTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Rs 60"
+                        android:textColor="@color/activity_customer_confirm_order_price_text"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="@+id/customerConfirmOrderHeaderTextView"
+                        app:layout_constraintStart_toStartOf="@+id/customerConfirmOrderHeaderTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderSpecialTextView" />
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderItemHeaderTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/activity_customer_confirm_order_item_header"
+                        android:textColor="@color/activity_customer_confirm_order_items_header"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderPriceTextView" />
+
+                    <LinearLayout
+                        android:id="@+id/customerConfirmOrderItemsLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderItemHeaderTextView"></LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderOrderTypeHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/activity_customer_confirm_order_order_type_header"
+                        android:textColor="@color/activity_customer_confirm_order_order_type_header"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderItemsLinearLayout" />
+
+                    <LinearLayout
+                        android:id="@+id/customerConfirmOrderOrderTypeLinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderOrderTypeHeader">
+
+
+                        <RadioButton
+                            android:id="@+id/customerConfirmOrderHomeDeliveryRadioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/activity_customer_confirm_order_order_type_home_delivery"
+                            android:textColor="@color/activity_customer_confirm_order_order_type_items" />
+
+                        <RadioButton
+                            android:id="@+id/customerConfirmOrderInMessRadioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/activity_customer_confirm_order_order_type_in_mess"
+                            android:textColor="@color/activity_customer_confirm_order_order_type_items" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/activity_customer_confirm_order_customer_address_header"
+                        android:textColor="@color/activity_customer_confirm_order_customer_address_header"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderOrderTypeLinearLayout" />
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderCustomerNameLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/activity_customer_confirm_order_address_name_hint"
+                        android:textColor="@color/activity_customer_confirm_order__customer_address_text"
+                        app:layout_constraintEnd_toStartOf="@+id/customerConfirmOrderCustomerNameTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderCustomerNameTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="Satyam Kumar"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/activity_customer_confirm_order__customer_address_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/customerConfirmOrderCustomerNameLabel"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/customerConfirmOrderCustomerNameLabel"
+                        app:layout_constraintTop_toTopOf="@+id/customerConfirmOrderCustomerNameLabel" />
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderCustomerHouseNumberLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/activity_customer_confirm_order_address_house_number_hint"
+                        android:textColor="@color/activity_customer_confirm_order__customer_address_text"
+                        app:layout_constraintEnd_toStartOf="@+id/customerConfirmOrderCustomerHouseNumberTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderCustomerNameLabel" />
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderCustomerHouseNumberTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="C-47"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/activity_customer_confirm_order__customer_address_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/customerConfirmOrderCustomerHouseNumberLabel"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/customerConfirmOrderCustomerHouseNumberLabel"
+                        app:layout_constraintTop_toTopOf="@+id/customerConfirmOrderCustomerHouseNumberLabel" />
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderCustomerRoomNumberLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/activity_customer_confirm_order_address_room_number_hint"
+                        android:textColor="@color/activity_customer_confirm_order__customer_address_text"
+                        app:layout_constraintEnd_toStartOf="@+id/customerConfirmOrderCustomerRoomNumberTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderCustomerHouseNumberLabel" />
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderCustomerRoomNumberTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="204"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/activity_customer_confirm_order__customer_address_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/customerConfirmOrderCustomerRoomNumberLabel"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/customerConfirmOrderCustomerRoomNumberLabel"
+                        app:layout_constraintTop_toTopOf="@+id/customerConfirmOrderCustomerRoomNumberLabel" />
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderCustomerAreaLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/activity_customer_confirm_order_address_area_hint"
+                        android:textColor="@color/activity_customer_confirm_order__customer_address_text"
+                        app:layout_constraintEnd_toStartOf="@+id/customerConfirmOrderCustomerAreaTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderCustomerRoomNumberLabel" />
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderCustomerAreaTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="Mahaveer nagar"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/activity_customer_confirm_order__customer_address_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/customerConfirmOrderCustomerAreaLabel"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/customerConfirmOrderCustomerAreaLabel"
+                        app:layout_constraintTop_toTopOf="@+id/customerConfirmOrderCustomerAreaLabel" />
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderCustomerLandmarkLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="@string/activity_customer_confirm_order_address_landmark_hint"
+                        android:textColor="@color/activity_customer_confirm_order__customer_address_text"
+                        app:layout_constraintEnd_toStartOf="@+id/customerConfirmOrderCustomerLandmarkTextView"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderCustomerAreaTextView" />
+
+                    <TextView
+                        android:id="@+id/customerConfirmOrderCustomerLandmarkTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:text="bla bla bla bla bla bla bla bla"
+                        android:textAlignment="viewEnd"
+                        android:textColor="@color/activity_customer_confirm_order__customer_address_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/customerConfirmOrderCustomerLandmarkLabel"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/customerConfirmOrderCustomerLandmarkLabel"
+                        app:layout_constraintTop_toTopOf="@+id/customerConfirmOrderCustomerLandmarkLabel" />
+
+                    <TextView
+                        android:id="@+id/textView35"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/activity_customer_confirm_order_payment_header"
+                        android:textColor="@color/activity_customer_confirm_order_payment_header"
+                        android:textSize="20sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderCustomerLandmarkTextView" />
+
+                    <CheckBox
+                        android:id="@+id/customerConfirmOrderUseWalletBalanceCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/activity_customer_confirm_order_include_wallet_balance"
+                        android:textColor="@color/activity_customer_confirm_order_include_wallet_balance"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView35" />
+
+                    <Button
+                        android:id="@+id/customerConfirmOrderButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/customer_confirm_order_confirm_order_button_background"
+                        android:text="@string/activity_customer_confirm_order_place_order_button_text"
+                        android:textColor="@color/activity_customer_confirm_order__place_order_button_text"
+                        app:backgroundTint="@null"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerConfirmOrderUseWalletBalanceCheckBox" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

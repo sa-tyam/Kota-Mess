@@ -75,8 +75,8 @@
 
     # customer history #
 
-    <color name="fragment_customer_history_background">#FFFBEC</color>
-    <color name="fragment_customer_history_header">#333333</color>
+    <color name="activity_customer_history_background">#FFFBEC</color>
+    <color name="activity_customer_history_header">#333333</color>
 
     # customer history item #
 
@@ -88,6 +88,26 @@
     <color name="customer_history_item_price_text">#EFC41A</color>
     <color name="customer_history_item_delivered_at_text">#333333</color>
     <color name="customer_history_item_horizontal_line">#EBE0E0</color>
+
+    # customer history detail #
+
+    <color name="activity_customer_history_detail_dark_background">#EFC41A</color>
+    <color name="activity_customer_history_detail_background">#FFFBEC</color>
+    <color name="activity_customer_history_detail_header_background">#FAF5F5</color>
+    <color name="activity_customer_history_detail_header_text">#938888</color>
+    <color name="activity_customer_history_detail_special_text">#000000</color>
+    <color name="activity_customer_history_detail_price_text">#333333</color>
+    <color name="activity_customer_history_detail_items_header">#333333</color>
+    <color name="activity_customer_history_detail_items_text">#333333</color>
+    <color name="activity_customer_history_detail_save_review_button_border">#FBD22D</color>
+    <color name="activity_customer_history_detail_sve_review_button_text">#EFC41A</color>
+    <color name="activity_customer_history_detail_mess_header">#333333</color>
+    <color name="activity_customer_history_detail_mess_name_text">#333333</color>
+    <color name="activity_customer_history_detail__mess_address_text">#333333</color>
+    <color name="activity_customer_history_detail_reviews_header">#333333</color>
+    <color name="activity_customer_history_detail__reviews_star_color">#EFC41A</color>
+    <color name="activity_customer_history_detail_reviews_text">#675C5C</color>
+
     
     # customer profile fragment #
     
@@ -97,6 +117,82 @@
     <color name="fragment_customer_profile_info_text">#766E6E</color>
     <color name="fragment_customer_profile_label_background">#FAF5F5</color>
     <color name="fragment_customer_profile_horizontal_line">#EFE6E6</color>
+    
+    # customer home fragment #
+    
+    <color name="fragment_customer_home_background">#FFFBEC</color>
+    <color name="fragment_customer_home_view_pager_tab_default_dots">#EFE489</color>
+    <color name="fragment_customer_home_view_pager_tab_selected_dots">#FFC107</color>
+    <color name="fragment_customer_home_view_pager_tab_background">#E6BABA</color>
+
+
+    # customer home meal items #
+
+    <color name="fragment_customer_home_current_order_header_background">#FAF5F5</color>
+    <color name="fragment_customer_home_current_order_header_text">#938888</color>
+    <color name="fragment_customer_home_current_order_mess_name">#333333</color>
+    <color name="fragment_customer_home_current_order_items">#A1A0A0</color>
+    <color name="fragment_customer_home_current_order_price">#000000</color>
+    <color name="fragment_customer_home_current_order_status">#333333</color>
+    <color name="fragment_customer_home_next_order_header">#333333</color>
+    <color name="fragment_customer_home_next_order_header_background">#FAF5F5</color>
+    <color name="fragment_customer_home_next_order_header_text">#938888</color>
+    <color name="fragment_customer_home_next_order_mess_name">#333333</color>
+    <color name="fragment_customer_home_next_order_items">#A1A0A0</color>
+    <color name="fragment_customer_home_next_order_price">#000000</color>
+    <color name="fragment_customer_home_next_order_status">#333333</color>
+    <color name="fragment_customer_home_current_order_horizontal_line">#EFE6E6</color>
+    
+    
+    # customer home select order #
+    
+    <color name="customer_home_select_meal_item_background">#FFFBEC</color>
+    <color name="customer_home_select_meal_item_horizontal_line">#EBE0E0</color>
+    <color name="customer_home_select_meal_item_mess_name">#333333</color>
+    <color name="customer_home_select_meal_item_order_items">#A1A0A0</color>
+    <color name="customer_home_select_meal_item_order_price">#000000</color>
+    <color name="customer_home_select_meal_item_special">#000000</color>
+    <color name="customer_home_select_meal_item_select_button_border">#F6EAC4</color>
+    <color name="customer_home_select_meal_item_select_button_text">#EFC41A</color>
+    
+    # customer order detail #
+    
+    <color name="activity_customer_order_detail_dark_background">#EFC41A</color>
+    <color name="activity_customer_order_detail_background">#FFFBEC</color>
+    <color name="activity_customer_order_detail_header_background">#FAF5F5</color>
+    <color name="activity_customer_order_detail_header_text">#938888</color>
+    <color name="activity_customer_order_detail_special_text">#000000</color>
+    <color name="activity_customer_order_detail_price_text">#333333</color>
+    <color name="activity_customer_order_detail_items_header">#333333</color>
+    <color name="activity_customer_order_detail_items_text">#333333</color>
+    <color name="activity_customer_order_detail__place_order_button_border">#FBD22D</color>
+    <color name="activity_customer_order_detail__place_order_button_text">#EFC41A</color>
+    <color name="activity_customer_order_detail_mess_header">#333333</color>
+    <color name="activity_customer_order_detail_mess_name_text">#333333</color>
+    <color name="activity_customer_order_detail__mess_address_text">#333333</color>
+    <color name="activity_customer_order_detail_reviews_header">#333333</color>
+    <color name="activity_customer_order_detail__reviews_star_color">#EFC41A</color>
+    <color name="activity_customer_order_detail_reviews_text">#675C5C</color>
+
+    # customer confirm order #
+
+    <color name="activity_customer_confirm_order_dark_background">#EFC41A</color>
+    <color name="activity_customer_confirm_order_background">#FFFBEC</color>
+    <color name="activity_customer_confirm_order_header_background">#FAF5F5</color>
+    <color name="activity_customer_confirm_order_header_text">#938888</color>
+    <color name="activity_customer_confirm_order_special_text">#000000</color>
+    <color name="activity_customer_confirm_order_price_text">#333333</color>
+    <color name="activity_customer_confirm_order_items_header">#333333</color>
+    <color name="activity_customer_confirm_order_items_text">#333333</color>
+    <color name="activity_customer_confirm_order__place_order_button_border">#FBD22D</color>
+    <color name="activity_customer_confirm_order__place_order_button_text">#EFC41A</color>
+    <color name="activity_customer_confirm_order_customer_address_header">#333333</color>
+    <color name="activity_customer_confirm_order_customer_name_text">#333333</color>
+    <color name="activity_customer_confirm_order__customer_address_text">#333333</color>
+    <color name="activity_customer_confirm_order_order_type_header">#333333</color>
+    <color name="activity_customer_confirm_order_order_type_items">#333333</color>
+    <color name="activity_customer_confirm_order_payment_header">#333333</color>
+    <color name="activity_customer_confirm_order_include_wallet_balance">#333333</color>
     
     # mess basic profile edit #
     
@@ -129,6 +225,70 @@
     <color name="activity_mess_payment_options_edit_next_button_background">#4E73B8</color>
     <color name="activity_mess_payment_options_edit_skip_button_text">#786D6D</color>
     <color name="activity_mess_payment_options_edit_skip_button_border">#B0A1A1</color>
+    
+    # mess profile activity #
+    
+    <color name="fragment_mess_profile_background">#FFFBEC</color>
+    <color name="fragment_mess_profile_label_background">#FAF5F5</color>
+    <color name="fragment_mess_profile_label_text">#938888</color>
+    <color name="fragment_mess_profile_value_text">#766E6E</color>
+    <color name="fragment_mess_profile_horizontal_line">#EFE6E6</color>
+    <color name="fragment_mess_profile_view_payment_detail_background">#F0EAEA</color>
+    <color name="fragment_mess_profile_view_payment_detail_text">#333333</color>
+    <color name="fragment_mess_profile__view_owner_details_background">#F0EAEA</color>
+    <color name="fragment_mess_profile__view_owner_details_text">#333333</color>
+    <color name="fragment_mess_profile_view_delivery_numbers_background">#F0EAEA</color>
+    <color name="fragment_mess_profile_view_delivery_text">#333333</color>
+    
+    # mess home fragment #
+    
+    <color name="fragment_mess_home_background">#FFFBEC</color>
+    <color name="fragment_mess_home_header_background">#FAF5F5</color>
+    <color name="fragment_mess_home_header_text">#938888</color>
+    <color name="fragment_mess_home_special_text">#000000</color>
+    <color name="fragment_mess_home_items_header">#333333</color>
+    <color name="fragment_mess_home_items_items">#333333</color>
+    <color name="fragment_mess_home_stats_header">#333333</color>
+    <color name="fragment_mess_home_stats_item">#333333</color>
+    <color name="fragment_mess_home_input_verification_code_hint">#746666</color>
+    <color name="fragment_mess_home_input_verification_code_text">#333333</color>
+    <color name="fragment_mess_home_attend_button_background">#4E73B8</color>
+    <color name="fragment_mess_home_attend_button_text">#FFF9F9</color>
+    <color name="fragment_mess_home_not_set_text">#827272</color>
+    <color name="fragment_mess_home_set_meal_button_text">#4E73B8</color>
+    <color name="fragment_mess_home_set_meal_button_border">#4E73B8</color>
+    <color name="fragment_mess_home_add_delivery_person_button_background">#4E73B8</color>
+    <color name="fragment_mess_home_add_delivery_person_button_text">#FFFFFF</color>
+    <color name="fragment_mess_home_add_new_meal_button_background">#4E73B8</color>
+    <color name="fragment_mess_home_add_new_meal_button_text">#4E73B8</color>
+    <color name="fragment_mess_home_horizontal_line">#F2EAEA</color>
+
+    # mess add new meal activity #
+
+    <color name="activity_mess_add_new_meal_background">#FFFBEC</color>
+    <color name="activity_mess_add_new_meal_header_text">#333333</color>
+    <color name="activity_mess_add_new_meal_sub_header_text">#333333</color>
+    <color name="activity_mess_add_new_meal_item_border">#DCD7D7</color>
+    <color name="activity_mess_add_new_meal_item_text">#746666</color>
+    <color name="activity_mess_add_new_meal_add_new_item_text">#333333</color>
+    <color name="activity_mess_add_new_meal_horizontal_line">#F2EAEA</color>
+    <color name="activity_mess_add_new_meal_enter_price_hint">#746666</color>
+    <color name="activity_mess_add_new_meal_enter_price_text">#333333</color>
+    <color name="activity_mess_add_new_meal_enter_price_border">#DCD7D7</color>
+    <color name="activity_mess_add_new_meal_regular_or_special_text">#746666</color>
+    <color name="activity_mess_add_new_meal_regular_or_special_border">#DCD7D7</color>
+    <color name="activity_mess_add_new_meal_add_button_background">#4E73B8</color>
+    <color name="activity_mess_add_new_meal_add_button_text">#FFF9F9</color>
+    
+    # mess select meal detail #
+    
+    <color name="activity_meal_detail_background">#FFFBEC</color>
+    <color name="activity_meal_detail_title_background">#FAF5F5</color>
+    <color name="activity_meal_detail_title_text">#938888</color>
+    <color name="activity_meal_detail_item_text">#333333</color>
+    <color name="activity_meal_detail_save_button_background">#4E73B8</color>
+    <color name="activity_meal_detail_save_button_text">#FFFAFA</color>
+    <color name="activity_meal_detail_add_new_meal_text">#333333</color>
 
     # delivery main activity #
 
