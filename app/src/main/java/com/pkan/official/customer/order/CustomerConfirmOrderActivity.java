@@ -34,6 +34,9 @@ import com.pkan.official.R;
 import com.pkan.official.customer.CustomerMainActivity;
 import com.pkan.official.customer.meals.Meal;
 import com.pkan.official.payments.PaymentsActivity;
+import com.shreyaspatil.EasyUpiPayment.EasyUpiPayment;
+import com.shreyaspatil.EasyUpiPayment.listener.PaymentStatusListener;
+import com.shreyaspatil.EasyUpiPayment.model.TransactionDetails;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -41,6 +44,10 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class CustomerConfirmOrderActivity extends AppCompatActivity {
+
+    // variables used for upi transaction
+    final String COMPANY_UPI_ID = "skdbsp123@okhdfcbank";
+    final String PAYEE_NAME = "Satyam Kumar";
 
     // views used in activity
     ImageView customerConfirmOrderBackImageView, customerConfirmOrderMealImageView,
@@ -80,7 +87,7 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
             lunch_or_dinner = "", order_date = "", security_code = "", meal_image_link = "",
             address = "", special_or_regular = "";
 
-    int order_price = -1;
+    int order_price = 55;
 
     int customer_balance = -1;
 
@@ -92,6 +99,8 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
 
     int mess_delivery_home = 1, mess_delivery_in_mess = 1;
 
+    // service charge
+    int service_charge = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +118,7 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
 
         // disable screen, show progress dialog and get service charge
         startProgressDialog();
-        getUpComingLunchOrDinner();
+        getServiceCharge();
     }
 
     private void initViews () {
@@ -214,6 +223,31 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
         });
     }
 
+    public  void getServiceCharge () {
+        databaseReference.child("Service Charge").child("App Charge")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.getValue(Integer.class) != null) {
+                            service_charge = snapshot.getValue(Integer.class);
+                        }
+
+                        // for debugging purpose
+                        Log.d("service charge", String.valueOf(service_charge));
+
+                        getUpComingLunchOrDinner();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // for debugging purpose
+                        Log.d("service charge", error.getDetails());
+
+                        // stop progress dialog
+                        stopProgressDialog();
+                    }
+                });
+    }
 
     private void getUpComingLunchOrDinner () {
         databaseReference.child("Time Management Status")
@@ -266,7 +300,7 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
 
                         // variables to be used
                         String mealId, mess_id, mess_name, meal_image_link;
-                        int meal_price;
+                        int meal_price = 50;
                         ArrayList<MealItem> mealItemArrayList = new ArrayList<>();
 
                         // get the required values
@@ -278,7 +312,13 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
                         special_or_regular = snapshot.child("Special or Normal")
                                 .getValue(String.class);
 
-                        meal_price = snapshot.child("Price").getValue(Integer.class);
+                        if (snapshot.child("Price").getValue(Integer.class) != null) {
+                            meal_price = snapshot.child("Price").getValue(Integer.class);
+                        }
+
+                        // add the extra service charge
+                        meal_price += service_charge;
+
                         for (DataSnapshot itemNode : snapshot.child("Items").getChildren()) {
 
                             // create a meal item
@@ -602,31 +642,35 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
 
                 deductBalance();
             } else {
-
-                // make payment
-                Intent intent = new Intent(getApplicationContext(), PaymentsActivity.class);
-
                 // calculate the amount to be paid
-                float amount = order_price - customer_balance;
+                int amount = order_price - customer_balance;
 
-                intent.putExtra("amount", amount);
+                // deduct balance
+                deductBalance();
 
-                startActivity(intent);
+                // make upi payment
+                makeUpiPayment(amount);
             }
         } else {
 
-            // make payment
-            Intent intent = new Intent(getApplicationContext(), PaymentsActivity.class);
-            intent.putExtra("amount", order_price);
-
-            startActivity(intent);
+            // make upi payment
+            makeUpiPayment(order_price);
         }
     }
 
     private void deductBalance () {
+
+        int remaining_balance;
+
+        if (customer_balance - order_price >= 0) {
+            remaining_balance = customer_balance - order_price;
+        } else {
+            remaining_balance = 0;
+        }
+
         // deduct balance from customer's account
         databaseReference.child("Customers").child(user.getUid()).child("Balance")
-                .setValue(customer_balance - order_price)
+                .setValue(remaining_balance)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -687,6 +731,14 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
         databaseReference.child("Customers").child(user.getUid()).child("Current Order")
                 .child(upcoming_date).child(upcoming_lunch_or_dinner)
                 .child(order_id).child("Lunch or Dinner").setValue(lunch_or_dinner);
+
+        // set the data in customer history
+        databaseReference.child("Customers").child(user.getUid()).child("History")
+                .child(order_id).child("Order Id").setValue(order_id);
+
+        // set data in mess history
+        databaseReference.child("Mess").child(mess_id).child("History").child(order_id)
+                .child("Order Id").setValue(order_id);
 
         // set the order in mess upcoming orders
         DatabaseReference mess_ref = databaseReference.child("Mess").child(mess_id)
@@ -763,6 +815,85 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    private void makeUpiPayment (int amount) {
+        final EasyUpiPayment easyUpiPayment = new EasyUpiPayment.Builder()
+                .with(this)
+                .setPayeeVpa(COMPANY_UPI_ID)
+                .setPayeeName(PAYEE_NAME)
+                .setTransactionId(order_id)
+                .setTransactionRefId(order_id)
+                .setDescription("for meal")
+                .setAmount(String.valueOf(amount))
+                .build();
+
+        easyUpiPayment.startPayment();
+
+        easyUpiPayment.setPaymentStatusListener(new PaymentStatusListener() {
+            @Override
+            public void onTransactionCompleted(TransactionDetails transactionDetails) {
+
+                // for debugging purpose
+                Log.d("payment", "completed");
+                Log.d("transaction id", transactionDetails.getTransactionId());
+                Log.d("transaction status", transactionDetails.getStatus());
+
+                // upload data
+                uploadData();
+
+            }
+
+            @Override
+            public void onTransactionSuccess() {
+
+                // for debugging purpose
+                Log.d("payment", "success");
+
+                // alert the user about the status
+                Toast.makeText(getApplicationContext(), "Transaction Success", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onTransactionSubmitted() {
+
+                // for debugging purpose
+                Log.d("payment", "submitted");
+
+                // alert the user about the status
+                Toast.makeText(getApplicationContext(), "Transaction Submitted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onTransactionFailed() {
+
+                // for debugging purpose
+                Log.d("payment", "failed");
+
+                // alert the user about the status
+                Toast.makeText(getApplicationContext(), "Transaction Failed", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onTransactionCancelled() {
+
+                // for debugging purpose
+                Log.d("payment", "cancelled");
+
+                // alert the user about the status
+                Toast.makeText(getApplicationContext(), "Transaction Cancelled", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAppNotFound() {
+
+                // for debugging purpose
+                Log.d("payment", "app not found");
+
+                // alert the user about the status
+                Toast.makeText(getApplicationContext(), "App Not Found", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void startProgressDialog () {

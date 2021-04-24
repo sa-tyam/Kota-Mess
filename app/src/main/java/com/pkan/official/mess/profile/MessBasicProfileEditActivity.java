@@ -69,8 +69,9 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
 
     // variables to be used to save mess data on database
     String name ="", description = "", city = "", city_id = "", area = "", area_id = "",
-            address = "", mess_timings = "",
-            monthly_charge = "";
+            address = "", mess_timings = "";
+
+    int monthly_charge = -1;
 
     int home_delivery = 1, in_mess = 1;
 
@@ -420,7 +421,7 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
         description = messBasicProfileEditDescriptionEditText.getText().toString();
         address = messBasicProfileEditAddressEditText.getText().toString();
         mess_timings = messBasicProfileEditTimingsEditText.getText().toString();
-        monthly_charge = messBasicProfileEditMonthlyChargeEditText.getText().toString();
+        monthly_charge = Integer.parseInt(messBasicProfileEditMonthlyChargeEditText.getText().toString());
 
         // check if home delivery is selected or not
         if (messBasicProfileEditHomeDeliveryCheckBox.isChecked()) {
@@ -438,7 +439,7 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
 
         if (name.length() == 0 || description.length() == 0 || city.length() == 0
                 || area.length()==0 || address.length() == 0 || mess_timings.length() == 0
-                || monthly_charge.length() == 0) {
+                || monthly_charge == -1) {
 
             // show the toast to users to warn them to fill the details
             Toast.makeText(getApplicationContext(), "Enter the details...", Toast.LENGTH_SHORT)

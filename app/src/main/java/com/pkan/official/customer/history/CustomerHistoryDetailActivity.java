@@ -66,6 +66,9 @@ public class CustomerHistoryDetailActivity extends AppCompatActivity {
     float rating = 0;
     String review = "";
 
+    // service charge
+    int service_charge = 5;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,9 +84,9 @@ public class CustomerHistoryDetailActivity extends AppCompatActivity {
         // set on clicks
         setOnClicks();
 
-        // disable screen, show progress dialog and set header
+        // disable screen, show progress dialog and get service charge
         startProgressDialog();
-        setHeader();
+        getServiceCharge();
     }
 
     private void initViews () {
@@ -165,10 +168,33 @@ public class CustomerHistoryDetailActivity extends AppCompatActivity {
 
     }
 
-    private void setHeader () {
+    public  void getServiceCharge () {
+        databaseReference.child("Service Charge").child("App Charge")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.getValue(Integer.class) != null) {
+                            service_charge = snapshot.getValue(Integer.class);
+                        }
 
-        // order id temporary
-        orderId = "\"1\"";
+                        // for debugging purpose
+                        Log.d("service charge", String.valueOf(service_charge));
+
+                        setHeader();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // for debugging purpose
+                        Log.d("service charge", error.getDetails());
+
+                        // stop progress dialog
+                        stopProgressDialog();
+                    }
+                });
+    }
+
+    private void setHeader () {
 
         // get the required values from database
         databaseReference.child("Orders").child(orderId)
@@ -235,7 +261,7 @@ public class CustomerHistoryDetailActivity extends AppCompatActivity {
 
                         // variables to be used
                         String mealId, mess_name, meal_image_link, special_or_regular;
-                        int meal_price = 0;
+                        int meal_price = 50;
                         ArrayList<MealItem> mealItemArrayList = new ArrayList<>();
 
                         // get the required values
@@ -247,15 +273,10 @@ public class CustomerHistoryDetailActivity extends AppCompatActivity {
 
                         if ( snapshot.child("Price").getValue(Integer.class) != null) {
                             meal_price = snapshot.child("Price").getValue(Integer.class);
-                        } else {
-
-                            // show user something went wrong
-                            Toast.makeText(getApplicationContext(), "Something went wrong",
-                                    Toast.LENGTH_LONG).show();
-
-                            // enable screen
-                            stopProgressDialog();
                         }
+
+                        // add the service charge
+                        meal_price += service_charge;
 
                         for (DataSnapshot itemNode : snapshot.child("Items").getChildren()) {
 

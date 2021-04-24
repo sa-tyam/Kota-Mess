@@ -103,7 +103,7 @@ public class GetCustomerHistoryList {
                                     lunch_or_dinner = snapshot.child("Lunch or Dinner").getValue(String.class);
                                     order_date = snapshot.child("Order Date").getValue(String.class);
                                     delivered_time = snapshot.child("Delivered Time").getValue(String.class);
-                                    security_code = String.valueOf(snapshot.child("Security Code").getValue(Integer.class));
+                                    security_code = snapshot.child("Security Code").getValue(String.class);
                                     review_id = snapshot.child("Review Id").getValue(String.class);
                                     order_price = snapshot.child("Order Price").getValue(Integer.class);
                                     meal_image_link = snapshot.child("Meal Image Link").getValue(String.class);

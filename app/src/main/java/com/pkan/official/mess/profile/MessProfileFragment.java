@@ -123,9 +123,9 @@ public class MessProfileFragment extends Fragment {
     String owner_name = "", owner_address = "", owner_number = "";
 
     String mess_name = "", mess_city = "", mess_area = "", mess_phone = "", mess_address = "",
-            mess_timing = "", mess_monthly_charge = "", mess_image_link = "";
+            mess_timing = "",  mess_image_link = "";
 
-    int mess_balance = 0;
+    int mess_balance = 0, mess_monthly_charge = 2500;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -468,7 +468,12 @@ public class MessProfileFragment extends Fragment {
                 mess_phone = snapshot.child("Phone Number").getValue(String.class);
                 mess_address = snapshot.child("Address").getValue(String.class);
                 mess_timing = snapshot.child("Mess Timings").getValue(String.class);
-                mess_monthly_charge = snapshot.child("Monthly Price").getValue(String.class);
+
+                if (snapshot.child("Monthly Price").getValue(Integer.class) != null) {
+                    mess_monthly_charge = snapshot.child("Monthly Price").getValue(Integer.class);
+                }
+
+
                 mess_image_link = snapshot.child("Mess Image").getValue(String.class);
 
                 if (snapshot.child("Balance").getValue(Integer.class) != null) {
@@ -536,8 +541,8 @@ public class MessProfileFragment extends Fragment {
         } else {
             messProfileMessTimingTextView.setText("");
         }
-        if (mess_monthly_charge != null) {
-            messProfileMonthlyChargeTextView.setText(mess_monthly_charge);
+        if (mess_monthly_charge > 0) {
+            messProfileMonthlyChargeTextView.setText(String.valueOf(mess_monthly_charge));
         } else {
             messProfileMonthlyChargeTextView.setText("");
         }

@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pkan.official.R;
+import com.pkan.official.customer.meals.GetMealList;
 import com.pkan.official.customer.meals.Meal;
 import com.squareup.picasso.Picasso;
 
@@ -60,6 +61,9 @@ public class CustomerOrderDetailsActivity extends AppCompatActivity {
     // array list of meal Review Ids
     ArrayList<String> mealReviewArrayList;
 
+    // service charge
+    int service_charge = 5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +80,8 @@ public class CustomerOrderDetailsActivity extends AppCompatActivity {
 
         // disable screen, show progress dialog and set header
         startProgressDialog();
-        setHeader();
+        getServiceCharge();
+
     }
 
     private void setStatusBarColor () {
@@ -172,6 +177,32 @@ public class CustomerOrderDetailsActivity extends AppCompatActivity {
         });
     }
 
+    public  void getServiceCharge () {
+        databaseReference.child("Service Charge").child("App Charge")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.getValue(Integer.class) != null) {
+                            service_charge = snapshot.getValue(Integer.class);
+                        }
+
+                        // for debugging purpose
+                        Log.d("service charge", String.valueOf(service_charge));
+
+                        setHeader();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // for debugging purpose
+                        Log.d("service charge", error.getDetails());
+
+                        // stop progress dialog
+                        stopProgressDialog();
+                    }
+                });
+    }
+
     private void setHeader () {
 
         // get the required values from database
@@ -237,7 +268,7 @@ public class CustomerOrderDetailsActivity extends AppCompatActivity {
 
                         // variables to be used
                         String mealId, mess_id, mess_name, meal_image_link, special_or_regular;
-                        int meal_price = -1;
+                        int meal_price = 50;
                         ArrayList<MealItem> mealItemArrayList = new ArrayList<>();
 
                         // get the required values
@@ -250,6 +281,10 @@ public class CustomerOrderDetailsActivity extends AppCompatActivity {
                         if (snapshot.child("Price").getValue(Integer.class) != null) {
                             meal_price = snapshot.child("Price").getValue(Integer.class);
                         }
+                        Log.d("meal price", String.valueOf(meal_price));
+
+                        meal_price += service_charge;
+
                         for (DataSnapshot itemNode : snapshot.child("Items").getChildren()) {
 
                             // create a meal item

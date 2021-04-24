@@ -24,6 +24,9 @@ public class GetMealList {
     static FirebaseUser user;
     static DatabaseReference databaseReference;
 
+    // service charge
+    static int service_charge = 5;
+
     // declare interface to track changes in data
     public interface DataStatus {
         void DataIsLoaded (ArrayList<Meal> mealArrayList);
@@ -180,7 +183,7 @@ public class GetMealList {
                     Log.d("meal id", meal_id);
 
                     // get the meal
-                    getMeal(dataStatus, meal_id);
+                    getServiceCharge(dataStatus, meal_id);
                 }
             }
 
@@ -189,6 +192,25 @@ public class GetMealList {
 
                 // for debugging purpose
                 Log.e("get meal id", error.getDetails());
+            }
+        });
+    }
+
+    public static void getServiceCharge (DataStatus dataStatus, String meal_id) {
+        databaseReference.child("Service Charge").child("App Charge")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.getValue(Integer.class) != null) {
+                    service_charge = snapshot.getValue(Integer.class);
+                }
+                // get the meal
+                getMeal(dataStatus, meal_id);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
@@ -203,7 +225,7 @@ public class GetMealList {
 
                 // variables to be used
                 String mealId, mess_id, mess_name, meal_image_link, special_or_regular;
-                int meal_price;
+                int meal_price = 50;
                 ArrayList<MealItem> mealItemArrayList = new ArrayList<>();
 
                 // get the required values
@@ -213,7 +235,12 @@ public class GetMealList {
                 meal_image_link = snapshot.child("Picture Download Link").getValue(String.class);
                 special_or_regular = snapshot.child("Special or Normal").getValue(String.class);
 
-                meal_price = snapshot.child("Price").getValue(Integer.class);
+                if (snapshot.child("Price").getValue(Integer.class) != null) {
+                    meal_price = snapshot.child("Price").getValue(Integer.class);
+                }
+
+                meal_price += service_charge;
+
                 for (DataSnapshot itemNode : snapshot.child("Items").getChildren()) {
 
                     // create a meal item

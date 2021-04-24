@@ -64,6 +64,8 @@ public class MessAddNewMealActivity extends AppCompatActivity {
     // variables to be used to save the meal
     String special_or_regular = "";
 
+    int monthly_price = -1;
+
     // array list of meal items
     ArrayList<MessMealItem> mealItemArrayList;
 
@@ -175,6 +177,10 @@ public class MessAddNewMealActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 mess_name = snapshot.child("Name").getValue(String.class);
+
+                if (snapshot.child("Monthly Price").getValue(Integer.class) != null) {
+                    monthly_price = snapshot.child("Monthly Price").getValue(Integer.class);
+                }
 
                 if (mess_name != null) {
 
@@ -390,6 +396,15 @@ public class MessAddNewMealActivity extends AppCompatActivity {
 
                 // her 'i' is the position which was selected
                 special_or_regular = regularOrSpecialArrayList.get(i);
+
+                if ( i == 0) {
+                    price = monthly_price / 60;
+                } else {
+                    price = (monthly_price / 60) + 5;
+                }
+
+                messAddNewMealPriceTextView.setText("Rs. " + String.valueOf(price));
+
             }
 
             @Override
@@ -397,6 +412,9 @@ public class MessAddNewMealActivity extends AppCompatActivity {
 
                 // in case no item is selected, select the first item by default
                 special_or_regular = regularOrSpecialArrayList.get(0);
+
+                price = monthly_price / 60;
+                messAddNewMealPriceTextView.setText("Rs. " + String.valueOf(price));
             }
         });
     }
