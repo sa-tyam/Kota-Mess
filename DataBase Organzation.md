@@ -15,6 +15,8 @@ Main -
     - Referral Benefits (K)
     - Delivery Persons (L)
     - Time Management Status (M)
+    - Posters (N)
+    - Service Charge (O)
 
 Customers (A) -
 
@@ -26,7 +28,6 @@ Customers (A) -
         - Balance (d)
         - History (e)
         - Current Order (f)
-        - Upcoming Order (g)
 
 
         Profile (A id a) -
@@ -62,12 +63,14 @@ Customers (A) -
 
         Current Order (A id f) -
 
-            - Order Id (a) -
+            - Date (A) 
 
-        Upcoming Order (A id g) -
+                - Lunch or Dinner (a)
+            
+                    - Order Id (id) -
 
-            - Order Id (a) -
-
+                        - Order Id (a) -
+                        - Lunch or Dinner (b)
 
 
 Mess (B) - 
@@ -82,11 +85,11 @@ Mess (B) -
         - Items (f)
         - Meals (g)
         - Areas (h)
-        - Past Orders (i)
+        - Orders (i)
         - Delivery Phone Numbers (j)
         - Payment Details (k)
-        - Current Orders (l)
-        
+        - Reviews (l)
+        - History (m)
         
         Profile (B id a)
             
@@ -103,6 +106,7 @@ Mess (B) -
             - Mess Image (K)
             - Home Delivery (L)
             - In Mess (M)
+            - Balance (N)
 
         Owner (B id b)
 
@@ -113,13 +117,29 @@ Mess (B) -
 
         Current Meals (B id e) -
 
-            - Lunch (A) -
+            - Date (A) - 
 
-                - Meal Id (a)
+                - Lunch (A) -
 
-            - Dinner (B) -
+                    - Meal Id (a)
+                    - Available (b)
+                    - Security Codes (c)
 
-                - Meal Id (b)
+                        - Security Code (id)
+
+                            - Order Id (A)
+                            - Status (B)
+
+                - Dinner (B) -
+
+                    - Meal Id (b)
+                    - Available (b)
+                    - Security Codes (c)
+
+                        - Security Code (id)
+
+                            - Order Id (A)
+                            - Status (B)
 
         Items (B id f) -
 
@@ -156,7 +176,7 @@ Mess (B) -
                 - Area Id (A)
                 - Name (B)
 
-        Past Orders (B id i) -
+        Orders (B id i) -
 
             - Date (A) -
 
@@ -232,108 +252,17 @@ Mess (B) -
                 - Bank Name (c)
                 - Account Holder Name (d)
 
-        Current Orders (B id l) -
+        Reviews (B id l) - 
 
-            - Lunch (a) 
-            - Dinner (b)
+            - Review Id (id)
 
-            Lunch (a) -
+                - Review Id (a)
 
-                - Delivery (A)
-                - In Mess (B)
+        History (B id m) - 
 
-                Delivery (A) - 
+            - Order Id (id) -
 
-                   - Area (id)
-
-                       - Area Name (A)
-
-                       - Delivery Person (B)
-
-                            - Name (a)
-                            - Phone Number (b)
-
-                       - Orders (C) -
-
-                            - Order Id (A)
-
-                                - Order Id (a)
-                                - Customer Name (b)
-                                - House Number (c)
-                                - Room Number (d)
-                                - Landmark (e)
-                                - Customer Mobile Number (f)
-
-                In Mess (B) - 
-
-                    - Area (id)
-
-                        - Area Name (A)
-
-                        - Delivery Person (B)
-
-                            - Name (a)
-                            - Phone Number (b)
-
-                        - Orders (C) -
-
-                            - Order Id (A)
-
-                                - Order Id (a)
-                                - Customer Name (b)
-                                - House Number (c)
-                                - Room Number (d)
-                                - Landmark (e)
-                                - Customer Mobile Number (f)
-
-            Dinner (b) -
-
-                - Delivery (A)
-                - In Mess (B)
-
-                Delivery (A) -
-
-                - Area (id)
-
-                    - Area Name (A)
-
-                    - Delivery Person (B)
-
-                        - Name (a)
-                        - Phone Number (b)
-                    
-                    - Orders (C) -
-
-                        - Order Id (A)
-                        
-                            - Order Id (a)
-                            - Customer Name (b)
-                            - House Number (c)
-                            - Room Number (d)
-                            - Landmark (e)
-                            - Customer Mobile Number (f)
-
-                In Mess (B) -
-
-                - Area (id)
-
-                    - Area Name (A)
-
-                    - Delivery Person (B)
-
-                        - Name (a)
-                        - Phone Number (b)
-                    
-                    - Orders (C) -
-
-                        - Order Id (A)
-                        
-                            - Order Id (a)
-                            - Customer Name (b)
-                            - House Number (c)
-                            - Room Number (d)
-                            - Landmark (e)
-                            - Customer Mobile Number (f)
+                - Order Id (A)
 
 
 Orders (C) -
@@ -341,7 +270,7 @@ Orders (C) -
     - Order Id (id) -
 
         - Mess Id (A)
-        - Dish Id (B)
+        - Meal Id (B)
         - Customer Id (C)
         - Mess Name (D)
         - Customer Name (E)
@@ -360,6 +289,7 @@ Orders (C) -
         - Order Price (S)
         - Items (T)
         - Meal Image Link (U)
+        - Mess Phone Number (V)
 
         Items (T) - 
 
@@ -378,13 +308,11 @@ Meals (D) -
         - Picture Download Link (c)
         - Special or Normal (d)
         - Price (e)
-        - Delivery Price (f)
-        - Items (g)
-        - Lunch or Dinner (h)
-        - Reviews (i)
-        - Rating (j)
+        - Items (f)
+        - Reviews (g)
+        - Rating (h)
 
-        Items (D id g) -
+        Items (D id f) -
 
             - Item Id (id) -
 
@@ -393,9 +321,11 @@ Meals (D) -
                 - Amount (C)
                 - Mess Id (D)
 
-        Reviews (i) -
+        Reviews (g) -
 
-            - Review Id (id) (a)
+            - Review Id (id) 
+            
+                - Review Id (a)
 
 Items (E) - 
 
@@ -471,7 +401,7 @@ Reviews (J) -
         - Mess Id (b)
         - Meal Id (c)
         - Order Id (d)
-        - Ratings (e)
+        - Rating (e)
         - Review (f)
 
 Payments (J) -
@@ -519,6 +449,29 @@ Time Management Status (M) -
     - Current Date (B)
     - Upcoming Lunch or Dinner (B)
     - Upcoming Date (C)
+    - Mess Next Lunch or Dinner (D)
+    - Mess Next Date (E)
+
+Posters (N) -
+
+    - Customers (a)
+    - Mess (b)
+
+    Customers (a) -
+
+        - Picture Id (id) 
+
+            - Picture Download Link (A)
+
+    Mess (b) -
+
+        - Picture Id (id) 
+
+            - Picture Download Link (A)
+
+Service Charge (O) -
+
+    - App Charge (A)
 
 
 # Storage #
