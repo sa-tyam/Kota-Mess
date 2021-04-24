@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_mess_add_new_meal_background"
+    tools:context=".mess.meals.MessAddNewMealActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/messAddNewMealIBackImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+
+                <TextView
+                    android:id="@+id/messAddNewMealMessNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Test Mess, test area"
+                    android:textColor="@color/activity_mess_add_new_meal_header_text"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/activity_mess_add_new_meal_sub_header_text"
+                    android:textColor="@color/activity_mess_add_new_meal_sub_header_text"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messAddNewMealMessNameTextView" />
+
+                <LinearLayout
+                    android:id="@+id/messAddNewMealItemsLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messAddNewMealImageCardView"></LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/activity_mess_add_new_meal_add_new_item_text"
+                    android:textColor="@color/activity_mess_add_new_meal_add_new_item_text"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messAddNewMealItemsLinearLayout" />
+
+                <EditText
+                    android:id="@+id/messAddNewMealNewItemNameTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:ems="10"
+                    android:hint="@string/activity_mess_add_new_meal_add_new_item_name_hint"
+                    android:inputType="textPersonName"
+                    android:textAlignment="center"
+                    android:textColor="@color/activity_mess_add_new_meal_add_new_item_text"
+                    android:textColorHint="@color/activity_mess_add_new_meal_add_new_item_hint"
+                    app:layout_constraintEnd_toStartOf="@+id/messAddNewMealNewItemQuantityTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+                <EditText
+                    android:id="@+id/messAddNewMealNewItemQuantityTextView"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:ems="10"
+                    android:hint="@string/activity_mess_add_new_meal_add_new_item_quantity_hint"
+                    android:inputType="textPersonName"
+                    android:textAlignment="center"
+                    android:textColor="@color/activity_mess_add_new_meal_add_new_item_text"
+                    android:textColorHint="@color/activity_mess_add_new_meal_add_new_item_hint"
+                    app:layout_constraintBottom_toBottomOf="@+id/messAddNewMealNewItemNameTextView"
+                    app:layout_constraintEnd_toStartOf="@+id/messAddNewMealNewItemAddItemImageView"
+                    app:layout_constraintStart_toEndOf="@+id/messAddNewMealNewItemNameTextView"
+                    app:layout_constraintTop_toTopOf="@+id/messAddNewMealNewItemNameTextView" />
+
+                <ImageView
+                    android:id="@+id/messAddNewMealNewItemAddItemImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/messAddNewMealNewItemNameTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/messAddNewMealNewItemQuantityTextView"
+                    app:layout_constraintTop_toTopOf="@+id/messAddNewMealNewItemNameTextView"
+                    app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
+
+                <View
+                    android:id="@+id/view24"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/activity_mess_add_new_meal_horizontal_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messAddNewMealNewItemNameTextView" />
+
+                <EditText
+                    android:id="@+id/messAddNewMealPriceTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:ems="10"
+                    android:hint="@string/activity_mess_add_new_meal_enter_price_hint"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="@color/activity_mess_add_new_meal_enter_price_text"
+                    android:textColorHint="@color/activity_mess_add_new_meal_enter_price_hint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view24" />
+
+                <Spinner
+                    android:id="@+id/messAddNewMealSpecialOrRegularSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messAddNewMealPriceTextView" />
+
+                <Button
+                    android:id="@+id/messAddNewMealAddButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/activity_mess_add_new_meal_add_button_background"
+                    android:text="@string/activity_mess_add_new_meal_add_button_text"
+                    android:textColor="@color/activity_mess_add_new_meal_add_button_text"
+                    app:backgroundTint="@null"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messAddNewMealSpecialOrRegularSpinner" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/messAddNewMealImageCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="@color/activity_mess_add_new_meal_background"
+                    app:cardCornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20">
+
+                    <ImageView
+                        android:id="@+id/messAddNewMealImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:visibility="gone"
+                        app:srcCompat="@drawable/foodimage" />
+
+                    <ImageView
+                        android:id="@+id/messAddNewMealAddImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24" />
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

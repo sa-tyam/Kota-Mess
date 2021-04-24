@@ -28,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pkan.official.R;
 import com.pkan.official.customer.meals.Meal;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -370,10 +371,15 @@ public class CustomerOrderDetailsActivity extends AppCompatActivity {
             customerOrderDetailItemsLinearLayout.addView(view);
         }
 
+        // set meal image
+        Picasso.get()
+                .load(meal.getMeal_image_link())
+                .into(customerOrderDetailMealImageView);
+
         // set mess name and address
         customerOrderDetailMessNameTextView.setText(meal.getMess_name());
 
-        // get mess address
+        // get mess address and image
         databaseReference.child("Mess").child(meal.getMess_id())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -387,6 +393,16 @@ public class CustomerOrderDetailsActivity extends AppCompatActivity {
 
                     // set text view
                     customerOrderDetailMessAddressTextView.setText(address);
+                }
+
+                // get mess image link and set it in image view
+                String mess_image_link = snapshot.child("Profile").child("Mess Image")
+                        .getValue(String.class);
+
+                if (mess_image_link != null) {
+                    Picasso.get()
+                            .load(mess_image_link)
+                            .into(customerOrderDetailMessImageView);
                 }
 
                 // stop the progress dialog and enable the screen

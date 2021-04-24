@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -75,6 +77,12 @@ public class LoginActivityVerifyOtp extends AppCompatActivity {
     // user variable to move to next activity after signing in
     FirebaseUser user;
 
+    // shared preference variable to remember user
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String Name = "loginAs";
+
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +112,9 @@ public class LoginActivityVerifyOtp extends AppCompatActivity {
         progressDialog = new ProgressDialog(LoginActivityVerifyOtp.this);
         progressDialog.setMessage("Please Wait ...");
         progressDialog.setCancelable(false);
+
+        // initialize shared preferences
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
     }
 
     private void sendVerificationCode () {
@@ -249,6 +260,9 @@ public class LoginActivityVerifyOtp extends AppCompatActivity {
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
+        // shared preference editor
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
         if (login_as.equals("Customers")) {
 
             databaseReference.child(login_as).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -260,6 +274,11 @@ public class LoginActivityVerifyOtp extends AppCompatActivity {
                         // send to profile page
 
                         stopProgressDialog();
+
+                        // save shared preferences
+                        editor.putString(Name, login_as);
+                        editor.commit();
+
                         Intent intent = new Intent(getApplicationContext(),
                                 CustomerProfileEditActivity.class);
                         intent.putExtra("newUser", "new_user");
@@ -271,6 +290,10 @@ public class LoginActivityVerifyOtp extends AppCompatActivity {
 
                         // customer profile exists, i.e. old customer
                         // send directly to home page
+
+                        // save shared preferences
+                        editor.putString(Name, login_as);
+                        editor.commit();
 
                         stopProgressDialog();
                         Intent intent = new Intent(getApplicationContext(),
@@ -301,6 +324,10 @@ public class LoginActivityVerifyOtp extends AppCompatActivity {
                         // mess profile does not exist, i.e. new mess
                         // send to profile page
 
+                        // save shared preferences
+                        editor.putString(Name, login_as);
+                        editor.commit();
+
                         stopProgressDialog();
                         Intent intent = new Intent(getApplicationContext(), MessBasicProfileEditActivity.class);
                         intent.putExtra("newUser", "new_user");
@@ -312,6 +339,10 @@ public class LoginActivityVerifyOtp extends AppCompatActivity {
 
                         // mess profile exists, i.e. old mess
                         // send directly to home page
+
+                        // save shared preferences
+                        editor.putString(Name, login_as);
+                        editor.commit();
 
                         stopProgressDialog();
                         Intent intent = new Intent(getApplicationContext(), MessMainActivity.class);

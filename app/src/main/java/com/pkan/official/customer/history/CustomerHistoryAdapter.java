@@ -56,8 +56,7 @@ public class CustomerHistoryAdapter extends RecyclerView.Adapter<CustomerHistory
 
         holder.customerHistoryItemPriceTextView.setText("\u20B9" + " " +
                String.valueOf( orderItem.getOrder_price()));
-        holder.customerHistoryItemDeliveredAtTextView.setText("delivered at " +
-                orderItem.getDelivered_time());
+        holder.customerHistoryItemDeliveredAtTextView.setText(orderItem.getStatus());
 
         Picasso.get()
                 .load(orderItem.getMeal_image_link())

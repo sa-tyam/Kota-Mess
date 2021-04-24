@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/messSelectMealItemImageCardView"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:scaleType="centerCrop"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/view14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/messSelectMealItemImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/foodimage" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/messSelectMealItemItemNamesTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:text="Chhole + Bhature + Pulao + Salad + Gulab Jamun"
+        android:textColor="@color/activity_mess_select_meal_item_values_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/messSelectMealItemImageCardView"
+        app:layout_constraintTop_toTopOf="@+id/messSelectMealItemImageCardView" />
+
+    <TextView
+        android:id="@+id/messSelectMealItemPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Rs. 60"
+        android:textColor="@color/activity_mess_select_meal_item_price_text"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/messSelectMealItemItemNamesTextView"
+        app:layout_constraintTop_toBottomOf="@+id/messSelectMealItemItemNamesTextView" />
+
+    <Button
+        android:id="@+id/messSelectMealSelectButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/mess_select_meal_meal_item_select_button_background"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingStart="20dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="3dp"
+        android:text="@string/activity_mess_select_meal_item_select_button_text"
+        android:textColor="@color/activity_mess_select_meal_item_select_button_text"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/messSelectMealItemPriceTextView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/messSelectMealSpecialTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/activity_mess_select_meal_item_special_text"
+        android:textColor="@color/activity_mess_select_meal_item_special_text"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@+id/messSelectOrderSpecialImageView"
+        app:layout_constraintTop_toTopOf="@+id/messSelectOrderSpecialImageView" />
+
+    <ImageView
+        android:id="@+id/messSelectOrderSpecialImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="@+id/messSelectMealItemPriceTextView"
+        app:layout_constraintTop_toBottomOf="@+id/messSelectMealItemPriceTextView"
+        app:srcCompat="@drawable/ic_baseline_star_18" />
+
+    <View
+        android:id="@+id/view14"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/activity_mess_select_meal_item_horizontal_line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/messSelectMealItemImageCardView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

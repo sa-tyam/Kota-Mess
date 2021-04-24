@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_mess_delivery_persons_edit_background"
+    tools:context=".mess.profile.MessDeliveryPersonsEditActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <TextView
+                    android:id="@+id/messDeliveryPersonsEditMessNameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Test Mess"
+                    android:textColor="@color/activity_mess_delivery_persons_edit_header_text"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/messDeliveryPersonsEditBackImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+
+                <TextView
+                    android:id="@+id/messDeliveryPersonsEditSubHeaderText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/activity_mess_delivery_persons_edit_sub_header"
+                    android:textColor="@color/activity_mess_delivery_persons_edit_sub_header_text"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messDeliveryPersonsEditMessNameTextView" />
+
+                <LinearLayout
+                    android:id="@+id/messDeliveryPersonsEditNumbersLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messDeliveryPersonsEditSubHeaderText"></LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView42"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/activity_mess_delivery_persons_edit_add_new_number_header"
+                    android:textColor="@color/activity_mess_delivery_persons_edit_add_new_number_header"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messDeliveryPersonsEditNumbersLinearLayout" />
+
+                <EditText
+                    android:id="@+id/messDeliveryPersonsEditNewNumberNumberEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:ems="10"
+                    android:hint="@string/activity_mess_delivery_persons_edit_new_number_number_hint"
+                    android:inputType="phone"
+                    android:textAlignment="center"
+                    android:textColor="@color/activity_mess_delivery_persons_edit_value_text"
+                    android:textColorHint="@color/activity_mess_delivery_persons_edit_new_number_hint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView42" />
+
+                <EditText
+                    android:id="@+id/messDeliveryPersonsEditNewNumberNameEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:ems="10"
+                    android:hint="@string/activity_mess_delivery_persons_edit_new_number_name_hint"
+                    android:inputType="textPersonName"
+                    android:textAlignment="center"
+                    android:textColor="@color/activity_mess_delivery_persons_edit_value_text"
+                    android:textColorHint="@color/activity_mess_delivery_persons_edit_new_number_hint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messDeliveryPersonsEditNewNumberNumberEditText" />
+
+                <Button
+                    android:id="@+id/messDeliveryPersonsEditAddButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/mess_delivery_persons_edit_add_button_background"
+                    android:text="@string/activity_mess_delivery_persons_edit_add_button_text"
+                    android:textColor="@color/activity_mess_delivery_persons_edit_add_button_text"
+                    app:backgroundTint="@null"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messDeliveryPersonsEditNewNumberNameEditText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

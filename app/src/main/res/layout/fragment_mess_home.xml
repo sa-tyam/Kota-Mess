@@ -4,24 +4,379 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/fragment_mess_home_background"
     tools:context=".mess.home.MessHomeFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="mess home"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <TextView
+                    android:id="@+id/messHomeHeaderTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fragment_mess_home_headers_background"
+                    android:paddingStart="15dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="8dp"
+                    android:text="Lunch for 26/01"
+                    android:textColor="@color/fragment_mess_home_header_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/messHomeUpcomingMealHeaderTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fragment_mess_home_headers_background"
+                    android:paddingStart="15dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="8dp"
+                    android:text="Dinner for 26/01"
+                    android:textColor="@color/fragment_mess_home_header_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view22" />
+
+                <TextView
+                    android:id="@+id/messHomeCurrentMealStatsHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/fragment_mess_home_stats_for_header"
+                    android:textColor="@color/fragment_mess_home_stats_header"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeHeaderTextView" />
+
+                <TextView
+                    android:id="@+id/textView37"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/fragment_mess_home__stats_total_in_mess"
+                    android:textColor="@color/fragment_mess_home_stats_item"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeCurrentMealStatsHeader" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/fragment_mess_home_stats_total_order_received"
+                    android:textColor="@color/fragment_mess_home_stats_item"
+                    app:layout_constraintStart_toStartOf="@+id/messHomeUpcomingMealHeaderTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeUpcomingMealHeaderTextView" />
+
+                <TextView
+                    android:id="@+id/textView36"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/fragment_mess_home__stats_total_in_mess"
+                    android:textColor="@color/fragment_mess_home_stats_item"
+                    app:layout_constraintStart_toStartOf="@+id/messHomeUpcomingMealHeaderTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+                <TextView
+                    android:id="@+id/textView38"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/fragment_mess_home_stats_total_home_delivery"
+                    android:textColor="@color/fragment_mess_home_stats_item"
+                    app:layout_constraintStart_toStartOf="@+id/messHomeUpcomingMealHeaderTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/textView36" />
+
+                <TextView
+                    android:id="@+id/messHomeCurrentMealStatsTotalInMessTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="40"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/fragment_mess_home_stats_item"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView37"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView37" />
+
+                <TextView
+                    android:id="@+id/messHomeUpcomingMealStatsTotalOrdersReceivedTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="40"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/fragment_mess_home_stats_item"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView19"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+                <TextView
+                    android:id="@+id/messHomeUpcomingMealStatsTotalInMessTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="40"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/fragment_mess_home_stats_item"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView36"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView36" />
+
+                <TextView
+                    android:id="@+id/messHomeUpcomingMealStatsTotalHomeDeliveryTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="40"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/fragment_mess_home_stats_item"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView38"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView38" />
+
+                <TextView
+                    android:id="@+id/textView39"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/fragment_mess_home_stats_total_home_delivery"
+                    android:textColor="@color/fragment_mess_home_stats_item"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+                <TextView
+                    android:id="@+id/messHomeCurrentMealStatsTotalHomeDeliveryTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:text="40"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/fragment_mess_home_stats_item"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView39"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView39" />
+
+                <EditText
+                    android:id="@+id/messHomeVerificationCodeEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:ems="10"
+                    android:hint="@string/fragment_mess_home_input_verification_code_hint"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColor="@color/fragment_mess_home_input_verification_code_text"
+                    android:textColorHint="@color/fragment_mess_home_input_verification_code_hint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+                <Button
+                    android:id="@+id/messHomeAttendButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fragment_mess_home_attend_button_background"
+                    android:text="@string/fragment_mess_home_attend_button_text"
+                    android:textColor="@color/fragment_mess_home_attend_button_text"
+                    app:backgroundTint="@null"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeVerificationCodeEditText" />
+
+                <View
+                    android:id="@+id/view22"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/fragment_mess_home_horizontal_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeAttendButton" />
+
+                <TextView
+                    android:id="@+id/messHomeNextMealHeaderTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/fragment_mess_home_headers_background"
+                    android:paddingStart="15dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="8dp"
+                    android:text="Lunch for 26/01"
+                    android:textColor="@color/fragment_mess_home_header_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeCurrentMealItemsLinearLayout" />
+
+                <TextView
+                    android:id="@+id/messHomeNextMealNotSetTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:text="@string/fragment_mess_home_not_set_text"
+                    android:textColor="@color/fragment_mess_home_not_set_text"
+                    app:layout_constraintBottom_toBottomOf="@+id/messHomeNextMealHeaderTextView"
+                    app:layout_constraintStart_toEndOf="@+id/messHomeNextMealHeaderTextView"
+                    app:layout_constraintTop_toTopOf="@+id/messHomeNextMealHeaderTextView" />
+
+                <ImageView
+                    android:id="@+id/messHomeNextMealSpecialImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_baseline_star_18"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeNextMealHeaderTextView" />
+
+                <TextView
+                    android:id="@+id/messHomeNextMealSpecialTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/fragment_mess_home_special_text"
+                    android:textColor="@color/fragment_mess_home_special_text"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/messHomeNextMealSpecialImageView"
+                    app:layout_constraintStart_toEndOf="@+id/messHomeNextMealSpecialImageView"
+                    app:layout_constraintTop_toTopOf="@+id/messHomeNextMealSpecialImageView" />
+
+                <TextView
+                    android:id="@+id/messHomeNextMealPriceTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Rs. 50"
+                    android:textColor="@color/fragment_mess_home_next_meal_price_text"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeNextMealSpecialImageView" />
+
+                <TextView
+                    android:id="@+id/messHomeNextMealItemsHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/fragment_mess_home_items_header"
+                    android:textColor="@color/fragment_mess_home_items_header"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeNextMealPriceTextView" />
+
+                <TextView
+                    android:id="@+id/messHomeUpcomingMealItemsHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/fragment_mess_home_items_header"
+                    android:textColor="@color/fragment_mess_home_items_header"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeReceiveOrdersSwitch" />
+
+                <LinearLayout
+                    android:id="@+id/messHomeNextMealItemsLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeNextMealItemsHeader"></LinearLayout>
+
+                <Button
+                    android:id="@+id/messHomeNextMealSetMealButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fragment_mess_home_set_next_meal_button_background"
+                    android:text="Set Lunch"
+                    android:textColor="@color/fragment_mess_home_set_meal_button_text"
+                    app:backgroundTint="@null"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeNextMealItemsLinearLayout" />
+
+                <View
+                    android:id="@+id/view23"
+                    android:layout_width="0dp"
+                    android:layout_height="3dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/fragment_mess_home_horizontal_line"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeNextMealSetMealButton" />
+
+                <LinearLayout
+                    android:id="@+id/messHomeCurrentMealItemsLinearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/messHomeUpcomingMealItemsHeader"></LinearLayout>
+
+                <Switch
+                    android:id="@+id/messHomeReceiveOrdersSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/fragment_mess_home_switch_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </FrameLayout>

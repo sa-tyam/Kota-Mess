@@ -1,16 +1,17 @@
 package com.pkan.official.mess.delivery;
 
 public class DeliveryOrder {
-    String order_id, customer_name, house_number, room_number, landmark, phone_number;
+    String order_id, customer_name, house_number, room_number, landmark, phone_number, area_name;
 
     public DeliveryOrder(String order_id, String customer_name, String house_number,
-                         String room_number, String landmark, String phone_number) {
+                         String room_number, String landmark, String phone_number, String area_name) {
         this.order_id = order_id;
         this.customer_name = customer_name;
         this.house_number = house_number;
         this.room_number = room_number;
         this.landmark = landmark;
         this.phone_number = phone_number;
+        this.area_name = area_name;
     }
 
     public String getOrder_id() {
@@ -59,5 +60,13 @@ public class DeliveryOrder {
 
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
+    }
+
+    public String getArea_name() {
+        return area_name;
+    }
+
+    public void setArea_name(String area_name) {
+        this.area_name = area_name;
     }
 }

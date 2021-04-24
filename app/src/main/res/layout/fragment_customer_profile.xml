@@ -35,11 +35,11 @@
                     android:id="@+id/customerProfileFragmentProfileEditImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:src="@drawable/ic_baseline_edit_35"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView22"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="@+id/textView22" />
 
                 <TextView
                     android:id="@+id/textView34"
@@ -514,7 +514,14 @@
                     android:id="@+id/historyButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="history"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/fragment_customer_profile_history_button_background"
+                    app:backgroundTint="@null"
+                    android:text="@string/fragment_customer_profile_history_button_text"
+                    android:textColor="@color/fragment_customer_profile_history_button_text"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/logOutButton"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/view9" />
 
@@ -522,8 +529,15 @@
                     android:id="@+id/logOutButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Log Out"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/fragment_customer_profile_log_out_button_background"
+                    app:backgroundTint="@null"
+                    android:text="@string/fragment_customer_profile_logout_button_text"
+                    android:textColor="@color/fragment_customer_profile_logout_button_text"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/historyButton"
                     app:layout_constraintTop_toBottomOf="@+id/view9" />
 
 

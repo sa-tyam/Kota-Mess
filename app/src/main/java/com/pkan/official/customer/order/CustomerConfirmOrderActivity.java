@@ -14,7 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -34,8 +34,8 @@ import com.pkan.official.R;
 import com.pkan.official.customer.CustomerMainActivity;
 import com.pkan.official.customer.meals.Meal;
 import com.pkan.official.payments.PaymentsActivity;
+import com.squareup.picasso.Picasso;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
@@ -89,6 +89,8 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
     String customer_area = "", customer_area_id = "", customer_house_number = "",
             customer_room_number = "",
             customer_landmark = "";
+
+    int mess_delivery_home = 1, mess_delivery_in_mess = 1;
 
 
     @Override
@@ -184,22 +186,32 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
         customerConfirmOrderInMessRadioButton.setChecked(false);
 
         // toggle both buttons when any one is clicked
-        customerConfirmOrderHomeDeliveryRadioButton.setOnClickListener(new View.OnClickListener() {
+        customerConfirmOrderHomeDeliveryRadioButton.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-                customerConfirmOrderHomeDeliveryRadioButton.toggle();
-                customerConfirmOrderInMessRadioButton.toggle();
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                if (customerConfirmOrderHomeDeliveryRadioButton.isChecked()) {
+                    customerConfirmOrderInMessRadioButton.setChecked(false);
+                } else {
+                    customerConfirmOrderInMessRadioButton.setChecked(true);
+                }
+
             }
         });
 
-        customerConfirmOrderInMessRadioButton.setOnClickListener(new View.OnClickListener() {
+        customerConfirmOrderInMessRadioButton.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-                customerConfirmOrderInMessRadioButton.toggle();
-                customerConfirmOrderHomeDeliveryRadioButton.toggle();
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                if (customerConfirmOrderInMessRadioButton.isChecked()) {
+                    customerConfirmOrderHomeDeliveryRadioButton.setChecked(false);
+                } else {
+                    customerConfirmOrderHomeDeliveryRadioButton.setChecked(true);
+                }
             }
         });
-
     }
 
 
@@ -282,6 +294,9 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
                         if (meal_id != null && mess_id != null && mess_name != null &&
                                 mealItemArrayList.size() > 0) {
 
+                            // get delivery options
+                            getDeliveryOptions();
+
                             // for debugging in case of error
                             Log.d("mess name", mess_name);
 
@@ -337,6 +352,43 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
                 });
     }
 
+    private void getDeliveryOptions () {
+        databaseReference.child("Mess").child(mess_id).child("Profile")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.child("In Mess").getValue(Integer.class) != null) {
+                    mess_delivery_in_mess = snapshot.child("In Mess").getValue(Integer.class);
+                }
+                if (snapshot.child("Home Delivery").getValue(Integer.class) != null) {
+                    mess_delivery_home = snapshot.child("Home Delivery").getValue(Integer.class);
+                }
+                setDeliveryOptions();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void setDeliveryOptions () {
+        if (mess_delivery_home == 0) {
+            customerConfirmOrderInMessRadioButton.setChecked(true);
+            customerConfirmOrderInMessRadioButton.setClickable(false);
+            customerConfirmOrderHomeDeliveryRadioButton.setChecked(false);
+            customerConfirmOrderHomeDeliveryRadioButton.setClickable(false);
+        }
+        if (mess_delivery_in_mess == 0) {
+            customerConfirmOrderInMessRadioButton.setChecked(false);
+            customerConfirmOrderInMessRadioButton.setClickable(false);
+            customerConfirmOrderHomeDeliveryRadioButton.setChecked(true);
+            customerConfirmOrderHomeDeliveryRadioButton.setClickable(false);
+        }
+    }
+
     private void getValues (@NonNull Meal meal) {
 
         // get data easily available
@@ -351,12 +403,30 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
         order_status = "pending";
         order_price = meal.getMeal_price();
         mealItemArrayList = meal.getMealItemArrayList();
+        meal_image_link = meal.getMeal_image_link();
 
         // get current time
         order_time = Calendar.getInstance().getTime().toString();
 
         // get the security code
         security_code = generateSecurityCode();
+        DatabaseReference code_ref = databaseReference.child("Mess").child(mess_id)
+                .child("Current Meals").child(upcoming_date).child(upcoming_lunch_or_dinner)
+                .child("Security Codes");
+
+        code_ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                while (snapshot.hasChild(security_code)) {
+                    security_code = generateSecurityCode();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         // get mess details
         getMessDetails();
@@ -439,7 +509,7 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
                     address = customer_address;
 
                     // set the data in views
-                    serDataInViews();
+                    setDataInViews();
                 } else {
 
                     // warn user something went wrong and finish activity
@@ -465,7 +535,7 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
         });
     }
 
-    private void serDataInViews () {
+    private void setDataInViews() {
 
         // set header
         customerConfirmOrderHeaderTextView.setText(lunch_or_dinner + " for " + upcoming_date);
@@ -498,6 +568,11 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
             // add this view to linear layout
             customerConfirmOrderItemsLinearLayout.addView(view);
         }
+
+        // set meal image
+        Picasso.get()
+                .load(meal_image_link)
+                .into(customerConfirmOrderMealImageView);
 
         // set customer address
         customerConfirmOrderCustomerNameTextView.setText(customer_name);
@@ -606,17 +681,17 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
         }
 
         // set the order in customer upcoming orders
-        databaseReference.child("Customers").child(user.getUid()).child("Upcoming Order")
+        databaseReference.child("Customers").child(user.getUid()).child("Current Order")
+                .child(upcoming_date).child(upcoming_lunch_or_dinner)
                 .child(order_id).child("Order Id").setValue(order_id);
-        databaseReference.child("Customers").child(user.getUid()).child("Upcoming Order")
+        databaseReference.child("Customers").child(user.getUid()).child("Current Order")
+                .child(upcoming_date).child(upcoming_lunch_or_dinner)
                 .child(order_id).child("Lunch or Dinner").setValue(lunch_or_dinner);
 
         // set the order in mess upcoming orders
         DatabaseReference mess_ref = databaseReference.child("Mess").child(mess_id)
-                .child("Current Orders").child(lunch_or_dinner).child(mess_or_delivery)
-                .child(customer_area_id);
-
-        mess_ref.child("Area Name").setValue(customer_area);
+                .child("Orders").child(upcoming_date).child(upcoming_lunch_or_dinner)
+                .child(mess_or_delivery);
 
         DatabaseReference mess_order_ref = mess_ref.child("Orders").child(order_id);
         mess_order_ref.child("Order Id").setValue(order_id);
@@ -661,11 +736,13 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
 
     }
 
+
     private String generateSecurityCode () {
         // It will generate 6 digit random Number.
         // from 0 to 999999
         Random rnd = new Random();
-        int number = rnd.nextInt(999999);
+        int number;
+        number = rnd.nextInt(999999);
 
         // this will convert any number sequence into 6 character.
         return String.format("%06d", number);

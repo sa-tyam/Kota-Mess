@@ -2,6 +2,8 @@ package com.pkan.official.mess.delivery;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -9,12 +11,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,17 +29,23 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pkan.official.LandingPageActivity;
 import com.pkan.official.R;
-import com.pkan.official.customer.order.OrderItem;
-import com.pkan.official.login.LoginActivityVerifyOtp;
+
+import java.util.ArrayList;
+
+import static com.pkan.official.mess.delivery.GetOrderList.deliveryOrderArrayList;
 
 public class DeliveryMainActivity extends AppCompatActivity {
 
     // views used in activity
-    TextView deliveryMainActivityMessNameTextView, deliveryMainSubHeaderTextView;
+    TextView deliveryMainActivityMessNameTextView, deliveryMainHeaderTextView;
 
-    ImageView deliveryMainHistoryImageView, deliveryMainActivityLogOutImageView;
+    SearchView deliveryMainSearchView;
 
-    LinearLayout deliveryMainScrollViewLinearLayout;
+    RecyclerView deliveryMainRecyclerView;
+
+    ImageView deliveryMainActivityLogOutImageView;
+
+
 
     // firebase variables to be used in activity
     FirebaseUser user;
@@ -51,6 +59,9 @@ public class DeliveryMainActivity extends AppCompatActivity {
 
     // variable for titles
     String lunch_or_dinner, order_date;
+
+    // recycler view adapter
+    DeliveryRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,16 +77,20 @@ public class DeliveryMainActivity extends AppCompatActivity {
         // get Title Variables
         getTitleVariables();
 
+        // set search view
+        setSearchView();
     }
 
     private void initViews () {
 
-        // initialize views
-        deliveryMainActivityMessNameTextView = findViewById(R.id.deliveryMainActivityMessNameTextView);
-        deliveryMainSubHeaderTextView = findViewById(R.id.deliveryMainSubHeaderTextView);
-        deliveryMainHistoryImageView = findViewById(R.id.deliveryMainHistoryImageView);
-        deliveryMainActivityLogOutImageView = findViewById(R.id.deliveryMainActivityLogOutImageView);
-        deliveryMainScrollViewLinearLayout = findViewById(R.id.deliveryMainScrollViewLinearLayout);
+        // initialize the views
+        deliveryMainActivityMessNameTextView = findViewById(R.id
+                .deliveryMainActivityMessNameTextView);
+        deliveryMainHeaderTextView = findViewById(R.id.deliveryMainHeaderTextView);
+        deliveryMainSearchView = findViewById(R.id.deliveryMainSearchView);
+        deliveryMainRecyclerView = findViewById(R.id.deliveryMainRecyclerView);
+        deliveryMainActivityLogOutImageView = findViewById(R.id
+                .deliveryMainActivityLogOutImageView);
 
         // initialize firebase variables
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -88,16 +103,6 @@ public class DeliveryMainActivity extends AppCompatActivity {
     }
 
     private void setOnClicks () {
-        deliveryMainHistoryImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                // send to delivery history page
-                Intent intent = new Intent(getApplicationContext(), DeliveryHistoryActivity.class);
-                startActivity(intent);
-            }
-        });
-
         deliveryMainActivityLogOutImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,9 +168,7 @@ public class DeliveryMainActivity extends AppCompatActivity {
                             Log.e("mess name", mess_name);
                             // set header and sub header
                             setTitles();
-
-                            // get Orders
-                            getOrders();
+                            getData();
                         }
                     }
 
@@ -189,7 +192,7 @@ public class DeliveryMainActivity extends AppCompatActivity {
         }
 
         if (lunch_or_dinner != null && order_date != null) {
-            deliveryMainSubHeaderTextView.setText(lunch_or_dinner + " for " + order_date);
+            deliveryMainHeaderTextView.setText(lunch_or_dinner + " for " + order_date);
         } else {
 
             // warn user to reload app
@@ -198,147 +201,73 @@ public class DeliveryMainActivity extends AppCompatActivity {
         }
     }
 
-    private void getOrders () {
-        Log.e("getOrders", "reached");
-
-        databaseReference.child("Mess").child(mess_id).child("Current Orders")
-                .child(lunch_or_dinner).child("Delivery")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
+    private void getData () {
+        GetOrderList.getDataFromDatabase(new GetOrderList.DataStatus() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void DataIsLoaded(ArrayList<DeliveryOrder> deliveryOrderArrayList) {
+                setRecyclerView();
+            }
 
-                for (DataSnapshot node : snapshot.getChildren()) {
-                    // set area name
-                    String area_name = node.child("Area Name").getValue(String.class);
+            @Override
+            public void DataIsInserted() {
 
-                    if (area_name != null) {
-                        // set area text view
+            }
 
-                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            @Override
+            public void DataIsUpdated() {
 
-                        layoutParams.setMargins(10, 20, 10, 20);
+            }
 
-                        TextView textView = new TextView(getApplicationContext());
-                        textView.setLayoutParams(layoutParams);
-                        textView.setText(area_name);
-                        textView.setTextColor(getResources().getColor(R.color
-                                .activity_delivery_main_area_name_text));
-                        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
+            @Override
+            public void DataIsDeleted() {
 
-                        deliveryMainScrollViewLinearLayout.addView(textView);
+            }
+        }, mess_id);
+    }
 
-                        // set orders
-                        for (DataSnapshot orderNode : node.child("Orders").getChildren()) {
-                            String order_id = "", name = "", house_number = "", room_number = "",
-                                    landmark = "", phone_number = "";
+    private void setRecyclerView () {
+        deliveryMainRecyclerView.setHasFixedSize(true);
+        deliveryMainRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
+                RecyclerView.VERTICAL, false));
+        adapter = new DeliveryRecyclerAdapter(getApplicationContext(), deliveryOrderArrayList);
+        deliveryMainRecyclerView.setAdapter(adapter);
+    }
 
-                            order_id = orderNode.child("Order Id").getValue(String.class);
-                            name = orderNode.child("Customer Name").getValue(String.class);
-                            house_number = orderNode.child("House Number").getValue(String.class);
-                            room_number = orderNode.child("Room Number").getValue(String.class);
-                            landmark = orderNode.child("Landmark").getValue(String.class);
-                            phone_number = orderNode.child("Customer Mobile Number")
-                                    .getValue(String.class);
+    private void setSearchView () {
+        deliveryMainSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
 
-                            Log.e("after loop", "reached");
-                            Log.e("Customer name", name);
-                            Log.e("order id", order_id);
-                            Log.e("house number", house_number);
-                            Log.e("room number", room_number);
-                            Log.e("Landmark", landmark);
+                String user_input = s.toLowerCase();
+                ArrayList<DeliveryOrder> searchArrayList = new ArrayList<>();
 
-
-                            if (order_id != null && name != null && house_number != null &&
-                                    room_number != null && landmark != null &&
-                                    phone_number != null) {
-
-
-                                DeliveryOrder deliveryOrder = new DeliveryOrder(order_id, name,
-                                        house_number, room_number, landmark, phone_number);
-
-                                setOrders(deliveryOrder);
-                                setOrders(deliveryOrder);
-                                setOrders(deliveryOrder);
-                                setOrders(deliveryOrder);
-
-                            }
-                        }
+                for (DeliveryOrder item : deliveryOrderArrayList) {
+                    if (item.getArea_name().toLowerCase().contains(user_input)) {
+                        searchArrayList.add(item);
                     }
                 }
+
+                adapter.searchData(searchArrayList);
+
+                return true;
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public boolean onQueryTextChange(String s) {
+                String user_input = s.toLowerCase();
+                ArrayList<DeliveryOrder> searchArrayList = new ArrayList<>();
 
+                for (DeliveryOrder item : deliveryOrderArrayList) {
+                    if (item.getArea_name().toLowerCase().contains(user_input)) {
+                        searchArrayList.add(item);
+                    }
+                }
+
+                adapter.searchData(searchArrayList);
+
+                return true;
             }
         });
-    }
-
-    private void setOrders (DeliveryOrder deliveryOrder) {
-
-        Log.e("setOrders", "reached");
-
-        // create view object
-        View view = getLayoutInflater().inflate(
-                R.layout.delivery_main_scroll_view_item,
-                deliveryMainScrollViewLinearLayout, false);
-
-        // declare views used in the item view
-
-        TextView deliveryMainScrollViewItemCustomerNameTextView,
-                deliveryMainScrollViewItemHouseNumberTextView,
-                deliveryMainScrollViewItemRoomNumberTextView,
-                deliveryMainScrollViewItemLandmarkTextView,
-                deliverMainScrollViewItemPhoneNumberTextView;
-
-        Button deliveryMainScrollViewItemDeliverButton;
-
-        // initialize the views
-        deliveryMainScrollViewItemCustomerNameTextView = view.findViewById(R.id
-                .deliveryMainScrollViewItemCustomerNameTextView);
-        deliveryMainScrollViewItemHouseNumberTextView = view.findViewById(R.id
-                .deliveryMainScrollViewItemHouseNumberTextView);
-        deliveryMainScrollViewItemRoomNumberTextView = view.findViewById(R.id
-                .deliveryMainScrollViewItemRoomNumberTextView);
-        deliveryMainScrollViewItemLandmarkTextView = view.findViewById(R.id
-                .deliveryMainScrollViewItemLandmarkTextView);
-        deliverMainScrollViewItemPhoneNumberTextView = view.findViewById(R.id
-                .deliverMainScrollViewItemPhoneNumberTextView);
-        deliveryMainScrollViewItemDeliverButton = view.findViewById(R.id
-                .deliveryMainScrollViewItemDeliverButton);
-
-        // set the texts
-        deliveryMainScrollViewItemCustomerNameTextView.setText(deliveryOrder.getCustomer_name());
-        deliveryMainScrollViewItemHouseNumberTextView.setText(deliveryOrder.getHouse_number());
-        deliveryMainScrollViewItemRoomNumberTextView.setText(deliveryOrder.getRoom_number());
-        deliveryMainScrollViewItemLandmarkTextView.setText(deliveryOrder.getLandmark());
-        deliverMainScrollViewItemPhoneNumberTextView.setText(deliveryOrder.getPhone_number());
-
-        // set on clicks
-        deliveryMainScrollViewItemDeliverButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                orderDelivered(deliveryOrder.getOrder_id());
-            }
-        });
-
-        // set the call action when phone number text view is clicked
-        deliverMainScrollViewItemPhoneNumberTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:"+ deliveryOrder.getPhone_number()));
-                startActivity(intent);
-            }
-        });
-
-        deliveryMainScrollViewLinearLayout.addView(view);
-    }
-
-    private void orderDelivered (String order_id) {
-        // for testing
-        Log.d("deliver", "clicked");
     }
 
     private void startProgressDialog () {

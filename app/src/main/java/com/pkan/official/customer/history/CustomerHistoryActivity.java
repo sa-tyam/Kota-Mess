@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.pkan.official.R;
 import com.pkan.official.customer.order.OrderItem;
@@ -19,6 +21,8 @@ public class CustomerHistoryActivity extends AppCompatActivity {
     // declare views to be used in activity
     RecyclerView customerHistoryRecyclerView;
 
+    ImageView customerHistoryBackImageView;
+
     // Progress Dialog
     ProgressDialog progressDialog;
 
@@ -30,6 +34,9 @@ public class CustomerHistoryActivity extends AppCompatActivity {
         // initialize views and variables
         initViews ();
 
+        // set on clicks
+        setOnClicks();
+
         // call retrieve data to set recycler view, disable screen and show progress dialog
         startProgressDialog();
         setRecyclerView();
@@ -39,14 +46,25 @@ public class CustomerHistoryActivity extends AppCompatActivity {
 
     private void initViews () {
         // initialize the views used in fragment
-        customerHistoryRecyclerView = findViewById(R.id
-                .customerHistoryRecyclerView);
+        customerHistoryRecyclerView = findViewById(R.id.customerHistoryRecyclerView);
+        customerHistoryBackImageView = findViewById(R.id.customerHistoryBackImageView);
 
         // initialize progressDialog
         progressDialog = new ProgressDialog(CustomerHistoryActivity.this);
         progressDialog.setMessage("Please Wait ...");
         progressDialog.setCancelable(false);
 
+    }
+
+    private void setOnClicks () {
+
+        // simply finish the activity when back image view is clicked
+        customerHistoryBackImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void callRetrieveData() {

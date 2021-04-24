@@ -105,6 +105,10 @@ public class CustomerHomeFragment extends Fragment {
     // Progress Dialog
     ProgressDialog progressDialog;
 
+    // variables used in functions
+    String current_meal_l_or_d, current_meal_date;
+    String upcoming_meal_l_or_d, upcoming_meal_date;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -120,10 +124,9 @@ public class CustomerHomeFragment extends Fragment {
 
         // disable screen, show progress dialog and set current meal
         startProgressDialog();
-        getCurrentOrder();
 
-        // set upcoming order
-        getUpComingOrder();
+        // get header details
+        getHeaderDetails();
 
         return view;
     }
@@ -199,8 +202,57 @@ public class CustomerHomeFragment extends Fragment {
                 });
     }
 
+    private void getHeaderDetails () {
+
+        // get lunch or dinners and dates
+        databaseReference.child("Time Management Status")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        current_meal_l_or_d = snapshot.child("Current Lunch or Dinner")
+                                .getValue(String.class);
+                        current_meal_date = snapshot.child("Current Date").getValue(String.class);
+                        upcoming_meal_l_or_d = snapshot.child("Upcoming Lunch or Dinner")
+                                .getValue(String.class);
+                        upcoming_meal_date = snapshot.child("Upcoming Date").getValue(String.class);
+
+
+                        if (current_meal_l_or_d != null && current_meal_date != null
+                                && upcoming_meal_l_or_d != null && upcoming_meal_date != null) {
+
+                            // for debugging purpose
+                            Log.d("current date", current_meal_date);
+
+                            // get the current and upcoming order
+                            getCurrentOrder();
+                            getUpComingOrder();
+
+                        } else {
+
+                            // for debugging purpose
+                            Log.e("dates", "not found");
+
+                            // stop progress dialog
+                            stopProgressDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                        // for debugging purpose
+                        Log.e("dates", error.getDetails());
+
+                        // stop progress dialog
+                        stopProgressDialog();
+                    }
+                });
+    }
+
     private void getCurrentOrder() {
         databaseReference.child("Customers").child(user.getUid()).child("Current Order")
+                .child(current_meal_date).child(current_meal_l_or_d)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -455,7 +507,8 @@ public class CustomerHomeFragment extends Fragment {
     private void getUpComingOrder() {
 
         // check if upcoming order exists
-        databaseReference.child("Customers").child(user.getUid()).child("Upcoming Order")
+        databaseReference.child("Customers").child(user.getUid()).child("Current Order")
+                .child(upcoming_meal_date).child(upcoming_meal_l_or_d)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

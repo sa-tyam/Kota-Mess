@@ -29,41 +29,41 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_power_settings_new_30" />
 
-    <ImageView
-        android:id="@+id/deliveryMainHistoryImageView"
+    <TextView
+        android:id="@+id/deliveryMainHeaderTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/deliveryMainActivityLogOutImageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_history_30" />
+        android:layout_marginTop="5dp"
+        android:background="@drawable/activity_delivery_main_header_background"
+        android:paddingStart="15dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="8dp"
+        android:text="Lunch for 26/01"
+        android:textColor="@color/activity_delivery_main_header_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deliveryMainSearchView" />
 
-    <ScrollView
+    <SearchView
+        android:id="@+id/deliveryMainSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deliveryMainActivityMessNameTextView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/deliveryMainRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deliveryMainHistoryImageView">
+        app:layout_constraintTop_toBottomOf="@+id/deliveryMainHeaderTextView" />
 
-        <LinearLayout
-            android:id="@+id/deliveryMainScrollViewLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/deliveryMainSubHeaderTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:text="Lunch For 26/01"
-                android:textAlignment="center"
-                android:textColor="@color/activity_delivery_main_sub_header"
-                android:textSize="18sp" />
-        </LinearLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

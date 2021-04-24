@@ -41,9 +41,6 @@ public class GetMealList {
         user = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        // clear the array list
-        mealArrayList.clear();
-
         // get customer area
         databaseReference.child("Customers").child(user.getUid()).child("Address")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -117,6 +114,8 @@ public class GetMealList {
                 // get lunch or dinner
                 String lunch_or_dinner = snapshot.child("Upcoming Lunch or Dinner")
                         .getValue(String.class);
+                String upcoming_date = snapshot.child("Upcoming Date")
+                        .getValue(String.class);
 
                 if (lunch_or_dinner != null) {
 
@@ -124,7 +123,7 @@ public class GetMealList {
                     Log.d("lunch or dinner", lunch_or_dinner);
 
                     // get upcoming meal id of mess
-                    verifiedOrNot(dataStatus, lunch_or_dinner, mess_id);
+                    verifiedOrNot(dataStatus,upcoming_date, lunch_or_dinner, mess_id);
                 }
             }
 
@@ -134,7 +133,8 @@ public class GetMealList {
             }
         });
     }
-    public static void verifiedOrNot (DataStatus dataStatus, String lunch_or_dinner, String mess_id) {
+
+    public static void verifiedOrNot (DataStatus dataStatus,String upcoming_date, String lunch_or_dinner, String mess_id) {
 
         // check if mess is verified
         databaseReference.child("Mess").child(mess_id)
@@ -147,7 +147,7 @@ public class GetMealList {
 
                         // if verified move ahead
                         if (verified == 1) {
-                            getMealId(dataStatus, lunch_or_dinner, mess_id);
+                            getMealId(dataStatus,upcoming_date, lunch_or_dinner, mess_id);
                         }
                     }
 
@@ -158,18 +158,23 @@ public class GetMealList {
                 });
     }
 
-    public static void getMealId (DataStatus dataStatus, String lunch_or_dinner, String mess_id) {
+    public static void getMealId (DataStatus dataStatus,String upcoming_date, String lunch_or_dinner, String mess_id) {
 
         // get upcoming meal id of the mess
-        databaseReference.child("Mess").child(mess_id).child("Current Meals")
+        databaseReference.child("Mess").child(mess_id).child("Current Meals").child(upcoming_date)
                 .child(lunch_or_dinner).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 // get the meal id
                 String meal_id = snapshot.child("Meal Id").getValue(String.class);
+                int available = 0;
 
-                if (meal_id != null) {
+                if (snapshot.child("Available").getValue(Integer.class) != null) {
+                    available = snapshot.child("Available").getValue(Integer.class);
+                }
+
+                if (meal_id != null && available == 1) {
 
                     // for debugging in case of error
                     Log.d("meal id", meal_id);

@@ -14,7 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".customer.history.CustomerHistoryActivity"></activity>
+        <activity android:name=".mess.profile.MessDeliveryAreaEditActivity"></activity>
+        <activity android:name=".mess.meals.MessSelectMealActivity" />
+        <activity android:name=".mess.profile.MessDeliveryPersonsEditActivity" />
+        <activity android:name=".mess.meals.MessMealDetailActivity" />
+        <activity android:name=".mess.meals.MessAddNewMealActivity" />
+        <activity android:name=".customer.history.CustomerHistoryActivity" />
         <activity android:name=".customer.order.CustomerOrderDetailsActivity" />
         <activity android:name=".mess.delivery.DeliveryHistoryActivity" />
         <activity android:name=".mess.delivery.DeliveryMainActivity" />
@@ -39,11 +44,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.razorpay.ApiKey"
-            android:value="rzp_test_wO1ldByMjpVeG2"
-            />
+            android:value="rzp_test_wO1ldByMjpVeG2" />
     </application>
-
 
 </manifest>

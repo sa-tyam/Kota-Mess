@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -84,13 +85,12 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
         // initialize the views and variables
         initViews();
 
-        // disable the screen, show progress dialog and set city spinner
-        startProgressDialog();
-        setCitySpinner ();
-
         // set the onClicks to be used in activity
         setOnClicks();
 
+        // disable the screen, show progress dialog and get Data
+        startProgressDialog();
+        getData ();
 
     }
 
@@ -131,6 +131,81 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(MessBasicProfileEditActivity.this);
         progressDialog.setMessage("Please Wait ...");
         progressDialog.setCancelable(false);
+    }
+
+    private void setOnClicks () {
+        // finish the activity when back image view is clicked
+        messBasicProfileEditBackImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        // select picture to be uploaded when select image imageView is clicked
+        messBasicProfileEditSelectPictureImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectPicture ();
+            }
+        });
+
+        // check for validity when next button is pressed
+        messBasicProfileEditNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkForSave();
+            }
+        });
+
+        // toggle radio buttons on clicked
+        messBasicProfileEditHomeDeliveryCheckBox.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                // check if home delivery is selected or not
+                if (messBasicProfileEditHomeDeliveryCheckBox.isChecked()) {
+                    home_delivery = 1;
+                } else {
+                    home_delivery = 0;
+                }
+            }
+        });
+
+        messBasicProfileEditInMessCheckBox.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                // check if in mess is selected or not
+                if (messBasicProfileEditInMessCheckBox.isChecked()) {
+                    in_mess = 1;
+                } else {
+                    in_mess = 0;
+                }
+            }
+        });
+    }
+
+    private void getData () {
+        databaseReference.child("Mess").child(user.getUid()).child("Profile")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.hasChild("Balance")) {
+                            new_user = "";
+                        } else {
+                            new_user = "newUser";
+                        }
+                        setCitySpinner ();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                        // for debugging purpose
+                        Log.e("get user profile", error.getDetails());
+                    }
+                });
     }
 
     private void setCitySpinner () {
@@ -217,7 +292,7 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
                             areaArrayList.add(keyNode.child("Name").getValue(String.class));
                         }
 
-                        // now the list is ready, create an dapter using it
+                        // now the list is ready, create an adapter using it
                         ArrayAdapter areaAdapter = new ArrayAdapter(getApplicationContext(),
                                 R.layout.profile_spinners_item, areaArrayList);
 
@@ -233,7 +308,7 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
                                     public void onItemSelected(AdapterView<?> adapterView, View view,
                                                                int i, long l) {
 
-                                        // her 'i' is the position which was selected
+                                        // here 'i' is the position which was selected
                                         area = areaArrayList.get(i);
                                         area_id = areaIdArrayList.get(i);
                                     }
@@ -254,48 +329,6 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
                         Log.e("setAreaSpinner", error.getDetails());
                     }
                 });
-    }
-
-
-    private void setOnClicks () {
-        // finish the activity when back image view is clicked
-        messBasicProfileEditBackImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-        // select picture to be uploaded when select image imageView is clicked
-        messBasicProfileEditSelectPictureImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectPicture ();
-            }
-        });
-
-        // check for validity when next button is pressed
-        messBasicProfileEditNextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkForSave();
-            }
-        });
-
-        // toggle radio buttons on clicked
-        messBasicProfileEditHomeDeliveryCheckBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                messBasicProfileEditHomeDeliveryCheckBox.toggle();
-            }
-        });
-
-        messBasicProfileEditInMessCheckBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                messBasicProfileEditInMessCheckBox.toggle();
-            }
-        });
     }
 
     private void selectPicture () {
@@ -435,15 +468,17 @@ public class MessBasicProfileEditActivity extends AppCompatActivity {
         profile_ref.child("Mess Timings").setValue(mess_timings);
         profile_ref.child("Home Delivery").setValue(home_delivery);
         profile_ref.child("In Mess").setValue(in_mess);
+
+        if (new_user.length() > 2) {
+            profile_ref.child("Balance").setValue(0);
+        }
+
         profile_ref.child("Monthly Price").setValue(monthly_charge).addOnSuccessListener(
                 new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 // enable the screen and stop progress dialog
                 stopProgressDialog();
-
-                // check if new user
-                new_user = getIntent().getStringExtra("newUser");
 
                 if (new_user.length() > 0) {
 
