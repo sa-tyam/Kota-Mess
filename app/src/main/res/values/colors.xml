@@ -107,7 +107,6 @@
     <color name="activity_customer_history_detail_reviews_header">#333333</color>
     <color name="activity_customer_history_detail__reviews_star_color">#EFC41A</color>
     <color name="activity_customer_history_detail_reviews_text">#675C5C</color>
-
     
     # customer profile fragment #
     
@@ -229,6 +228,9 @@
     <color name="activity_mess_payment_options_edit_next_button_background">#4E73B8</color>
     <color name="activity_mess_payment_options_edit_skip_button_text">#786D6D</color>
     <color name="activity_mess_payment_options_edit_skip_button_border">#B0A1A1</color>
+
+    # mess main activity #
+    <color name="activity_mess_main_background">#FFFBEC</color>
     
     # mess profile fragment #
 
@@ -261,6 +263,8 @@
     <color name="fragment_mess_home_input_verification_code_text">#333333</color>
     <color name="fragment_mess_home_attend_button_background">#4E73B8</color>
     <color name="fragment_mess_home_attend_button_text">#FFF9F9</color>
+    <color name="fragment_mess_home_deliver_button_background">#4E73B8</color>
+    <color name="fragment_mess_home_deliver_button_text">#4E73B8</color>
     <color name="fragment_mess_home_not_set_text">#827272</color>
     <color name="fragment_mess_home_next_meal_price_text">#333333</color>
     <color name="fragment_mess_home_set_meal_button_text">#4E73B8</color>

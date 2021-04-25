@@ -426,7 +426,7 @@ public class CustomerHomeFragment extends Fragment {
 
         // create view object
         View meal_item_view = getLayoutInflater().inflate(R.layout.customer_home_meal_items,
-                customerHomeCurrentOrderLinearLayout);
+                customerHomeCurrentOrderLinearLayout, false);
 
         // declare and initialize the views used inside meal item_view
         TextView customerHomeMealItemHeader, customerHomeMealItemMessNameTextView,
@@ -497,7 +497,7 @@ public class CustomerHomeFragment extends Fragment {
         });
 
         // add this view to the linear layout
-        // customerHomeCurrentOrderLinearLayout.addView(meal_item_view);
+        customerHomeCurrentOrderLinearLayout.addView(meal_item_view);
 
         // enable the screen and stop the progress dialog
         stopProgressDialog();
@@ -560,10 +560,10 @@ public class CustomerHomeFragment extends Fragment {
                 });
     }
 
-    private void setUpcomingMeal(@NonNull OrderItem orderItem) {
+    private void setUpcomingMeal(OrderItem orderItem) {
         // create view object
         View meal_item_view = getLayoutInflater().inflate(R.layout.customer_home_meal_items,
-                customerHomeUpcomingOrderLinearLayout);
+                customerHomeUpcomingOrderLinearLayout, false);
 
         // declare and initialize the views used inside meal item_view
         TextView customerHomeMealItemHeader, customerHomeMealItemMessNameTextView,
@@ -586,6 +586,7 @@ public class CustomerHomeFragment extends Fragment {
                 .customerHomeMealItemImageView);
         customerHomeMealItemCallImageView = meal_item_view.findViewById(R.id
                 .customerHomeMealItemCallImageView);
+
 
         // set the required data
         customerHomeMealItemHeader.setText(orderItem.getLunch_or_dinner() + " for " +
@@ -634,7 +635,7 @@ public class CustomerHomeFragment extends Fragment {
         });
 
         // add this view to the linear layout
-        // customerHomeUpcomingOrderLinearLayout.addView(meal_item_view);
+        customerHomeUpcomingOrderLinearLayout.addView(meal_item_view);
 
         // enable the screen and stop the progress dialog
         stopProgressDialog();

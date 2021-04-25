@@ -1,10 +1,14 @@
 package com.pkan.official.login;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,6 +37,10 @@ public class LoginActivityPhoneNumber extends AppCompatActivity {
         setContentView(R.layout.activity_login_phone_number);
 
         initViews();
+
+        // set status bar color
+        setStatusBarColor();
+
         setOnClicks ();
 
     }
@@ -44,6 +52,27 @@ public class LoginActivityPhoneNumber extends AppCompatActivity {
         loginPhoneNumberCustomerRadioButton = findViewById(R.id.loginPhoneNumberCustomerRadioButton);
         loginPhoneNumberMessRadioButton = findViewById(R.id.loginPhoneNumberMessRadioButton);
         loginPhoneNumberBackImageView = findViewById(R.id.loginPhoneNumberBackImageView);
+    }
+
+    private void setStatusBarColor () {
+
+        // check if android version is greater than or equal to 21
+        // it works only for API level 21 or higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            Window window = getWindow();
+
+            // clear FLAG_TRANSLUCENT_STATUS flag:
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+            // finally change the color
+            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(),
+                    R.color.activity_login_phone_number_background));
+        }
+
     }
 
     // set OnClicks used in the activity

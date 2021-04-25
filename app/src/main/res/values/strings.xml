@@ -27,7 +27,7 @@
     <string name="activity_login_verify_otp_header">Verify Otp</string>
     <string name="activity_login_verify_otp_sub_header">Enter The OTP sent to your phone</string>
     <string name="activity_login_verify_otp_resend_otp_label">Did not receive OTP </string>
-    <string name="activity_login_verify_otp_input_hint">Enter otp here</string>
+    <string name="activity_login_verify_otp_input_hint">OTP</string>
     <string name="activity_login_verify_otp_resend_otp">resend OTP</string>
     <string name="activity_login_verify_otp_verify_button_text">Verify and Proceed</string>
 
@@ -218,6 +218,7 @@
     <string name="fragment_mess_home_total_delivered">Total delivered</string>
     <string name="fragment_mess_home_input_verification_code_hint">Input Verification Code</string>
     <string name="fragment_mess_home_attend_button_text">Attend</string>
+    <string name="fragment_mess_home_deliver_button_text">Deliver Orders</string>
     <string name="fragment_mess_home_not_set_text">not set</string>
     <string name="fragment_mess_home_add_delivery_person_button_text">Add delivery Person</string>
     <string name="fragment_mess_home_add_new_meal_text">Add New Meal</string>

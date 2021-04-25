@@ -2,14 +2,18 @@ package com.pkan.official.customer.plans;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,10 +32,17 @@ import com.google.firebase.database.ValueEventListener;
 import com.pkan.official.R;
 import com.pkan.official.customer.CustomerMainActivity;
 import com.pkan.official.payments.PaymentsActivity;
+import com.shreyaspatil.EasyUpiPayment.EasyUpiPayment;
+import com.shreyaspatil.EasyUpiPayment.listener.PaymentStatusListener;
+import com.shreyaspatil.EasyUpiPayment.model.TransactionDetails;
 
 import java.util.ArrayList;
 
 public class CustomerPlanSelectActivity extends AppCompatActivity {
+
+    // variables used for upi transaction
+    final String COMPANY_UPI_ID = "skdbsp123@okhdfcbank";
+    final String PAYEE_NAME = "Satyam Kumar";
 
     // views to be used in activity
     ImageView customerSelectPlanBackImageView;
@@ -54,6 +65,9 @@ public class CustomerPlanSelectActivity extends AppCompatActivity {
     // check if user is new or existing
     String new_user = "";
 
+    // customer balance
+    int customer_balance = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +76,9 @@ public class CustomerPlanSelectActivity extends AppCompatActivity {
 
         // initialize the views used in the activity
         initViews();
+
+        // set status bar color
+        setStatusBarColor();
 
         // set On Clicks
         setOnClicks();
@@ -102,6 +119,27 @@ public class CustomerPlanSelectActivity extends AppCompatActivity {
         mPlansList = new ArrayList<>();
     }
 
+    private void setStatusBarColor () {
+
+        // check if android version is greater than or equal to 21
+        // it works only for API level 21 or higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            Window window = getWindow();
+
+            // clear FLAG_TRANSLUCENT_STATUS flag:
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+            // finally change the color
+            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(),
+                    R.color.activity_customer_plan_select_background));
+        }
+
+    }
+
     private void setOnClicks () {
         // finish the activity when back image view is clicked
         customerSelectPlanBackImageView.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +172,19 @@ public class CustomerPlanSelectActivity extends AppCompatActivity {
                                     // new user
                                     new_user = "newUser";
                                 }
+
+                                if (snapshot.child("Balance").getValue(Integer.class) != null) {
+                                    customer_balance = snapshot.child("Balance")
+                                            .getValue(Integer.class);
+
+                                    // for debugging purpose
+                                    Log.d("customer balance", String.valueOf(customer_balance));
+                                } else {
+
+                                    // for debugging purpose
+                                    Log.e("customer balance", "not found");
+                                }
+
                             }
 
                             @Override
@@ -205,13 +256,8 @@ public class CustomerPlanSelectActivity extends AppCompatActivity {
 
     private void addBalance (String amount) {
 
-        // send user to payment activity
-        Intent intent = new Intent(getApplicationContext(), PaymentsActivity.class);
+        makeUpiPayment((float)Integer.parseInt(amount));
 
-        // add extras to be used in payment activity
-        intent.putExtra("amount", amount);
-        intent.putExtra("planId", "regular");
-        startActivity(intent);
     }
 
     private void setRegularPlan () {
@@ -308,6 +354,92 @@ public class CustomerPlanSelectActivity extends AppCompatActivity {
         CustomerPlanSelectAdapter adapter = new CustomerPlanSelectAdapter(getApplicationContext(), mPlansList);
         customerPlanSelectRecyclerView.setAdapter(adapter);
         stopProgressDialog();
+    }
+
+    private void makeUpiPayment (float amount) {
+
+        // for debugging purpose
+        Log.e("start upi", "reached");
+
+        final EasyUpiPayment easyUpiPayment = new EasyUpiPayment.Builder()
+                .with(this)
+                .setPayeeVpa(COMPANY_UPI_ID)
+                .setPayeeName(PAYEE_NAME)
+                .setTransactionId(user.getUid())
+                .setTransactionRefId(user.getUid())
+                .setDescription("for app Balance")
+                .setAmount(String.valueOf(amount))
+                .build();
+
+        easyUpiPayment.startPayment();
+
+        easyUpiPayment.setPaymentStatusListener(new PaymentStatusListener() {
+            @Override
+            public void onTransactionCompleted(TransactionDetails transactionDetails) {
+
+                // for debugging purpose
+                Log.d("payment", "completed");
+                Log.d("transaction id", transactionDetails.getTransactionId());
+                Log.d("transaction status", transactionDetails.getStatus());
+
+                addBalance((int) amount);
+            }
+
+            @Override
+            public void onTransactionSuccess() {
+
+                // for debugging purpose
+                Log.d("payment", "success");
+
+                // alert the user about the status
+                Toast.makeText(getApplicationContext(), "Transaction Success", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onTransactionSubmitted() {
+
+                // for debugging purpose
+                Log.d("payment", "submitted");
+
+                // alert the user about the status
+                Toast.makeText(getApplicationContext(), "Transaction Submitted", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onTransactionFailed() {
+
+                // for debugging purpose
+                Log.d("payment", "failed");
+
+                // alert the user about the status
+                Toast.makeText(getApplicationContext(), "Transaction Failed", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onTransactionCancelled() {
+
+                // for debugging purpose
+                Log.d("payment", "cancelled");
+
+                // alert the user about the status
+                Toast.makeText(getApplicationContext(), "Transaction Cancelled", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAppNotFound() {
+
+                // for debugging purpose
+                Log.d("payment", "app not found");
+
+                // alert the user about the status
+                Toast.makeText(getApplicationContext(), "App Not Found", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void addBalance(int amount) {
+        databaseReference.child("Customers").child(user.getUid()).child("Balance")
+                .setValue(customer_balance + amount);
     }
 
     private void startProgressDialog () {

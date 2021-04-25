@@ -3,13 +3,17 @@ package com.pkan.official.mess.meals;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -87,6 +91,9 @@ public class MessAddNewMealActivity extends AppCompatActivity {
         // initialize views and variables used in activity
         initViews();
 
+        // set status bar color
+        setStatusBarColor();
+
         // set onClicks
         setOnClicks();
 
@@ -133,6 +140,27 @@ public class MessAddNewMealActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(MessAddNewMealActivity.this);
         progressDialog.setMessage("Please Wait ...");
         progressDialog.setCancelable(false);
+    }
+
+    private void setStatusBarColor () {
+
+        // check if android version is greater than or equal to 21
+        // it works only for API level 21 or higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            Window window = getWindow();
+
+            // clear FLAG_TRANSLUCENT_STATUS flag:
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+            // finally change the color
+            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(),
+                    R.color.activity_mess_add_new_meal_background));
+        }
+
     }
 
     private void setOnClicks () {
@@ -384,6 +412,11 @@ public class MessAddNewMealActivity extends AppCompatActivity {
     }
 
     private void setSpinner () {
+
+        // set meal price
+        price = monthly_price / 60;
+        messAddNewMealPriceTextView.setText("Rs. " + String.valueOf(price));
+
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(),
                 R.layout.profile_spinners_item, regularOrSpecialArrayList);
 

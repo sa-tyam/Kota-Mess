@@ -34,6 +34,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.pkan.official.R;
 import com.pkan.official.customer.order.MealItem;
+import com.pkan.official.mess.delivery.DeliveryMainActivity;
 import com.pkan.official.mess.meals.MessMeal;
 import com.pkan.official.mess.meals.MessSelectMealActivity;
 
@@ -106,7 +107,7 @@ public class MessHomeFragment extends Fragment {
 
     EditText messHomeVerificationCodeEditText;
 
-    Button messHomeAttendButton, messHomeNextMealSetMealButton;
+    Button messHomeAttendButton, messHomeNextMealSetMealButton, messHomeDeliverOrdersButton;
 
     LinearLayout messHomeCurrentMealItemsLinearLayout, messHomeNextMealItemsLinearLayout;
 
@@ -193,6 +194,7 @@ public class MessHomeFragment extends Fragment {
                 .messHomeNextMealItemsLinearLayout);
         messHomeReceiveOrdersSwitch = view.findViewById(R.id.messHomeReceiveOrdersSwitch);
         messHomeNextMealPriceTextView = view.findViewById(R.id.messHomeNextMealPriceTextView);
+        messHomeDeliverOrdersButton = view.findViewById(R.id.messHomeDeliverOrdersButton);
 
         // initialize firebase variables
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -227,6 +229,17 @@ public class MessHomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), MessSelectMealActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+
+        // send to deliver orders page
+        messHomeDeliverOrdersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), DeliveryMainActivity.class);
+                intent.putExtra("messId", user.getUid());
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }

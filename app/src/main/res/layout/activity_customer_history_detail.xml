@@ -30,7 +30,7 @@
                     android:id="@+id/customerHistoryDetailBackImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -86,58 +86,45 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
-                        android:layout_marginTop="5dp"
-                        app:layout_constraintEnd_toStartOf=
-                            "@+id/customerHistoryDetailSpecialTextView"
-                        app:layout_constraintStart_toStartOf=
-                            "@+id/customerHistoryDetailHeaderTextView"
-                        app:layout_constraintTop_toBottomOf=
-                            "@+id/customerHistoryDetailHeaderTextView"
+                        app:layout_constraintEnd_toStartOf="@+id/customerHistoryDetailSpecialTextView"
+                        app:layout_constraintStart_toStartOf="@+id/customerHistoryDetailHeaderTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/customerHistoryDetailHeaderTextView"
                         app:srcCompat="@drawable/ic_baseline_star_18" />
 
                     <TextView
                         android:id="@+id/customerHistoryDetailSpecialTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="30dp"
                         android:text="@string/activity_customer_history_detail_special_text"
                         android:textColor="@color/activity_customer_history_detail_special_text"
-                        app:layout_constraintEnd_toEndOf=
-                            "@+id/customerHistoryDetailHeaderTextView"
-                        app:layout_constraintStart_toEndOf=
-                            "@+id/customerHistoryDetailSpecialImageView"
-                        app:layout_constraintTop_toBottomOf=
-                            "@+id/customerHistoryDetailHeaderTextView" />
+                        app:layout_constraintEnd_toEndOf="@+id/customerHistoryDetailHeaderTextView"
+                        app:layout_constraintStart_toEndOf="@+id/customerHistoryDetailSpecialImageView"
+                        app:layout_constraintTop_toBottomOf="@+id/customerHistoryDetailHeaderTextView" />
 
                     <TextView
                         android:id="@+id/customerHistoryDetailPriceTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:text="Rs 60"
                         android:textColor="@color/activity_customer_history_detail_price_text"
                         android:textSize="20sp"
-                        app:layout_constraintEnd_toEndOf=
-                            "@+id/customerHistoryDetailHeaderTextView"
-                        app:layout_constraintStart_toStartOf=
-                            "@+id/customerHistoryDetailHeaderTextView"
-                        app:layout_constraintTop_toBottomOf=
-                            "@+id/customerHistoryDetailSpecialTextView" />
+                        app:layout_constraintEnd_toEndOf="@+id/customerHistoryDetailHeaderTextView"
+                        app:layout_constraintStart_toStartOf="@+id/customerHistoryDetailHeaderTextView"
+                        app:layout_constraintTop_toBottomOf="@+id/customerHistoryDetailSpecialTextView" />
 
                     <TextView
                         android:id="@+id/customerHistoryDetailItemHeaderTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:text="@string/activity_customer_history_detail_item_header"
                         android:textColor="@color/activity_customer_history_detail_items_header"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf=
-                            "@+id/customerHistoryDetailPriceTextView" />
+                        app:layout_constraintTop_toBottomOf="@+id/customerHistoryDetailPriceTextView" />
 
                     <LinearLayout
                         android:id="@+id/customerHistoryDetailItemsLinearLayout"
@@ -154,26 +141,24 @@
                         android:id="@+id/customerHistoryDetailMessAddressHeaderDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
                         android:text="@string/activity_customer_history_detail_mess_address_header"
                         android:textColor="@color/activity_customer_history_detail_mess_header"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf=
-                            "@+id/customerHistoryDetailItemsLinearLayout" />
+                        app:layout_constraintTop_toBottomOf="@+id/customerHistoryDetailItemsLinearLayout" />
 
                     <ImageView
                         android:id="@+id/customerHistoryDetailMessImageView"
                         android:layout_width="120dp"
                         android:layout_height="100dp"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:scaleType="centerCrop"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf=
-                            "@+id/customerHistoryDetailMessAddressHeaderDetail"
+                        app:layout_constraintTop_toBottomOf="@+id/customerHistoryDetailMessAddressHeaderDetail"
                         app:srcCompat="@drawable/foodimage" />
 
                     <TextView
@@ -192,61 +177,52 @@
                         android:layout_height="0dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="20dp"
                         android:text="Mess address, mess address, mess addeess"
-                        android:textColor=
-                            "@color/activity_customer_history_detail__mess_address_text"
-                        app:layout_constraintBottom_toBottomOf=
-                            "@+id/customerHistoryDetailMessImageView"
+                        android:textColor="@color/activity_customer_history_detail__mess_address_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/customerHistoryDetailMessImageView"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/customerHistoryDetailMessImageView"
-                        app:layout_constraintTop_toBottomOf=
-                            "@+id/customerHistoryDetailMessNameTextView" />
+                        app:layout_constraintTop_toBottomOf="@+id/customerHistoryDetailMessNameTextView" />
 
                     <TextView
                         android:id="@+id/customerHistoryDetailReviewHeaderTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="15dp"
                         android:text="@string/activity_customer_history_detail_customer_reviews_header"
                         android:textColor="@color/activity_customer_history_detail_reviews_header"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf=
-                            "@+id/customerHistoryDetailMessImageView" />
+                        app:layout_constraintTop_toBottomOf="@+id/customerHistoryDetailMessImageView" />
 
                     <RatingBar
                         android:id="@+id/customerHistoryDetailRatingBar"
-                        style="?android:attr/ratingBarStyleSmall"
+                        style="?android:attr/ratingBarStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:numStars="5"
-                        android:progressTint=
-                            "@color/activity_customer_history_detail__reviews_star_color"
-                        android:progressBackgroundTint=
-                            "@color/activity_customer_history_detail__reviews_star_color"
-                        app:layout_constraintTop_toBottomOf=
-                            "@+id/customerHistoryDetailReviewHeaderTextView"/>
+                        android:progressBackgroundTint="@color/activity_customer_history_detail__reviews_star_color"
+                        android:progressTint="@color/activity_customer_history_detail__reviews_star_color"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerHistoryDetailReviewHeaderTextView" />
 
                     <EditText
                         android:id="@+id/customerHistoryDetailReviewEditText"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf=
-                            "@+id/customerHistoryDetailRatingBar"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
+                        android:hint="@string/activity_customer_history_detail_customer_reviews_hint"
                         android:inputType="text"
-                        android:hint=
-                            "@string/activity_customer_history_detail_customer_reviews_hint"/>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/customerHistoryDetailRatingBar" />
 
                     <Button
                         android:id="@+id/customerHistoryDetailSaveReviewButton"

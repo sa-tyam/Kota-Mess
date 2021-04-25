@@ -635,6 +635,13 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
 
     private void checkBalance () {
         if (customerConfirmOrderUseWalletBalanceCheckBox.isChecked()) {
+
+            // for debugging purpose
+            Log.e("use balance cb", "checked");
+
+            // for debugging purpose
+            Log.e("user balance", String.valueOf(customer_balance));
+
             if (customer_balance >= order_price) {
 
                 // start progress dialog
@@ -649,12 +656,15 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
                 deductBalance();
 
                 // make upi payment
-                makeUpiPayment(amount);
+                makeUpiPayment((float) amount);
             }
         } else {
 
+            // for debugging purpose
+            Log.e("use balance cb", "unchecked");
+
             // make upi payment
-            makeUpiPayment(order_price);
+            makeUpiPayment((float) order_price);
         }
     }
 
@@ -817,7 +827,11 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
 
     }
 
-    private void makeUpiPayment (int amount) {
+    private void makeUpiPayment (float amount) {
+
+        // for debugging purpose
+        Log.e("start upi", "reached");
+
         final EasyUpiPayment easyUpiPayment = new EasyUpiPayment.Builder()
                 .with(this)
                 .setPayeeVpa(COMPANY_UPI_ID)

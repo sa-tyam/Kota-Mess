@@ -2,17 +2,21 @@ package com.pkan.official.mess.delivery;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -71,6 +75,9 @@ public class DeliveryMainActivity extends AppCompatActivity {
         // initialize views and variables
         initViews();
 
+        // set status bar color
+        setStatusBarColor();
+
         // set onClicks
         setOnClicks();
 
@@ -100,6 +107,27 @@ public class DeliveryMainActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(DeliveryMainActivity.this);
         progressDialog.setMessage("Please Wait ...");
         progressDialog.setCancelable(false);
+    }
+
+    private void setStatusBarColor () {
+
+        // check if android version is greater than or equal to 21
+        // it works only for API level 21 or higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            Window window = getWindow();
+
+            // clear FLAG_TRANSLUCENT_STATUS flag:
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+            // finally change the color
+            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(),
+                    R.color.activity_delivery_main_background));
+        }
+
     }
 
     private void setOnClicks () {
@@ -155,28 +183,68 @@ public class DeliveryMainActivity extends AppCompatActivity {
 
     private void getMessId () {
         Log.e("getMessId", "reached");
-        databaseReference.child("Delivery Persons").child(user.getUid())
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                        // get mess name and id
-                        mess_id = snapshot.child("Mess Id").getValue(String.class);
-                        mess_name = snapshot.child("Mess Name").getValue(String.class);
+        mess_id = getIntent().getStringExtra("messId");
 
-                        if (mess_id != null && mess_name != null ) {
-                            Log.e("mess name", mess_name);
-                            // set header and sub header
-                            setTitles();
-                            getData();
+        if (mess_id == null) {
+
+            databaseReference.child("Delivery Persons").child(user.getUid())
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            // get mess name and id
+                            mess_id = snapshot.child("Mess Id").getValue(String.class);
+                            mess_name = snapshot.child("Mess Name").getValue(String.class);
+
+                            if (mess_id != null && mess_name != null) {
+                                Log.e("mess name", mess_name);
+                                // set header and sub header
+                                setTitles();
+                                getData();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
+                        }
+                    });
+        } else {
+            databaseReference.child("Mess").child(mess_id).child("Profile")
+                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    mess_name = snapshot.child("Name").getValue(String.class);
+
+                    if (mess_name != null) {
+
+                        // for debugging purpose
+                        Log.d("mess name", mess_name);
+                        setTitles();
+                        getData();
+
+                    } else {
+
+                        // for debugging purpose
+                        Log.e("mess name", "not found");
+
+                        mess_name = " ";
+                        setTitles();
+                        getData();
                     }
-                });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                    // for debugging purpose
+                    Log.e("mess name", error.getDetails());
+                }
+            });
+
+        }
     }
 
     private void setTitles () {

@@ -2,13 +2,17 @@ package com.pkan.official.mess.profile;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -64,6 +68,9 @@ public class MessDeliveryPersonsEditActivity extends AppCompatActivity {
         // initialize views and variables
         initViews();
 
+        // set status bar color
+        setStatusBarColor();
+
         // set on clicks
         setOnClicks();
 
@@ -100,6 +107,27 @@ public class MessDeliveryPersonsEditActivity extends AppCompatActivity {
 
         // initialize delivery numbers array list
         deliveryNumbersArrayList = new ArrayList<>();
+    }
+
+    private void setStatusBarColor () {
+
+        // check if android version is greater than or equal to 21
+        // it works only for API level 21 or higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            Window window = getWindow();
+
+            // clear FLAG_TRANSLUCENT_STATUS flag:
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+            // finally change the color
+            window.setStatusBarColor(ContextCompat.getColor(getApplicationContext(),
+                    R.color.activity_mess_delivery_persons_edit_background));
+        }
+
     }
 
     private void setOnClicks () {
