@@ -190,6 +190,14 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
             }
         });
 
+        // now add onClick listener to the confirm order button
+        customerConfirmOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkBalance();
+            }
+        });
+
         // set home delivery as default checked and in mess unchecked
         customerConfirmOrderHomeDeliveryRadioButton.setChecked(true);
         customerConfirmOrderInMessRadioButton.setChecked(false);
@@ -334,9 +342,6 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
                         if (meal_id != null && mess_id != null && mess_name != null &&
                                 mealItemArrayList.size() > 0) {
 
-                            // get delivery options
-                            getDeliveryOptions();
-
                             // for debugging in case of error
                             Log.d("mess name", mess_name);
 
@@ -392,42 +397,6 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
                 });
     }
 
-    private void getDeliveryOptions () {
-        databaseReference.child("Mess").child(mess_id).child("Profile")
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                if (snapshot.child("In Mess").getValue(Integer.class) != null) {
-                    mess_delivery_in_mess = snapshot.child("In Mess").getValue(Integer.class);
-                }
-                if (snapshot.child("Home Delivery").getValue(Integer.class) != null) {
-                    mess_delivery_home = snapshot.child("Home Delivery").getValue(Integer.class);
-                }
-                setDeliveryOptions();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    private void setDeliveryOptions () {
-        if (mess_delivery_home == 0) {
-            customerConfirmOrderInMessRadioButton.setChecked(true);
-            customerConfirmOrderInMessRadioButton.setClickable(false);
-            customerConfirmOrderHomeDeliveryRadioButton.setChecked(false);
-            customerConfirmOrderHomeDeliveryRadioButton.setClickable(false);
-        }
-        if (mess_delivery_in_mess == 0) {
-            customerConfirmOrderInMessRadioButton.setChecked(false);
-            customerConfirmOrderInMessRadioButton.setClickable(false);
-            customerConfirmOrderHomeDeliveryRadioButton.setChecked(true);
-            customerConfirmOrderHomeDeliveryRadioButton.setClickable(false);
-        }
-    }
 
     private void getValues (@NonNull Meal meal) {
 
@@ -476,12 +445,23 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
     private void getMessDetails () {
 
         // get mess phone number
-        databaseReference.child("Mess").child(mess_id).child("Profile").child("Phone Number")
+        databaseReference.child("Mess").child(mess_id).child("Profile")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                String phone_number = snapshot.getValue(String.class);
+                if (snapshot.child("In Mess").getValue(Integer.class) != null) {
+                    mess_delivery_in_mess = snapshot.child("In Mess").getValue(Integer.class);
+                }
+                if (snapshot.child("Home Delivery").getValue(Integer.class) != null) {
+                    mess_delivery_home = snapshot.child("Home Delivery").getValue(Integer.class);
+                }
+
+                // set delivery options available from mess
+                setDeliveryOptions();
+
+                String phone_number = snapshot.child("Phone Number").getValue(String.class);
+                mess_name = snapshot.child("Name").getValue(String.class);
 
                 if (phone_number != null) {
 
@@ -508,6 +488,28 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void setDeliveryOptions () {
+        if (mess_delivery_home == 0) {
+            customerConfirmOrderInMessRadioButton.setChecked(true);
+            customerConfirmOrderInMessRadioButton.setClickable(false);
+            customerConfirmOrderHomeDeliveryRadioButton.setChecked(false);
+            customerConfirmOrderHomeDeliveryRadioButton.setClickable(false);
+        }
+        if (mess_delivery_in_mess == 0) {
+            customerConfirmOrderInMessRadioButton.setChecked(false);
+            customerConfirmOrderInMessRadioButton.setClickable(false);
+            customerConfirmOrderHomeDeliveryRadioButton.setChecked(true);
+            customerConfirmOrderHomeDeliveryRadioButton.setClickable(false);
+        }
+
+        if (mess_delivery_in_mess == 0 && mess_delivery_home == 0) {
+
+            // something wrong as mess is not ready for both
+            Toast.makeText(getApplicationContext(), "Mess Unavailable", Toast.LENGTH_LONG).show();
+            finish();
+        }
     }
 
     private void getCustomerDetails () {
@@ -621,14 +623,6 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
         customerConfirmOrderCustomerLandmarkTextView.setText(customer_landmark);
         customerConfirmOrderCustomerAreaTextView.setText(customer_area);
 
-        // now add onClick listener to the confirm order button
-        customerConfirmOrderButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                checkBalance();
-            }
-        });
-
         // stop the progress dialog
         stopProgressDialog();
     }
@@ -649,14 +643,9 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
 
                 deductBalance();
             } else {
-                // calculate the amount to be paid
-                int amount = order_price - customer_balance;
 
                 // deduct balance
                 deductBalance();
-
-                // make upi payment
-                makeUpiPayment((float) amount);
             }
         } else {
 
@@ -684,7 +673,11 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        uploadData();
+                        // calculate the amount to be paid
+                        int amount = order_price - customer_balance;
+
+                        // make upi payment
+                        makeUpiPayment((float) amount);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -712,14 +705,15 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
         order_ref.child("Order Price").setValue(order_price);
         order_ref.child("Mess Id").setValue(mess_id);
         order_ref.child("Meal Id").setValue(meal_id);
-        order_ref.child("Customer Id").child(customer_id);
-        order_ref.child("Mess Name").child(mess_name);
+        order_ref.child("Customer Id").setValue(customer_id);
+        order_ref.child("Mess Name").setValue(mess_name);
         order_ref.child("Order Time").setValue(order_time);
         order_ref.child("Address").setValue(address);
         order_ref.child("Status").setValue(order_status);
         order_ref.child("Customer Phone Number").setValue(customer_phone);
         order_ref.child("Mess or Delivery").setValue(mess_or_delivery);
         order_ref.child("Mess Phone Number").setValue(mess_phone_number);
+        order_ref.child("Delivery Phone Number").setValue(mess_phone_number);
         order_ref.child("Lunch or Dinner").setValue(lunch_or_dinner);
         order_ref.child("Order Date").setValue(order_date);
         order_ref.child("Security Code").setValue(security_code);
@@ -853,9 +847,6 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
                 Log.d("transaction id", transactionDetails.getTransactionId());
                 Log.d("transaction status", transactionDetails.getStatus());
 
-                // upload data
-                uploadData();
-
             }
 
             @Override
@@ -866,6 +857,9 @@ public class CustomerConfirmOrderActivity extends AppCompatActivity {
 
                 // alert the user about the status
                 Toast.makeText(getApplicationContext(), "Transaction Success", Toast.LENGTH_SHORT).show();
+
+                // upload data
+                uploadData();
             }
 
             @Override

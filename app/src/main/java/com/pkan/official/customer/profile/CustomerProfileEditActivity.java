@@ -79,6 +79,9 @@ public class CustomerProfileEditActivity extends AppCompatActivity {
         // initialize the views used in activity
         initViews ();
 
+        // set status bar color
+        setStatusBarColor();
+
         // disable functions and show progress dialog till cities are loaded from database
         startProgressDialog();
 
@@ -389,6 +392,14 @@ public class CustomerProfileEditActivity extends AppCompatActivity {
 
             // set the initial balance of the user to 0
             databaseReference.child("Customers").child(user.getUid()).child("Balance")
+                    .setValue(0);
+
+            // set plan to regular plan
+            databaseReference.child("Customers").child(user.getUid()).child("Plan").child("Plan Name")
+                    .setValue("Regular");
+            databaseReference.child("Customers").child(user.getUid()).child("Plan").child("Plan Id")
+                    .setValue("regular");
+            databaseReference.child("Customers").child(user.getUid()).child("Plan").child("Plan Cost")
                     .setValue(0);
         }
 

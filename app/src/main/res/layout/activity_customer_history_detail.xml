@@ -206,7 +206,6 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:numStars="5"
-                        android:progressBackgroundTint="@color/activity_customer_history_detail__reviews_star_color"
                         android:progressTint="@color/activity_customer_history_detail__reviews_star_color"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/customerHistoryDetailReviewHeaderTextView" />

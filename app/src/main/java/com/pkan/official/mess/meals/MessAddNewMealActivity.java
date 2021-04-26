@@ -210,6 +210,10 @@ public class MessAddNewMealActivity extends AppCompatActivity {
                     monthly_price = snapshot.child("Monthly Price").getValue(Integer.class);
                 }
 
+                // set meal price
+                price = monthly_price / 60;
+                messAddNewMealPriceTextView.setText("Rs. " + String.valueOf(price));
+
                 if (mess_name != null) {
 
                     // for debugging purpose, in case of error
@@ -315,8 +319,6 @@ public class MessAddNewMealActivity extends AppCompatActivity {
         // get the meal id
         meal_id = databaseReference.child("Meals").push().getKey();
 
-        price = Integer.parseInt(messAddNewMealPriceTextView.getText().toString());
-
         if (meal_id != null && price > 0 && mealItemArrayList.size() > 2) {
 
             // start progress dialog
@@ -412,10 +414,6 @@ public class MessAddNewMealActivity extends AppCompatActivity {
     }
 
     private void setSpinner () {
-
-        // set meal price
-        price = monthly_price / 60;
-        messAddNewMealPriceTextView.setText("Rs. " + String.valueOf(price));
 
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(),
                 R.layout.profile_spinners_item, regularOrSpecialArrayList);

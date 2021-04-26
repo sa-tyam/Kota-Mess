@@ -332,17 +332,21 @@ public class CustomerProfileFragment extends Fragment {
                 balance = snapshot.child("Balance").getValue(Integer.class);
                 plan = snapshot.child("Plan").child("Plan Name").getValue(String.class);
 
-                if (balance > -1 && plan != null) {
+                if (balance > -1) {
                     customerProfileFragmentBalanceTextView.setText("\u20B9" + " " +
                             String.valueOf(balance));
-                    customerProfileFragmentPlanTextView.setText(plan);
-                    stopProgressDialog();
                 } else {
                     stopProgressDialog();
                     Intent intent = new Intent(getContext(), CustomerPlanSelectActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }
+
+                if (plan != null) {
+                    customerProfileFragmentPlanTextView.setText(plan);
+
+                }
+                stopProgressDialog();
             }
 
             @Override

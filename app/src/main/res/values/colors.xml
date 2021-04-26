@@ -19,6 +19,9 @@
     <color name="activity_landing_page_login_button_background">#4E73B8</color>
     <color name="activity_landing_page_login_button_text">#FFF9F9</color>
 
+    # edit texts #
+    <color name="edit_text_background_color">#DCD7D7</color>
+
     # login phone number page #
 
     <color name="activity_login_phone_number_background">#FFFBEC</color>
@@ -155,7 +158,7 @@
     <color name="customer_home_select_meal_item_order_items">#A1A0A0</color>
     <color name="customer_home_select_meal_item_order_price">#000000</color>
     <color name="customer_home_select_meal_item_special">#000000</color>
-    <color name="customer_home_select_meal_item_select_button_border">#F6EAC4</color>
+    <color name="customer_home_select_meal_item_select_button_border">#EFC41A</color>
     <color name="customer_home_select_meal_item_select_button_text">#EFC41A</color>
     
     # customer order detail #

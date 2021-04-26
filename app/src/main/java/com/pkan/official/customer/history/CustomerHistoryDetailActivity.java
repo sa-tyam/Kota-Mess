@@ -32,6 +32,7 @@ import com.pkan.official.R;
 import com.pkan.official.customer.meals.Meal;
 import com.pkan.official.customer.order.CustomerOrderDetailsActivity;
 import com.pkan.official.customer.order.MealItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -361,6 +362,13 @@ public class CustomerHistoryDetailActivity extends AppCompatActivity {
         customerHistoryDetailPriceTextView.setText("\u20B9" + " " +
                 String.valueOf(meal.getMeal_price()));
 
+        // load meal image in image view
+        Picasso.get()
+                .load(meal.getMeal_image_link())
+                .into(customerHistoryDetailMealImageView);
+
+
+
         // set meal items
         for (MealItem mealItem : meal.getMealItemArrayList()) {
             // create view object
@@ -389,6 +397,14 @@ public class CustomerHistoryDetailActivity extends AppCompatActivity {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        String mess_image = snapshot.child("Profile").child("Mess Image")
+                                .getValue(String.class);
+
+                        // load mess image in image view
+                        Picasso.get()
+                                .load(mess_image)
+                                .into(customerHistoryDetailMessImageView);
 
                         String address = snapshot.child("Profile").child("Address").getValue(String.class);
                         if  (address != null) {
